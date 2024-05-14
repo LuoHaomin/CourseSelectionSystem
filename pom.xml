@@ -71,6 +71,13 @@
     </dependency>
   </dependencies>
 
+    <repositories>
+        <repository>
+            <id>hibernate</id>
+            <url>"https://mvnrepository.com/artifact/org.hibernate/hibernate-core"</url>
+        </repository>
+    </repositories>
+
   <build>
     <plugins>
       <plugin>
