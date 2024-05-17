@@ -7,6 +7,10 @@ import cn.ustc.edu.course_selection_system.Database.ID_EditorImpl;
 import java.util.List;
 
 public class StudentService extends AbstractStudentService{
+
+    public StudentService(int id){
+        this.id = id;
+    }
     @Override
     public StudentInfo GetID() {
         ID_Editor idEditor = new ID_EditorImpl();

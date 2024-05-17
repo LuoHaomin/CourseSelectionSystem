@@ -5,6 +5,9 @@ public class PersonInfo {
     String name;
     String password;
     String phoneNumber;
+    /**
+     * position 为 "Student"、“Teacher”、“Manager” 中的一个。
+     */
     String position;
 
     public PersonInfo(int id, String name, String password, String phoneNumber, String position) {
