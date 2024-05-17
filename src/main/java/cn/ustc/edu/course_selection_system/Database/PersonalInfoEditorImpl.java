@@ -2,9 +2,9 @@ package cn.ustc.edu.course_selection_system.Database;
 
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 
-public class ID_EditorImpl implements ID_Editor{
+public class PersonalInfoEditorImpl implements PersonalInfoEditor{
     @Override
-    public PersonInfo GetID(int id) {
+    public PersonInfo GetPersonalInfo(int id) {
         return null;
     }
 }

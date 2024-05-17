@@ -1,7 +1,6 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
 public class CourseInfo {
-
     int id;
     /**
      * 课程编码（每种科目对应唯一编码）
