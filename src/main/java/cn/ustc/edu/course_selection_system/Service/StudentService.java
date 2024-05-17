@@ -1,7 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.StudentInfo;
-import cn.ustc.edu.course_selection_system.Database.ID_Editor;
+import cn.ustc.edu.course_selection_system.Database.PersonalInfoEditor;
 import cn.ustc.edu.course_selection_system.Database.PersonalInfoEditorImpl;
 
 import java.util.List;
