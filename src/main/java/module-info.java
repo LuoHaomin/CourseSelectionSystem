@@ -5,6 +5,7 @@ module cn.ustc.edu.courseselectionsystem {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
+    requires hibernate.jpa;
 
     opens cn.ustc.edu.course_selection_system to javafx.fxml;
     exports cn.ustc.edu.course_selection_system;

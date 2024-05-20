@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>cn.ustc.edu</groupId>
@@ -76,17 +78,18 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>5.4.0.final</version>
+      <version>5.2.10.Final</version>
     </dependency>
   </dependencies>
 
     <repositories>
         <repository>
             <id>hibernate</id>
-            <url>"https://mvnrepository.com/artifact/org.hibernate/hibernate-core"</url>
+            <url>"https://central.sonatype.com/artifact/org.hibernate.orm/hibernate-core"</url>
+
         </repository>
     </repositories>
-
+<!--    "https://mvnrepository.com/artifact/org.hibernate/hibernate-core"-->
   <build>
     <plugins>
       <plugin>
