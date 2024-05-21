@@ -15,6 +15,9 @@ public class StudentService extends AbstractStudentService{
     public StudentInfo GetID() {
         PersonalInfoEditorImpl idEditor = new PersonalInfoEditorImpl();
         return (StudentInfo) idEditor.GetPersonalInfo(this.id);
+
+
+
     }
 
     @Override
