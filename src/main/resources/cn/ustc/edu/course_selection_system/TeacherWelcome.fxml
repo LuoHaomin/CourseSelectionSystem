@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="190.0" prefHeight="54.0" prefWidth="412.0">
+         <children>
+            <Label layoutX="14.0" layoutY="15.0" prefHeight="24.0" prefWidth="92.0" text="Welcome">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Name" layoutX="106.0" layoutY="15.0" prefHeight="24.0" prefWidth="126.0" textFill="#3400ff">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="400.0" prefWidth="189.0" style="-fx-background-color: rgb(225,225,225);">
+         <children>
+            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="查看学生" textAlignment="CENTER" textFill="#0006ff">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="43.0" prefWidth="177.0" text="录入/修改成绩" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+         </children></VBox>
+      <ListView layoutX="313.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
+      <ListView layoutX="424.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
+      <Label layoutX="358.0" layoutY="54.0" text="ID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="453.0" layoutY="54.0" text="Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
