@@ -17,9 +17,19 @@ public class AdminService {
     public int ImportS_C(List<Pair<Integer,Integer>> S_C){
         return 0;
     }
-	 void ImportT_C(){}
-	 void DelID(){}
-	 void DelCourse(){}
-	 void DelS_C(){}
-	 void DelT_C(){}
+    public int ImportT_C(Pair<Integer,Integer> T_C){
+        return 0;
+    }
+    public int DelID(List<Integer> idlist){
+        return 0;
+    }
+	public int DelCourse(List<Integer> id_list){
+        return 0;
+    }
+	public int DelS_C(Pair<Integer,Integer> S_C){
+        return 0;
+    }
+    public int DelT_C(Pair<Integer,Integer> T_C){
+        return 0;
+    }
 }
