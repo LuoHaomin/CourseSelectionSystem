@@ -39,4 +39,6 @@ public class TeacherService extends AbstractPersonService{
     public boolean changeScore(Pair<Integer,Integer> score){
         return false;
     }
+
+
 }
