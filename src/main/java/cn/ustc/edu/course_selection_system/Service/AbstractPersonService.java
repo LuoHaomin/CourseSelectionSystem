@@ -1,7 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
-import cn.ustc.edu.course_selection_system.Bean.StudentInfo;
+import cn.ustc.edu.course_selection_system.Bean.StudentinfoEntity;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public abstract class AbstractPersonService {
      * 获取该学生的信息
      * @return 学生信息
      */
-    public abstract StudentInfo GetID();
+    public abstract StudentinfoEntity GetID();
 
     public abstract boolean updateID(PersonInfo personInfo);
 

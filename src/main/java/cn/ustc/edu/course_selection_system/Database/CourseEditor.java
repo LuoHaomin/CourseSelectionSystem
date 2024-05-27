@@ -1,10 +1,10 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
+import cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity;
 
 public interface CourseEditor {
     void AddCourse();
     void DelCourse();
-    CourseInfo GetCourseInfo(int id);
+    CourseinfoEntity GetCourseInfo(int id);
     void UpdateCourseInfo();
 }

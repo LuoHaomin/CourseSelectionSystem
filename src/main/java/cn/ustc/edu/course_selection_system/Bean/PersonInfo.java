@@ -18,6 +18,10 @@ public class PersonInfo {
         this.position = position;
     }
 
+    public PersonInfo() {
+
+    }
+
     public String getPosition() {
         return position;
     }
