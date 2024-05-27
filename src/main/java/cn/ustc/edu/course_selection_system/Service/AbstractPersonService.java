@@ -1,5 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
+import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentInfo;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * 学生相关服务
  */
-public abstract class AbstractStudentService {
+public abstract class AbstractPersonService {
     int id;
 
     /**
@@ -16,10 +17,12 @@ public abstract class AbstractStudentService {
      */
     public abstract StudentInfo GetID();
 
+    public abstract boolean updateID(PersonInfo personInfo);
+
     /**
-     * 获取课程表
-     * @return 课程表数据
+     * 获取相关课程
+     * @return 课程编号
      */
-    public abstract List<String> GetSchedule();
+    public abstract List<Integer> getRelatedCourse();
 
 }

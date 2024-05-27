@@ -1,18 +1,13 @@
 package cn.ustc.edu.course_selection_system.Service;
 
+import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentInfo;
-import cn.ustc.edu.course_selection_system.Database.PersonalInfoEditorImpl;
+import javafx.util.Pair;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class StudentService extends AbstractPersonService {
-
-    public StudentService(int id){
-        this.id = id;
-    }
-
+public class TeacherService extends AbstractPersonService{
     @Override
     public StudentInfo GetID() {
         return null;
@@ -28,27 +23,22 @@ public class StudentService extends AbstractPersonService {
         return List.of();
     }
 
-    /**
-     * 获得课程表数据
-     */
-    public void getSchedule(){
-
-    }
-
-    public List<Integer> getProgram(){
-        return List.of();
-    }
-
-    public boolean chooseCourse(){
+    public boolean AddCourse(CourseInfo courseInfo){
         return false;
     }
 
-    public boolean dropCourse(){
+    public boolean delCourse(int course_id){
         return false;
     }
 
-    public int getScore(){
+    public int importStudentsScore(List< Pair<Integer,Integer> > scorelist){
+
         return 0;
     }
+
+    public boolean changeScore(Pair<Integer,Integer> score){
+        return false;
+    }
+
 
 }
