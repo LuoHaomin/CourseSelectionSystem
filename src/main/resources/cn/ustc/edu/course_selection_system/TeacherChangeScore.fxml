@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="190.0" prefHeight="54.0" prefWidth="412.0">
@@ -34,14 +35,14 @@
             </Button>
          </children>
       </AnchorPane>
-      <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
+      <VBox prefHeight="400.0" prefWidth="157.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="查看学生" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="查看学生" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="43.0" prefWidth="177.0" text="录入/修改成绩" textAlignment="CENTER">
+            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="43.0" prefWidth="177.0" selected="true" text="录入/修改成绩" textAlignment="CENTER" textFill="#0006ff">
                <font>
                   <Font size="18.0" />
                </font>
@@ -51,18 +52,31 @@
                   <Font size="18.0" />
                </font>
             </Button>
-         </children></VBox>
-      <ListView layoutX="313.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <ListView layoutX="424.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <Label layoutX="358.0" layoutY="54.0" text="ID">
+         </children>
+      </VBox>
+      <ListView layoutX="174.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
+      <ListView layoutX="285.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
+      <Label layoutX="219.0" layoutY="54.0" text="ID">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="453.0" layoutY="54.0" text="Name">
+      <Label layoutX="313.0" layoutY="54.0" text="用户名">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
+      <Label layoutX="432.0" layoutY="54.0" text="成绩">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ListView layoutX="395.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
+      <Button layoutX="523.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="62.0" text="提交">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="506.0" layoutY="311.0" text="优秀率超过40%！" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="190.0" prefHeight="54.0" prefWidth="412.0">
+      <AnchorPane layoutX="188.0" prefHeight="54.0" prefWidth="412.0">
          <children>
             <Label layoutX="14.0" layoutY="15.0" prefHeight="24.0" prefWidth="92.0" text="Welcome">
                <font>
@@ -34,32 +35,49 @@
             </Button>
          </children>
       </AnchorPane>
-      <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
+      <VBox prefHeight="400.0" prefWidth="185.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="查看学生" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="选课/退课" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="43.0" prefWidth="177.0" text="录入/修改成绩" textAlignment="CENTER">
+            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="55.0" prefWidth="178.0" selected="true" text="查看成绩" textAlignment="CENTER" textFill="#0006ff">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="159.0" text="返回选择页" textAlignment="CENTER">
+            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="53.0" prefWidth="178.0" text="课程表" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
-            </Button>
-         </children></VBox>
-      <ListView layoutX="313.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <ListView layoutX="424.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <Label layoutX="358.0" layoutY="54.0" text="ID">
+            </RadioButton>
+         </children>
+      </VBox>
+      <Label layoutX="206.0" layoutY="54.0" text="总GPA：">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="453.0" layoutY="54.0" text="Name">
+      <Label layoutX="239.0" layoutY="87.0" text="课程名称">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="376.0" layoutY="87.0" text="分数">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="478.0" layoutY="87.0" text="GPA">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ListView layoutX="220.0" layoutY="111.0" prefHeight="274.0" prefWidth="110.0" />
+      <ListView layoutX="332.0" layoutY="111.0" prefHeight="274.0" prefWidth="110.0" />
+      <ListView layoutX="442.0" layoutY="111.0" prefHeight="274.0" prefWidth="110.0" />
+      <Label layoutX="275.0" layoutY="54.0" prefHeight="24.0" prefWidth="198.0" textFill="#0006ff">
          <font>
             <Font size="18.0" />
          </font>

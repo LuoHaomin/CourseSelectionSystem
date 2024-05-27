@@ -34,7 +34,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
+      <VBox prefHeight="400.0" prefWidth="189.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
             <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="查看学生" textAlignment="CENTER" textFill="#0006ff">
                <font>
@@ -46,11 +46,6 @@
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="159.0" text="返回选择页" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
          </children></VBox>
       <ListView layoutX="313.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
       <ListView layoutX="424.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />

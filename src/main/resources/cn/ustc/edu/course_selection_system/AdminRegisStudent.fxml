@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.AdminRegisStudent">
+   <children>
+      <VBox layoutY="1.0" prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
+         <children>
+            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="录入学生/教师" textAlignment="CENTER" textFill="#0006ff">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="师生名单" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="188.0" layoutY="2.0" prefHeight="54.0" prefWidth="412.0">
+         <children>
+            <Label layoutX="14.0" layoutY="15.0" prefHeight="24.0" prefWidth="92.0" text="Welcome">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Name" layoutX="106.0" layoutY="15.0" prefHeight="24.0" prefWidth="126.0" textFill="#3400ff">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="188.0" layoutY="81.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="80.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="111.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="110.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="141.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="140.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="171.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="170.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="199.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="198.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="229.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="228.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="259.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="258.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="289.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="288.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="319.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="318.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <TextField layoutX="188.0" layoutY="349.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <HBox layoutX="390.0" layoutY="348.0" prefHeight="30.0" prefWidth="126.0">
+         <children>
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="58.0" text="学生" />
+            <RadioButton mnemonicParsing="false" prefHeight="16.0" prefWidth="54.0" text="教师" />
+         </children>
+      </HBox>
+      <Label layoutX="264.0" layoutY="56.0" text="姓名">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="516.0" layoutY="331.0" mnemonicParsing="false" text="提交">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="173.0" layoutY="85.0" text="1">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="115.0" text="2">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="145.0" text="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="175.0" text="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="203.0" text="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="233.0" text="6">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="263.0" text="7">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="293.0" text="8">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="173.0" layoutY="323.0" text="9">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="169.0" layoutY="353.0" text="10">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
