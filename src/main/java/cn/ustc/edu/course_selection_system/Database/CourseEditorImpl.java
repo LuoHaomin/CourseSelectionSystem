@@ -1,6 +1,6 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
+import cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity;
 
 public class CourseEditorImpl implements CourseEditor{
     @Override
@@ -14,7 +14,7 @@ public class CourseEditorImpl implements CourseEditor{
     }
 
     @Override
-    public CourseInfo GetCourseInfo(int id) {
+    public CourseinfoEntity GetCourseInfo(int id) {
         return null;
     }
 

@@ -1,6 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
+import cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity;
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import javafx.util.Pair;
 
@@ -11,7 +11,7 @@ public class AdminService {
         return 0;
     }
 
-	public int ImportCourse(List<CourseInfo> courseInfos){
+	public int ImportCourse(List<CourseinfoEntity> courseInfos){
         return 0;
     }
     public int ImportS_C(List<Pair<Integer,Integer>> S_C){
