@@ -3,6 +3,7 @@ package cn.ustc.edu.course_selection_system.Service;
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentinfoEntity;
 import cn.ustc.edu.course_selection_system.Database.PersonalInfoEditorImpl;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,20 +37,36 @@ public class StudentService extends AbstractPersonService {
 
     }
 
+    /**
+     * 获得培养方案（待选课程列表）
+     * @return 待选课程列表
+     */
     public List<Integer> getProgram(){
         return List.of();
     }
 
+    /**
+     * 选课
+     * @return 是否成功
+     */
     public boolean chooseCourse(){
         return false;
     }
 
+    /**
+     * 退课
+     * @return 是否成功
+     */
     public boolean dropCourse(){
         return false;
     }
 
-    public int getScore(){
-        return 0;
+    /**
+     * 获得课程编号—分数
+     * @return 课程编号—分数对列表
+     */
+    public List<Pair<Integer,Integer> > getScore(){
+        return List.of();
     }
 
 }
