@@ -3,8 +3,8 @@ package cn.ustc.edu.course_selection_system.Bean;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "courseinfo", schema = "hibernate", catalog = "hibernate")
-public class CourseinfoEntity {
+@Table(name = "course", schema = "hibernate", catalog = "hibernate")
+public class CourseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)

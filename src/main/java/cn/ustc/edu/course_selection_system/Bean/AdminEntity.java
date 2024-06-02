@@ -9,6 +9,12 @@ public class AdminEntity {
     @Id
     @Column(name = "id", nullable = false)
     private int id;
+    @Basic
+    @Column(name = "password", nullable = false, length = 128)
+    private String password;
+    @Basic
+    @Column(name = "position", nullable = false, length = 10)
+    private String position;
 
     public int getId() {
         return id;
@@ -18,10 +24,6 @@ public class AdminEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, length = 128)
-    private String password;
-
     public String getPassword() {
         return password;
     }
@@ -29,10 +31,6 @@ public class AdminEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @Basic
-    @Column(name = "position", nullable = false, length = 10)
-    private String position;
 
     public String getPosition() {
         return position;

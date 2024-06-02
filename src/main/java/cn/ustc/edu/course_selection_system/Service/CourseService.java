@@ -1,6 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class CourseService {
     public List<Integer> GetStudentInCourse(){
         return List.of();
     }
-    public CourseinfoEntity GetCourseInfo(){
+    public CourseEntity GetCourseInfo(){
         return null;
     }
     public int ImportStudent(){

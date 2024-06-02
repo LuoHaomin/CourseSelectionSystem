@@ -3,8 +3,8 @@ package cn.ustc.edu.course_selection_system.Bean;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "teacherinfo", schema = "hibernate", catalog = "hibernate")
-public class TeacherinfoEntity {
+@Table(name = "teacher", schema = "hibernate", catalog = "hibernate")
+public class TeacherEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -19,14 +19,14 @@ public class TeacherinfoEntity {
     @Column(name = "phoneNumber", nullable = true, length = 14)
     private String phoneNumber;
 
-    public TeacherinfoEntity(int id, String name, String password, String phoneNumber) {
+    public TeacherEntity(int id, String name, String password, String phoneNumber) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.phoneNumber = phoneNumber;
     }
 
-    public TeacherinfoEntity() {
+    public TeacherEntity() {
 
     }
 

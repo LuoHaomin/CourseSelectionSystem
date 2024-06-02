@@ -1,10 +1,9 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
-import cn.ustc.edu.course_selection_system.Bean.StudentinfoEntity;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Database.PersonalInfoEditorImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService extends AbstractPersonService {
@@ -14,9 +13,9 @@ public class StudentService extends AbstractPersonService {
     }
 
     @Override
-    public StudentinfoEntity GetID() {
+    public StudentEntity GetID() {
         PersonalInfoEditorImpl idEditor = new PersonalInfoEditorImpl();
-        return (StudentinfoEntity) idEditor.GetPersonalInfo(this.id);
+        return (StudentEntity) idEditor.GetPersonalInfo(this.id);
     }
 
     @Override

@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="cn.ustc.edu.course_selection_system.Bean.StudentinfoEntity" table="studentinfo" schema="hibernate">
+    <class name="cn.ustc.edu.course_selection_system.Bean.StudentEntity" table="student" schema="hibernate">
         <id name="id">
             <column name="id" sql-type="int"/>
         </id>

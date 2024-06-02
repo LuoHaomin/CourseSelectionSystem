@@ -2,9 +2,11 @@ package cn.ustc.edu.course_selection_system.Bean;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "studentinfo", schema = "hibernate", catalog = "hibernate")
-public class StudentinfoEntity extends PersonInfo{
+@Table(name = "student", schema = "hibernate", catalog = "hibernate")
+public class StudentEntity extends PersonInfo{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -28,7 +30,7 @@ public class StudentinfoEntity extends PersonInfo{
     @Column(name = "position", nullable = false, length = 10)
     private String position;
 
-    public StudentinfoEntity(int id, String name, String password, String phoneNumber, String major, int admissionYear) {
+    public StudentEntity(int id, String name, String password, String phoneNumber, String major, int admissionYear) {
         this.id = id;
         this.name = name;
         this.password = password;
@@ -37,9 +39,15 @@ public class StudentinfoEntity extends PersonInfo{
         this.admissionYear = admissionYear;
     }
 
-    public StudentinfoEntity() {
+    public StudentEntity() {
 
     }
+
+//    @ManyToMany
+//    @JoinTable(name = "student_course", schema = "hibernate", catalog = "hibernate",
+//            joinColumns = @JoinColumn(name = "student", referencedColumnName = "id", nullable = false),
+//            inverseJoinColumns = @JoinColumn(name = "course", referencedColumnName = "id", nullable = false))
+//    private Set<CourseEntity> courses;
 
     public int getId() {
         return id;

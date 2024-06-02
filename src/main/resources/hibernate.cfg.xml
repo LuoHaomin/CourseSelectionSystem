@@ -15,13 +15,13 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="format_sql">true</property>
     <mapping resource="TeacherinfoEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherinfoEntity"/>
-      <mapping resource="AdminEntity.hbm.xml"/>
-      <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
     <mapping resource="CourseinfoEntity.hbm.xml"/>
     <mapping resource="StudentinfoEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentinfoEntity"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
+    <mapping resource="AdminEntity.hbm.xml"/>
 
 
     <!-- <property name="connection.username"/> -->

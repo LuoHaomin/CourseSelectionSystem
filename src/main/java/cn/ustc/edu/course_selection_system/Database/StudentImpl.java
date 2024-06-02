@@ -1,20 +1,40 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import org.hibernate.SessionFactory;
-
-import java.lang.module.Configuration;
-import java.util.ArrayList;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 public class StudentImpl implements Person {
+    static Session session;
+    static Transaction transaction;
 
-//    Configuration configuration = new Configuration();
-//            Configuration().configure("hibernate.cfg.xml");
-//    Configuration configuration = new
-//    SessionFactory sessionFactory
+    private void StartSession(){
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+        } catch (HibernateException e) {
+//            e.printStackTrace();
+            transaction.rollback();
+            System.out.println("Failed to start a session!");
+        }
+    }
+
+    private void CloseSession(){
+        try {
+            transaction.commit();
+            session.close();
+        } catch (HibernateException e) {
+//            e.printStackTrace();
+            transaction.rollback();
+            System.out.println("Failed to close a session!");
+        }
+    }
 
     @Override
     public void AddCoursePair() {
-
+        StartSession();
+        StudentEntity student = new StudentEntity();
     }
 
     @Override
@@ -24,6 +44,8 @@ public class StudentImpl implements Person {
 
     @Override
     public void GetChosenCourseList(int id) {
+        StartSession();
+        StudentEntity student = session.get(StudentEntity.class, id);
 
     }
 
