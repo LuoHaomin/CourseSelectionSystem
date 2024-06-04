@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Database;
 
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import org.hibernate.SessionFactory;
 
 public class StudentImpl{
@@ -30,6 +31,9 @@ public class StudentImpl{
 //            System.out.println("Failed to close a session!");
 //        }
 //    }
+    public StudentEntity getStudent(String id){
+        return null;
+    }
 
     public void AddCoursePair(String studentId, int courseId) {
         StudentCourseEntity studentCourse = new StudentCourseEntity();

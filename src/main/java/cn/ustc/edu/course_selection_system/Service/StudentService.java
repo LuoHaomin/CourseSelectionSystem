@@ -4,6 +4,7 @@ import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import javafx.util.Pair;
 
 import java.util.List;
+import java.util.Objects;
 
 public class StudentService extends AbstractPersonService {
 
@@ -31,8 +32,8 @@ public class StudentService extends AbstractPersonService {
     /**
      * 获得课程表数据
      */
-    public void getSchedule(){
-
+    public List<Objects> getSchedule(){
+        return List.of();
     }
 
     /**
