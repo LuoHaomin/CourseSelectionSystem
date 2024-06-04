@@ -1,30 +1,50 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import javafx.util.Pair;
 
 import java.util.List;
 import java.util.Objects;
 
-public class StudentService extends AbstractPersonService {
-
-    public StudentService(int id){
+public class StudentService
+{
+    String id;
+    public StudentService(String id){
         this.id = id;
     }
 
-    @Override
+    /**
+     * 获得学生信息
+     * @return 学生信息
+     */
     public StudentEntity GetID() {
-//        PersonalInfoEditorImpl idEditor = new PersonalInfoEditorImpl();
-//        return (StudentEntity) idEditor.GetPersonalInfo(this.id);
-        return null;
+        StudentImpl studentImpl = new StudentImpl();
+
+        return studentImpl.getStudent(id);
     }
 
-//    @Override
-//    public boolean updateID(PersonInfo personInfo) {
-//        return false;
-//    }
+    /**
+     * 更新学生信息
+     * @param studentEntity 学生信息
+     * @return 是否成功
+     */
+    public boolean updateID(StudentEntity studentEntity) {
+        if(studentEntity.getId() == null){
+            return false;
+        }
 
-    @Override
+        StudentImpl studentImpl = new StudentImpl();
+        try {
+            studentImpl.updateStudent(studentEntity);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
+
+    }
+
     public List<Integer> getRelatedCourse() {
         return List.of();
     }

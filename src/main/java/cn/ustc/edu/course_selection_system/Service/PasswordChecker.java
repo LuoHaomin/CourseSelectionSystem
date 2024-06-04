@@ -20,6 +20,7 @@ public class PasswordChecker {
             return new Pair<>("","");
         }
 
+        //学生
         if(account.contains("ST")){
             try {
                 StudentImpl studentImpl = new StudentImpl();
@@ -38,7 +39,9 @@ public class PasswordChecker {
                 return new Pair<>("","");
             }
         }
-        else if(account.contains("TC")){
+
+        //教师
+        if(account.contains("TC")){
             TeacherImpl teacherImpl = new TeacherImpl();
             TeacherEntity teacherEntity = teacherImpl.getTeacher(account);
             if(teacherEntity == null){
@@ -50,22 +53,22 @@ public class PasswordChecker {
                 }
             }
         }
-        else {
-            try {
-                int adminID = Integer.parseInt(account);
-                AdminImpl adminImpl = new AdminImpl();
-                if(adminImpl.getAdmin(adminID) == null){
-                    return new Pair<>("","");
-                }
-                else {
-                    if(adminImpl.getAdmin(adminID).getPassword().equals(password)){
-                        return new Pair<>(account,"admin");
-                    }
-                }
 
+        //管理员
+        try {
+            int adminID = Integer.parseInt(account);
+            AdminImpl adminImpl = new AdminImpl();
+            if(adminImpl.getAdmin(adminID) == null){
+                return new Pair<>("","");
             }
-            catch (Exception ignored){}
+            else {
+                if(adminImpl.getAdmin(adminID).getPassword().equals(password)){
+                    return new Pair<>(account,"admin");
+                }
+            }
         }
+        catch (Exception ignored){}
+
         return new Pair<>("","");
     }
 }

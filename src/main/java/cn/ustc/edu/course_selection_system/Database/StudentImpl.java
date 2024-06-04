@@ -34,6 +34,9 @@ public class StudentImpl{
     public StudentEntity getStudent(String id){
         return null;
     }
+    public void updateStudent(StudentEntity student){
+
+    }
 
     public void AddCoursePair(String studentId, int courseId) {
         StudentCourseEntity studentCourse = new StudentCourseEntity();
