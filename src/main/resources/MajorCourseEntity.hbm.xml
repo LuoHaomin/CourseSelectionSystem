@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity" table="major_course" schema="hibernate">
+        <composite-id mapped="true" class="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntityPK">
+            <key-property name="courseNumber">
+                <column name="course_number" sql-type="varchar(60)" length="60"/>
+            </key-property>
+            <key-property name="major">
+                <column name="major" sql-type="varchar(20)" length="20"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

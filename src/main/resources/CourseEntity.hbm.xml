@@ -9,19 +9,19 @@
             <column name="id" sql-type="int"/>
         </id>
         <property name="number">
-            <column name="number" sql-type="mediumtext"/>
-        </property>
-        <property name="teacher">
-            <column name="teacher" sql-type="varchar(8)" length="8" not-null="true"/>
+            <column name="number" sql-type="varchar(60)" length="60"/>
         </property>
         <property name="time">
             <column name="time" sql-type="varchar(40)" length="40" not-null="true"/>
         </property>
-        <property name="periods">
-            <column name="periods" sql-type="varchar(60)" length="60" not-null="true"/>
-        </property>
         <property name="credit">
             <column name="credit" sql-type="float" precision="-1"/>
+        </property>
+        <property name="periods">
+            <column name="periods" sql-type="varchar(60)" length="60"/>
+        </property>
+        <property name="capacity">
+            <column name="capacity" sql-type="int" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

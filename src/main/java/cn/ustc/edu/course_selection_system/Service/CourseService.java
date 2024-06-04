@@ -1,7 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import javafx.util.Pair;
 
 import java.util.List;
 

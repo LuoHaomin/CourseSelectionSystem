@@ -12,16 +12,20 @@
     <property name="connection.pool_size">3</property>
     <property name="current_session_context_class">thread</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="format_sql">true</property>
-    <mapping resource="TeacherinfoEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
-    <mapping resource="CourseinfoEntity.hbm.xml"/>
-    <mapping resource="StudentinfoEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
     <mapping resource="AdminEntity.hbm.xml"/>
+    <mapping resource="CourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
+    <mapping resource="MajorCourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity"/>
+    <mapping resource="TeacherEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
+    <mapping resource="StudentEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
+    <mapping resource="StudentCourseEntity.hbm.xml"/>
 
 
     <!-- <property name="connection.username"/> -->

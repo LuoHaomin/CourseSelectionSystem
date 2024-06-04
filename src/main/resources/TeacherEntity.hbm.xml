@@ -6,7 +6,7 @@
 
     <class name="cn.ustc.edu.course_selection_system.Bean.TeacherEntity" table="teacher" schema="hibernate">
         <id name="id">
-            <column name="id" sql-type="int"/>
+            <column name="id" sql-type="varchar(20)" length="20"/>
         </id>
         <property name="name">
             <column name="name" sql-type="varchar(8)" length="8" not-null="true"/>
@@ -16,6 +16,9 @@
         </property>
         <property name="phoneNumber">
             <column name="phoneNumber" sql-type="varchar(14)" length="14" not-null="true"/>
+        </property>
+        <property name="gender">
+            <column name="gender" sql-type="varchar(1)" length="1"/>
         </property>
     </class>
 </hibernate-mapping>

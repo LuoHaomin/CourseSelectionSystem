@@ -1,7 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import javafx.util.Pair;
 
 import java.util.List;
@@ -12,9 +11,9 @@ public class AdminService {
      * @param infos 信息列表
      * @return 成功导入人数
      */
-    public int ImportID(List<PersonInfo> infos){
-        return 0;
-    }
+//    public int ImportID(List<PersonInfo> infos){
+//        return 0;
+//    }
 
     /**
      * 批量导入课程信息

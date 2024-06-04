@@ -1,7 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import javafx.util.Pair;
 
@@ -13,10 +12,10 @@ public class TeacherService extends AbstractPersonService{
         return null;
     }
 
-    @Override
-    public boolean updateID(PersonInfo personInfo) {
-        return false;
-    }
+//    @Override
+//    public boolean updateID(PersonInfo personInfo) {
+//        return false;
+//    }
 
     @Override
     public List<Integer> getRelatedCourse() {

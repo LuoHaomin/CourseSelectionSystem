@@ -10,7 +10,7 @@ public class sessionTest {
         student.setPassword("123456");
         student.setName("Tom");
         student.setAdmissionYear(2020);
-        student.setPosition("Student");
+//        student.setPosition("Student");
 
         Configuration configuration = java.lang.module.Configuration.empty();
     }

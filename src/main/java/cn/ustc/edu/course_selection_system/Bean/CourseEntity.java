@@ -3,27 +3,12 @@ package cn.ustc.edu.course_selection_system.Bean;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "course", schema = "hibernate", catalog = "hibernate")
+@jakarta.persistence.Table(name = "course", schema = "hibernate", catalog = "hibernate")
 public class CourseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
+    @jakarta.persistence.Column(name = "id", nullable = false)
     private int id;
-    @Basic
-    @Column(name = "number", nullable = false, length = -1)
-    private String number;
-    @Basic
-    @Column(name = "teacher", nullable = true, length = 8)
-    private String teacher;
-    @Basic
-    @Column(name = "time", nullable = true, length = 40)
-    private String time;
-    @Basic
-    @Column(name = "periods", nullable = true, length = 60)
-    private String periods;
-    @Basic
-    @Column(name = "credit", nullable = false, precision = 0)
-    private double credit;
 
     public int getId() {
         return id;
@@ -33,6 +18,10 @@ public class CourseEntity {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "number", nullable = false, length = 60)
+    private String number;
+
     public String getNumber() {
         return number;
     }
@@ -41,13 +30,9 @@ public class CourseEntity {
         this.number = number;
     }
 
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
-    }
+    @Basic
+    @Column(name = "time", nullable = true, length = 40)
+    private String time;
 
     public String getTime() {
         return time;
@@ -57,6 +42,22 @@ public class CourseEntity {
         this.time = time;
     }
 
+    @Basic
+    @Column(name = "credit", nullable = false, precision = 0)
+    private double credit;
+
+    public double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
+
+    @Basic
+    @Column(name = "periods", nullable = false, length = 60)
+    private String periods;
+
     public String getPeriods() {
         return periods;
     }
@@ -65,11 +66,15 @@ public class CourseEntity {
         this.periods = periods;
     }
 
-    public double getCredit() {
-        return credit;
+    @Basic
+    @Column(name = "capacity", nullable = true)
+    private Integer capacity;
+
+    public Integer getCapacity() {
+        return capacity;
     }
 
-    public void setCredit(double credit) {
-        this.credit = credit;
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 }

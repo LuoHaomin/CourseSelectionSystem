@@ -7,8 +7,8 @@ import jakarta.persistence.*;
 public class TeacherEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id", nullable = false)
-    private int id;
+    @Column(name = "id", nullable = false, length = 20)
+    private String id;
     @Basic
     @Column(name = "name", nullable = true, length = 8)
     private String name;
@@ -18,23 +18,15 @@ public class TeacherEntity {
     @Basic
     @Column(name = "phoneNumber", nullable = true, length = 14)
     private String phoneNumber;
+    @Basic
+    @Column(name = "gender", nullable = false, length = 1)
+    private String gender;
 
-    public TeacherEntity(int id, String name, String password, String phoneNumber) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public TeacherEntity() {
-
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -60,5 +52,13 @@ public class TeacherEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

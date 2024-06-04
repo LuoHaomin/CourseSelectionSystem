@@ -11,8 +11,5 @@
         <property name="password">
             <column name="password" sql-type="varchar(128)" length="128"/>
         </property>
-        <property name="position">
-            <column name="position" sql-type="varchar(10)" length="10"/>
-        </property>
     </class>
 </hibernate-mapping>
