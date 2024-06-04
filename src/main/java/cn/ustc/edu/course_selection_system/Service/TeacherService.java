@@ -2,13 +2,18 @@ package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import javafx.util.Pair;
 
 import java.util.List;
 
-public class TeacherService extends AbstractPersonService{
-    @Override
-    public StudentEntity GetID() {
+public class TeacherService {
+    String id;
+    public TeacherService(String id) {
+        this.id = id;
+    }
+
+    public TeacherEntity GetID() {
         return null;
     }
 
@@ -17,7 +22,6 @@ public class TeacherService extends AbstractPersonService{
 //        return false;
 //    }
 
-    @Override
     public List<Integer> getRelatedCourse() {
         return List.of();
     }

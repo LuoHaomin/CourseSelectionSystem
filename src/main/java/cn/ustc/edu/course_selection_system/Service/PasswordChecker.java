@@ -1,5 +1,11 @@
 package cn.ustc.edu.course_selection_system.Service;
 
+import cn.ustc.edu.course_selection_system.Bean.AdminEntity;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
+import cn.ustc.edu.course_selection_system.Database.AdminImpl;
+import cn.ustc.edu.course_selection_system.Database.StudentImpl;
+import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
 import javafx.util.Pair;
 
 public class PasswordChecker {
@@ -9,8 +15,60 @@ public class PasswordChecker {
      * @param password 密码
      * @return ID号，身份（"student"/"teacher"/"admin"）
      */
-    public Pair<Integer,String> checkID(String account,String password){
+    public Pair<String,String> checkID(String account,String password){
+        if (account == null || account.isEmpty() || password == null || password.isEmpty()){
+            return new Pair<>("","");
+        }
 
-        return new Pair<>(0,"stu");
+        //学生
+        if(account.contains("ST")){
+            try {
+                StudentImpl studentImpl = new StudentImpl();
+                StudentEntity studentEntity = studentImpl.getStudent(account);
+                if(studentEntity == null){
+                    return new Pair<>("","");
+                }
+                else {
+                    if(studentEntity.getPassword().equals(password)){
+                        return new Pair<>(studentEntity.getId(),"student");
+                    }
+                }
+            }
+            catch (Exception ignored){
+                //ToDo:
+                return new Pair<>("","");
+            }
+        }
+
+        //教师
+        if(account.contains("TC")){
+            TeacherImpl teacherImpl = new TeacherImpl();
+            TeacherEntity teacherEntity = teacherImpl.getTeacher(account);
+            if(teacherEntity == null){
+                return new Pair<>("","");
+            }
+            else {
+                if(teacherImpl.getTeacher(account).getPassword().equals(password)){
+                    return new Pair<>(teacherEntity.getId(),"teacher");
+                }
+            }
+        }
+
+        //管理员
+        try {
+            int adminID = Integer.parseInt(account);
+            AdminImpl adminImpl = new AdminImpl();
+            if(adminImpl.getAdmin(adminID) == null){
+                return new Pair<>("","");
+            }
+            else {
+                if(adminImpl.getAdmin(adminID).getPassword().equals(password)){
+                    return new Pair<>(account,"admin");
+                }
+            }
+        }
+        catch (Exception ignored){}
+
+        return new Pair<>("","");
     }
 }
