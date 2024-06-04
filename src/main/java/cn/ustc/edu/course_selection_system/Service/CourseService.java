@@ -34,4 +34,8 @@ public class CourseService {
         return courseEditor.GetCourseInfo(id);
     }
 
+    public Integer GetNumberOfStudentsInCourse(){
+        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        return courseEditor.GetNumberOfStudentsInCourse();
+    }
 }

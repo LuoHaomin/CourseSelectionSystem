@@ -15,6 +15,9 @@ public class CourseEditorImpl{
 
     }
 
+    public Integer GetNumberOfStudentsInCourse(){
+        return 0;
+    }
 
     public CourseEntity GetCourseInfo(int courseId) {
         return null;

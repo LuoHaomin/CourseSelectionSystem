@@ -1,9 +1,13 @@
 package cn.ustc.edu.course_selection_system.Service;
 
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentImpl;
+import cn.ustc.edu.course_selection_system.Util.CourseTable;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,9 +49,11 @@ public class StudentService
 
     }
 
-    public List<Integer> getRelatedCourse() {
-        return List.of();
+    public List<CourseEntity> getRelatedCourse() {
+        StudentImpl studentImpl = new StudentImpl();
+        return studentImpl.GetChosenCourseList(id);
     }
+
 
     /**
      * 获得课程表数据
@@ -68,16 +74,37 @@ public class StudentService
      * 选课
      * @return 是否成功
      */
-    public boolean chooseCourse(){
-        return false;
+    public boolean chooseCourse(int courseId){
+        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        CourseEntity courseEntity = courseEditor.GetCourseInfo(courseId);
+        //课程不存在
+        if(courseEntity == null){
+            return false;
+        }
+        //判断是否重叠
+        CourseTable courseTable = new CourseTable(getRelatedCourse());
+        if((courseTable.IsConflicted(courseEntity))){
+            //Todo：改为丢异常
+            return false;
+        }
+        //判断是否超过人数上限
+        if(courseEditor.GetNumberOfStudentsInCourse()>=courseEntity.getCapacity()){
+            return false;
+        }
+
+        StudentImpl studentImpl = new StudentImpl();
+        studentImpl.AddCoursePair(id,courseId);
+        return true;
     }
 
     /**
      * 退课
      * @return 是否成功
      */
-    public boolean dropCourse(){
-        return false;
+    public boolean dropCourse(int courseId){
+        StudentImpl studentImpl = new StudentImpl();
+        studentImpl.DeleteCoursePair(id,courseId);
+        return true;
     }
 
     /**
@@ -85,6 +112,7 @@ public class StudentService
      * @return 课程编号—分数对列表
      */
     public List<Pair<Integer,Integer> > getScore(){
+
         return List.of();
     }
 
