@@ -45,4 +45,9 @@ public class StudentCourse {
     public void ChangeScore(String studentId, int courseId, float score) {
 
     }
+
+    public List<String> GetStudentList(int courseId) {
+        return null;
+    }
+
 }

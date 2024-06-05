@@ -15,7 +15,11 @@ public class TeacherCourse {
     }
 
 
-    public List<CourseEntity> GetChosenCourseList(String teacherId) {
+    public List<CourseEntity> GetTeachingCourseList(String teacherId) {
+        return null;
+    }
+
+    public List<String> GetTeacherList(int courseId) {
         return null;
     }
 }

@@ -13,5 +13,5 @@ public class TeacherImpl{
     public void insertTeacher(TeacherEntity teacher){
 
     }
-
+    public void updateTeacher(TeacherEntity teacher){  }
 }

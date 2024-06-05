@@ -14,6 +14,7 @@ public class AdminService {
      * @param infos 信息列表
      * @return 成功导入人数
      */
+
     public int ImportStudentID(List<StudentEntity> infos){
         StudentImpl studentImpl = new StudentImpl();
         for(StudentEntity info : infos){
@@ -75,6 +76,7 @@ public class AdminService {
      * @return 成功删除个数
      */
     public int DelID(List<String> id_list){
+
         return 0;
     }
 
