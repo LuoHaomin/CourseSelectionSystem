@@ -19,7 +19,7 @@ public class CourseTable {
      */
     public Boolean IsConflicted(CourseEntity courseEntity){
         for (CourseEntity course:list) {
-            if (course.getTime() == courseEntity.getTime()) {
+            if (course.getTime().equals(courseEntity.getTime()) ) {
                 return true;
             }
         }
@@ -29,7 +29,7 @@ public class CourseTable {
     public List<CourseEntity> DayCourse (String day) {
         List<CourseEntity> dayCourse = new ArrayList<>();
         for (CourseEntity course:list)  {
-            if (course.getTime()==day) {
+            if (course.getTime().equals(day)) {
                 dayCourse.add(course);
             }
         }
