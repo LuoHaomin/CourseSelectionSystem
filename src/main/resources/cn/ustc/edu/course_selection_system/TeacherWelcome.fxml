@@ -4,11 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.TeacherWelcomeController">
    <children>
       <AnchorPane layoutX="190.0" prefHeight="54.0" prefWidth="412.0">
          <children>
@@ -36,30 +37,33 @@
       </AnchorPane>
       <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="查看学生" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="Student" mnemonicParsing="false" onAction="#HandleStudent" prefHeight="54.0" prefWidth="190.0" selected="true" text="查看学生" textAlignment="CENTER" textFill="#0006ff">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="group" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Score" mnemonicParsing="false" onAction="#HandleScore" prefHeight="43.0" prefWidth="177.0" text="录入/修改成绩" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="43.0" prefWidth="177.0" text="录入/修改成绩" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="159.0" text="返回选择页" textAlignment="CENTER">
+            <Button fx:id="backselect" mnemonicParsing="false" onAction="#Handlebackselect" prefHeight="48.0" prefWidth="159.0" text="返回选择页" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children></VBox>
-      <ListView layoutX="313.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <ListView layoutX="424.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <Label layoutX="358.0" layoutY="54.0" text="ID">
+      <ListView fx:id="idlist" layoutX="271.0" layoutY="75.0" prefHeight="310.0" prefWidth="152.0" />
+      <ListView fx:id="namelist" layoutX="424.0" layoutY="75.0" prefHeight="310.0" prefWidth="152.0" />
+      <Label layoutX="337.0" layoutY="54.0" text="ID">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="453.0" layoutY="54.0" text="Name">
+      <Label layoutX="474.0" layoutY="54.0" text="Name">
          <font>
             <Font size="18.0" />
          </font>

@@ -34,9 +34,9 @@ public class NameandPasswordController {
             String um=username.getText();
             String pw=password.getText();
             PasswordChecker passwordChecker=new PasswordChecker();
-            Pair<Integer,String> idname =passwordChecker.checkID(um,pw);
+            Pair<String,String> idname =passwordChecker.checkID(um,pw);
 
-            if(idname.getValue() =="null")//用户名不存在或用户名与密码不匹配
+            if(idname.getValue() =="")//用户名不存在或用户名与密码不匹配
             {
                 wronglabel.setVisible(true);
             }
@@ -55,7 +55,7 @@ public class NameandPasswordController {
                 stage.setScene(scene);
                 stage.show();
             }
-            if(idname.getValue() =="stu")//该用户是学生
+            if(idname.getValue() =="student")//该用户是学生
             {
 
             }
