@@ -29,7 +29,7 @@ public class CourseTable {
     public List<CourseEntity> DayCourse (String day) {
         List<CourseEntity> dayCourse = new ArrayList<>();
         for (CourseEntity course:list)  {
-            if (course.getTime().equals(day)) {
+            if (course.getTime().contains(day)) {
                 dayCourse.add(course);
             }
         }
