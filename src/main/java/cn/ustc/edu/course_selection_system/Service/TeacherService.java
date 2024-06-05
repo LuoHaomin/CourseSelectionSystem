@@ -1,29 +1,32 @@
 package cn.ustc.edu.course_selection_system.Service;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity;
-import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
-import cn.ustc.edu.course_selection_system.Bean.StudentinfoEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import javafx.util.Pair;
 
 import java.util.List;
 
-public class TeacherService extends AbstractPersonService{
-    @Override
-    public StudentinfoEntity GetID() {
+public class TeacherService {
+    String id;
+    public TeacherService(String id) {
+        this.id = id;
+    }
+
+    public TeacherEntity GetID() {
         return null;
     }
 
-    @Override
-    public boolean updateID(PersonInfo personInfo) {
-        return false;
-    }
+//    @Override
+//    public boolean updateID(PersonInfo personInfo) {
+//        return false;
+//    }
 
-    @Override
     public List<Integer> getRelatedCourse() {
         return List.of();
     }
 
-    public boolean AddCourse(CourseinfoEntity courseInfo){
+    public boolean AddCourse(CourseEntity courseInfo){
         return false;
     }
 

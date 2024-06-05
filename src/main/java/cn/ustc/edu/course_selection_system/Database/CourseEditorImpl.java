@@ -1,25 +1,35 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseinfoEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 
-public class CourseEditorImpl implements CourseEditor{
-    @Override
-    public void AddCourse() {
+import java.util.List;
+
+public class CourseEditorImpl{
+
+    public int AddCourse(String number, String time, float credit, String periods, int capacity) {
+        return 0;
+    }
+
+
+    public void DelCourse(int courseId) {
 
     }
 
-    @Override
-    public void DelCourse() {
-
+    public Integer GetNumberOfStudentsInCourse(){
+        return 0;
     }
 
-    @Override
-    public CourseinfoEntity GetCourseInfo(int id) {
+    public CourseEntity GetCourseInfo(int courseId) {
         return null;
     }
 
-    @Override
-    public void UpdateCourseInfo() {
+    public void UpdateCourseInfo(int courseId, String number, String time, float credit, String periods, int capacity) {
 
+    }
+    public List<String> GetStudentList(int courseId) {
+        return null;
+    }
+    public List<String> GetTeacherList(int courseId) {
+        return null;
     }
 }

@@ -10,6 +10,7 @@ module cn.ustc.edu.courseselectionsystem {
     requires jakarta.persistence;
 
     requires org.hibernate.orm.core;
+    requires java.naming;
 //    requires org.hibernate.orm.jpamodelgen;
 
     opens cn.ustc.edu.course_selection_system to javafx.fxml;

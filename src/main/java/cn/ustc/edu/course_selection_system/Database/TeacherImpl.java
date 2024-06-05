@@ -1,20 +1,26 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import java.util.ArrayList;
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 
-public class TeacherImpl implements Person{
-    @Override
-    public void AddCoursePair() {
+import java.util.List;
+
+public class TeacherImpl{
+    public TeacherEntity getTeacher(String teacher_id){
+        return null;
+    }
+
+    public int AddCoursePair(String teacherId, int courseId) {
+        return 0;
+    }
+
+
+    public void DeleteCoursePair(String teacherId, int courseId) {
 
     }
 
-    @Override
-    public void DeleteCoursePair() {
 
-    }
-
-    @Override
-    public void GetChosenCourseList(int id) {
-
+    public List<CourseEntity> GetChosenCourseList(String teacherId) {
+        return null;
     }
 }

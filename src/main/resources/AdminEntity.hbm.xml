@@ -4,4 +4,12 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
+    <class name="cn.ustc.edu.course_selection_system.Bean.AdminEntity" table="admin" schema="hibernate">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="password">
+            <column name="password" sql-type="varchar(128)" length="128"/>
+        </property>
+    </class>
 </hibernate-mapping>

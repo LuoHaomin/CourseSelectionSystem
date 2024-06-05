@@ -1,41 +1,58 @@
 package cn.ustc.edu.course_selection_system.Database;
 
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import org.hibernate.SessionFactory;
 
-import java.lang.module.Configuration;
-import java.util.ArrayList;
+import java.util.List;
 
-public class StudentImpl implements Person {
+public class StudentImpl{
+    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-//    Configuration configuration = new Configuration();
-//            Configuration().configure("hibernate.cfg.xml");
-//    Configuration configuration = new
-//    SessionFactory sessionFactory
 
-    @Override
-    public void AddCoursePair() {
+    public StudentEntity getStudent(String id){
+        return null;
+    }
+    public void updateStudent(StudentEntity student){
 
     }
 
-    @Override
-    public void DeleteCoursePair() {
+    public void AddCoursePair(String studentId, int courseId) {
+        StudentCourseEntity studentCourse = new StudentCourseEntity();
+        studentCourse.setStudentId(studentId);
+        studentCourse.setCourseId(courseId);
+        sessionFactory.inTransaction(session -> {
+            session.persist(studentCourse);
+        });
+    }
+
+    public void DeleteCoursePair(String studentId, int courseId) {
+        StudentCourseEntity studentCourse = new StudentCourseEntity();
+        studentCourse.setStudentId(studentId);
+        studentCourse.setCourseId(courseId);
+        sessionFactory.inTransaction(session -> {
+            session.delete(session.get(StudentCourseEntity.class, studentCourse));
+        });
 
     }
 
-    @Override
-    public void GetChosenCourseList(int id) {
+    public List<CourseEntity> GetChosenCourseList(String studentId) {
+
+//        StudentEntity student = session.get(StudentEntity.class, id);
+        return null;
+    }
+
+    public float GetStudentScore(String studentId, int courseId) {
+        //与分数相关方法不如分出去？
+        return 0;
+    }
+
+    public void ImportScore(String studentId, int courseId, float score) {
 
     }
 
-    public void GetStudentScore(int id){
-
-    }
-
-    public void ImportScore(){
-        //TODO:what parameters to feed?
-    }
-
-    public void ChangeScore(int id, String score){
+    public void ChangeScore(String studentId, int courseId, float score) {
 
     }
 }

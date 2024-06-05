@@ -1,13 +1,13 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 @Entity
-@Table(name = "admin", schema = "hibernate", catalog = "hibernate")
+@jakarta.persistence.Table(name = "admin", schema = "hibernate", catalog = "hibernate")
 public class AdminEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id", nullable = false)
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Id
+    @jakarta.persistence.Column(name = "id", nullable = false)
     private int id;
 
     public int getId() {
@@ -18,8 +18,8 @@ public class AdminEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, length = 128)
+    @jakarta.persistence.Basic
+    @jakarta.persistence.Column(name = "password", nullable = false, length = 128)
     private String password;
 
     public String getPassword() {
@@ -28,17 +28,5 @@ public class AdminEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Basic
-    @Column(name = "position", nullable = false, length = 10)
-    private String position;
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
     }
 }
