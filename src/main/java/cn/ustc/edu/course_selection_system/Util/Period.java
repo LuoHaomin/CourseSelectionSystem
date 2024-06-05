@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Period {
 
-    public ArrayList<String> getWeek (CourseEntity courseEntity) {
+    public static ArrayList<String> getWeek (CourseEntity courseEntity) {
         String Period = courseEntity.getPeriods();
         ArrayList<String> week = new ArrayList<String>();
         Pattern pattern = Pattern.compile("\\d+");
@@ -30,7 +30,7 @@ public class Period {
         }
         return week;
     }
-    public Boolean Coincide (CourseEntity courseEntity,CourseEntity courseEntity1) {
+    public static Boolean periodCoincide(CourseEntity courseEntity, CourseEntity courseEntity1) {
         ArrayList<String> period = getWeek(courseEntity);
         ArrayList<String> period1 = getWeek(courseEntity1);
         for (String i : period) {

@@ -21,7 +21,7 @@ public class CourseTable {
     public Boolean IsConflicted(CourseEntity courseEntity){
         for (CourseEntity course:list) {
             if ( (course.getTime().equals(courseEntity.getTime())
-                    && (course.getPeriods().Coincide(courseEntity.getPeriods()))) ) {
+                    && (Period.periodCoincide(courseEntity,course))) ) {
                 return true;
             }
         }
