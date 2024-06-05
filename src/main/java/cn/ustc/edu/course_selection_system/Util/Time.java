@@ -9,11 +9,12 @@ import java.util.regex.Pattern;
 public class Time {
     public static String detailDay (CourseEntity course) {
         String time = course.getTime();
-        Pattern pattern = Pattern.compile("[a-zA-Z]+]");
+        Pattern pattern = Pattern.compile("[a-zA-Z]+");
         Matcher matcher = pattern.matcher(time);
         if (matcher.find()) {
             return matcher.group();
         }
+        return "";
     }
     public static ArrayList<String> detailTime (CourseEntity course) {
         String time = course.getTime();
