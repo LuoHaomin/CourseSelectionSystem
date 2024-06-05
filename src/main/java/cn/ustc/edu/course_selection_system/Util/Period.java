@@ -14,7 +14,7 @@ public class Period {
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(Period);
         while (matcher.find()) {
-            week[Integer.parseInt(matcher.group())] = matcher.group();
+            week.set(Integer.parseInt(matcher.group()), matcher.group());
         }
         if (Period.contains("O")) {
             ArrayList<String> oddweek = new ArrayList<String>();
@@ -25,7 +25,7 @@ public class Period {
         } else if (Period.contains("E")) {
             ArrayList<String> evenweek = new ArrayList<String>();
             for (String j : evenweek) {
-                if(Integer.parseInt(j) % 2 == 0) evenweek.add(j);
+                if (Integer.parseInt(j) % 2 == 0) evenweek.add(j);
             }
         }
         return week;

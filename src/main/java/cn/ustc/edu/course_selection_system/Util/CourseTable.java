@@ -4,6 +4,7 @@ import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import cn.ustc.edu.course_selection_system.Util.Period.*;
 
 public class CourseTable {
 
