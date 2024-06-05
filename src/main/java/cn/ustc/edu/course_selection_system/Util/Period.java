@@ -14,7 +14,7 @@ public class Period {
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(Period);
         while (matcher.find()) {
-            week.set(Integer.parseInt(matcher.group()), matcher.group());
+            week.add(matcher.group());
         }
         if (Period.contains("O")) {
             ArrayList<String> oddweek = new ArrayList<String>();
