@@ -19,12 +19,15 @@ public class CourseTable {
      */
     public Boolean IsConflicted(CourseEntity courseEntity){
         for (CourseEntity course:list) {
-            if (course.getTime().equals(courseEntity.getTime()) ) {
+            if ( (course.getTime().equals(courseEntity.getTime())
+                    && (course.getPeriods().Coincide(courseEntity.getPeriods()))) ) {
                 return true;
             }
         }
         return false;
     }
+
+   // public Boolean
 
     public List<CourseEntity> DayCourse (String day) {
         List<CourseEntity> dayCourse = new ArrayList<>();
