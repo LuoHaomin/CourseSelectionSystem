@@ -5,6 +5,7 @@ import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import java.util.ArrayList;
 import java.util.List;
 import cn.ustc.edu.course_selection_system.Util.Period.*;
+import cn.ustc.edu.course_selection_system.Util.Time.*;
 
 public class CourseTable {
 
@@ -14,8 +15,8 @@ public class CourseTable {
 
     public Boolean IsConflicted(CourseEntity courseEntity){
         for (CourseEntity course:list) {
-            if ( (course.getTime().equals(courseEntity.getTime())
-                    && (Period.periodCoincide(courseEntity,course))) ) {
+            if ( ( Time.timeCoincide(course,courseEntity) )
+                    && ( Period.periodCoincide(courseEntity,course) ) )  {
                 return true;
             }
         }
