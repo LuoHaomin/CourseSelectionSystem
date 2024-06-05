@@ -34,11 +34,8 @@ public class Period {
         ArrayList<String> period = getWeek(courseEntity);
         ArrayList<String> period1 = getWeek(courseEntity1);
         for (String i : period) {
-            for (String j : period1) {
-                if (i.equals(j)) {
-                    return true;
-                }
-            }
+            for (String j : period1)
+                if (i.equals(j)) return true;
         }
     return false;
     }
