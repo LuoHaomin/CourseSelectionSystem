@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.TeacherLoginController">
    <children>
       <AnchorPane layoutX="188.0" prefHeight="54.0" prefWidth="412.0">
          <children>
@@ -21,12 +20,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
@@ -38,8 +37,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <ListView layoutX="170.0" layoutY="88.0" prefHeight="310.0" prefWidth="140.0" />
-      <ListView layoutX="310.0" layoutY="88.0" prefHeight="310.0" prefWidth="140.0" />
+      <ListView fx:id="Course" layoutX="170.0" layoutY="88.0" prefHeight="310.0" prefWidth="140.0" />
+      <ListView fx:id="getin" layoutX="310.0" layoutY="88.0" prefHeight="310.0" prefWidth="140.0" />
       <Label layoutX="362.0" layoutY="64.0" text="进入">
          <font>
             <Font size="18.0" />
