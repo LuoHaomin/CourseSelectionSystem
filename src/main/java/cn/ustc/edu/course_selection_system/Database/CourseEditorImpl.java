@@ -10,7 +10,8 @@ public class CourseEditorImpl{
         return 0;
     }
 
-
+    public void AddCourse(CourseEntity info) {
+    }
     public void DelCourse(int courseId) {
 
     }
@@ -32,4 +33,6 @@ public class CourseEditorImpl{
     public List<String> GetTeacherList(int courseId) {
         return null;
     }
+
+
 }

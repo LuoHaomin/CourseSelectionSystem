@@ -3,6 +3,7 @@ package cn.ustc.edu.course_selection_system.Service;
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
+import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 import javafx.util.Pair;
@@ -50,8 +51,8 @@ public class StudentService
     }
 
     public List<CourseEntity> getRelatedCourse() {
-        StudentImpl studentImpl = new StudentImpl();
-        return studentImpl.GetChosenCourseList(id);
+        StudentCourse studentCourse = new StudentCourse();
+        return studentCourse.GetChosenCourseList(id);
     }
 
 
@@ -92,8 +93,8 @@ public class StudentService
             return false;
         }
 
-        StudentImpl studentImpl = new StudentImpl();
-        studentImpl.AddCoursePair(id,courseId);
+        StudentCourse studentCourse = new StudentCourse();
+        studentCourse.AddCoursePair(id,courseId);
         return true;
     }
 
@@ -102,8 +103,8 @@ public class StudentService
      * @return 是否成功
      */
     public boolean dropCourse(int courseId){
-        StudentImpl studentImpl = new StudentImpl();
-        studentImpl.DeleteCoursePair(id,courseId);
+        StudentCourse studentCourse = new StudentCourse();
+        studentCourse.DeleteCoursePair(id,courseId);
         return true;
     }
 

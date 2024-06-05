@@ -10,17 +10,8 @@ public class TeacherImpl{
         return null;
     }
 
-    public int AddCoursePair(String teacherId, int courseId) {
-        return 0;
-    }
-
-
-    public void DeleteCoursePair(String teacherId, int courseId) {
+    public void insertTeacher(TeacherEntity teacher){
 
     }
 
-
-    public List<CourseEntity> GetChosenCourseList(String teacherId) {
-        return null;
-    }
 }

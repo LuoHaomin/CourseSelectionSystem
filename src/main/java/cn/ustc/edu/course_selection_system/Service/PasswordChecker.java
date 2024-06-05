@@ -20,6 +20,7 @@ public class PasswordChecker {
             return new Pair<>("","");
         }
 
+        //TODO:重构
         //学生
         if(account.contains("ST")){
             try {

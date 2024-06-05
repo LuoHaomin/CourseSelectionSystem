@@ -10,7 +10,9 @@ import java.util.List;
 public class StudentImpl{
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
+    public void insertStudent(StudentEntity studentEntity){
 
+    }
     public StudentEntity getStudent(String id){
         return null;
     }
@@ -18,41 +20,7 @@ public class StudentImpl{
 
     }
 
-    public void AddCoursePair(String studentId, int courseId) {
-        StudentCourseEntity studentCourse = new StudentCourseEntity();
-        studentCourse.setStudentId(studentId);
-        studentCourse.setCourseId(courseId);
-        sessionFactory.inTransaction(session -> {
-            session.persist(studentCourse);
-        });
-    }
 
-    public void DeleteCoursePair(String studentId, int courseId) {
-        StudentCourseEntity studentCourse = new StudentCourseEntity();
-        studentCourse.setStudentId(studentId);
-        studentCourse.setCourseId(courseId);
-        sessionFactory.inTransaction(session -> {
-            session.delete(session.get(StudentCourseEntity.class, studentCourse));
-        });
 
-    }
 
-    public List<CourseEntity> GetChosenCourseList(String studentId) {
-
-//        StudentEntity student = session.get(StudentEntity.class, id);
-        return null;
-    }
-
-    public float GetStudentScore(String studentId, int courseId) {
-        //与分数相关方法不如分出去？
-        return 0;
-    }
-
-    public void ImportScore(String studentId, int courseId, float score) {
-
-    }
-
-    public void ChangeScore(String studentId, int courseId, float score) {
-
-    }
 }
