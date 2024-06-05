@@ -10,7 +10,7 @@ public class Period {
 
     public static ArrayList<String> getWeek (CourseEntity courseEntity) {
         String Period = courseEntity.getPeriods();
-        ArrayList<String> week = new ArrayList<String>();
+        ArrayList<String> week = new ArrayList<>();
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(Period);
         while (matcher.find()) {
@@ -22,11 +22,14 @@ public class Period {
                 if ((Integer.parseInt(i) % 2) == 1) {
                     oddweek.add(i);
                 }
-        } else if (Period.contains("E")) {
+            week = oddweek;
+        }
+        else if (Period.contains("E")) {
             ArrayList<String> evenweek = new ArrayList<String>();
-            for (String j : evenweek) {
+            for (String j : week) {
                 if (Integer.parseInt(j) % 2 == 0) evenweek.add(j);
             }
+            week = evenweek;
         }
         return week;
     }
