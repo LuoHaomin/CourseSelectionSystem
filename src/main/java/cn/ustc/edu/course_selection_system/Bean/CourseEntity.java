@@ -43,7 +43,7 @@ public class CourseEntity {
     }
 
     @Basic
-    @Column(name = "credit", nullable = false, precision = 0)
+    @Column(name = "credit", nullable = false, precision = 0) //credit 学分
     private double credit;
 
     public double getCredit() {
