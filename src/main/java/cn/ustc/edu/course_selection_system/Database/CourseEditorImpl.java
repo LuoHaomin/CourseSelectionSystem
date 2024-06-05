@@ -10,9 +10,14 @@ public class CourseEditorImpl{
         return 0;
     }
 
-
+    public void AddCourse(CourseEntity info) {
+    }
     public void DelCourse(int courseId) {
 
+    }
+
+    public List<CourseEntity> FindByCourseNumber(String number) {
+        return null;
     }
 
     public Integer GetNumberOfStudentsInCourse(){
@@ -26,10 +31,7 @@ public class CourseEditorImpl{
     public void UpdateCourseInfo(int courseId, String number, String time, float credit, String periods, int capacity) {
 
     }
-    public List<String> GetStudentList(int courseId) {
-        return null;
-    }
-    public List<String> GetTeacherList(int courseId) {
-        return null;
-    }
+
+
+
 }

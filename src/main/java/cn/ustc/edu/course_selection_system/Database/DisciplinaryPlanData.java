@@ -2,6 +2,8 @@ package cn.ustc.edu.course_selection_system.Database;
 
 import cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity;
 
+import java.util.List;
+
 public class DisciplinaryPlanData {
     public void AddDisciplinaryPlan(String major, String courseNumber) {
 
@@ -11,7 +13,7 @@ public class DisciplinaryPlanData {
 
     }
 
-    public MajorCourseEntity GetDisciplinaryPlan(String major) {
+    public List<MajorCourseEntity> GetDisciplinaryPlan(String major) {
         return null;
     }
 
