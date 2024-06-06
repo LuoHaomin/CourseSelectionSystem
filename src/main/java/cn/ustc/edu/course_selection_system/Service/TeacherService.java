@@ -64,7 +64,7 @@ public class TeacherService {
         return false;
     }
 
-    public boolean excellentRate (Integer courseID,List< Pair<String,Float> > scorelist) {
+  /*  public boolean excellentRate (Integer courseID,List< Pair<String,Float> > scorelist) {
         int excellent = 0,sum = 0;
         for (Pair<String,Float> score : scorelist) {
             if (score.getValue() >= EXCELLENT) excellent++;
@@ -75,5 +75,5 @@ public class TeacherService {
         }
         return false;
     }
-
+*/
 }
