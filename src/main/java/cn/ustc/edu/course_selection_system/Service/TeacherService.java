@@ -65,7 +65,6 @@ public class TeacherService {
     }
 
     public boolean excellentRate (Integer courseID,List< Pair<String,Float> > scorelist) {
-        StudentCourse studentCourse = new StudentCourse();
         int excellent = 0,sum = 0;
         for (Pair<String,Float> score : scorelist) {
             if (score.getValue() >= EXCELLENT) excellent++;
