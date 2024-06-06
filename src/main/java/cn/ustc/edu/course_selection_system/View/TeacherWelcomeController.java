@@ -51,6 +51,15 @@ public class TeacherWelcomeController {
         stage.setScene(scene);
         stage.show();
     }
+    class tableline
+    {
+        String studentid;
+        String studentname;
+        public tableline(StudentEntity studentEntity) {
+            studentid = studentEntity.getId();
+            studentname = studentEntity.getName();
+        }
+    }
     @FXML
     private Button backselect;
     @FXML
@@ -58,9 +67,7 @@ public class TeacherWelcomeController {
     @FXML
     private RadioButton Score;
     @FXML
-    private ListView<HBox> idlist;
-    @FXML
-    private ListView<HBox> namelist;
+    private TableView<tableline> Table;
 
     public void start(String tearcherid, int courseid)
     {
@@ -70,22 +77,16 @@ public class TeacherWelcomeController {
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
         CourseService courseService=new CourseService(courseid);
-        List<String> list=courseService.GetStudentInCourse();
+        List<String> studentlist=courseService.GetStudentInCourse();
+        ObservableList<tableline> list=FXCollections.observableArrayList();
+        Table=new TableView<>(list);
         int size= list.size();
-        ObservableList<HBox> idlistobser= FXCollections.observableArrayList();
-        ObservableList<HBox> namelistobser=FXCollections.observableArrayList();
-        idlist=new ListView<HBox>(idlistobser);
-        namelist=new ListView<HBox>(namelistobser);
+
         for(int i=0;i<size;i++)
         {
-            StudentService studentService=new StudentService(list.get(i));
+            StudentService studentService=new StudentService(studentlist.get(i));
             StudentEntity studentEntity=studentService.GetID();
-            HBox hbox1=new HBox(10);//加入学生id
-            HBox hbox2=new HBox(10);// 加入学生姓名
-            hbox1.getChildren().add(new Label(list.get(i)));
-            hbox2.getChildren().add(new Label(studentEntity.getName()));
-            idlistobser.add(hbox1);
-            namelistobser.add(hbox2);
+            Table.getItems().add(new tableline(studentEntity));
         }
     }
     @FXML

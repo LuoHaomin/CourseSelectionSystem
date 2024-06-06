@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -50,10 +51,35 @@ public class TeacherLoginController {
         stage.setScene(scene);
         stage.show();
     }
+    class tableline
+    {
+        String coursename;
+        Button btgo;
+        public tableline(CourseEntity courseEntity)
+        {
+           coursename=courseEntity.getNumber();
+            btgo=new Button("前往"+coursename);
+            btgo.setOnAction(e -> {
+                        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherWelcome.fxml"));
+                        Parent root;
+                        try {
+                            root = loader.load();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        TeacherWelcomeController teacherWelcomeController =loader.getController();
+                        teacherWelcomeController.start(id,courseEntity.getId());
+                        Stage stage=(Stage) ChangeCode.getScene().getWindow();
+                        Scene scene=new Scene(root,600,400);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+            );
+        }
+    }
+
     @FXML
-    private ListView<HBox> Course;
-    @FXML
-    private ListView<HBox> getin;
+    private TableView<tableline> Table;
 
     public void start(String id)
     {
@@ -62,42 +88,14 @@ public class TeacherLoginController {
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
         List<CourseEntity> courselist=teacherService.getRelatedCourse();
-        ObservableList<HBox> courseobser=FXCollections.observableArrayList();
-        ObservableList<HBox> getinobser=FXCollections.observableArrayList();
-        Course=new ListView<HBox>(courseobser);
-        getin=new ListView<HBox>(getinobser);
+        ObservableList<tableline> list=FXCollections.observableArrayList();
+        Table=new TableView<>(list);
         int size=courselist.size();
         for(int i=0;i<size;i++)
         {
-            //加入课程名
+            //加入课程名//加入课程跳转按钮（根据id,传两个id，一个老师，一个课程)
             CourseEntity courseEntity=courselist.get(i);
-            String coursename=courseEntity.getNumber();
-            HBox hBox1=new HBox(10);
-            hBox1.getChildren().add(new Label(coursename));
-            courseobser.add(hBox1);
-            //加入课程跳转按钮（根据id,传两个id，一个老师，一个课程)
-            Button btgo=new Button("前往"+coursename);
-            btgo.setOnAction(e -> {
-                FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherWelcome.fxml"));
-                Parent root= null;
-                try {
-                    root = loader.load();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                TeacherWelcomeController teacherWelcomeController =loader.getController();
-                teacherWelcomeController.start(id,courseEntity.getId());
-                Stage stage=(Stage) ChangeCode.getScene().getWindow();
-                Scene scene=new Scene(root,600,400);
-                stage.setScene(scene);
-                stage.show();
-                    }
-            );
-            HBox hbox2=new HBox(10);
-            hbox2.getChildren().add(btgo);
-            getinobser.add(hbox2);
+            Table.getItems().add(new tableline(courseEntity));
         }
     }
-
-
 }
