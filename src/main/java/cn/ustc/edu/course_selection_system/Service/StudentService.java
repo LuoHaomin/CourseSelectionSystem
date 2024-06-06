@@ -51,6 +51,10 @@ public class StudentService
 
     }
 
+    /**
+     * 获得所选课程
+     * @return 课程列表
+     */
     public List<CourseEntity> getRelatedCourse() {
         StudentCourse studentCourse = new StudentCourse();
         return studentCourse.GetChosenCourseList(id);

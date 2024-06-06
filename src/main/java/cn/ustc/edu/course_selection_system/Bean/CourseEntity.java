@@ -10,6 +10,22 @@ public class CourseEntity {
     @jakarta.persistence.Column(name = "id", nullable = false)
     private int id;
 
+    public CourseEntity(String number, String time, double credit, String periods, Integer capacity) {
+        this.number = number;
+        this.time = time;
+        this.credit = credit;
+        this.periods = periods;
+        this.capacity = capacity;
+    }
+
+    public CourseEntity() {
+        this.number = "test";
+        this.time = "res";
+        this.credit = 0;
+        this.periods = "pr";
+        this.capacity = 0;
+    }
+
     public int getId() {
         return id;
     }
