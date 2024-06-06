@@ -12,6 +12,10 @@ import java.util.List;
 
 public class TeacherService {
     String id;
+
+    public static final float EXCELLENT = 3.7f;
+    public static final float LIMIT = 0.4f;
+
     public TeacherService(String id) {
         this.id = id;
     }
@@ -60,5 +64,17 @@ public class TeacherService {
         return false;
     }
 
+    public boolean excellentRate (Integer courseID,List< Pair<String,Float> > scorelist) {
+        StudentCourse studentCourse = new StudentCourse();
+        int excellent = 0,sum = 0;
+        for (Pair<String,Float> score : scorelist) {
+            if (score.getValue() >= EXCELLENT) excellent++;
+            sum++;
+        }
+        if ((float) excellent/sum > LIMIT) {
+            return true;
+        }
+        return false;
+    }
 
 }
