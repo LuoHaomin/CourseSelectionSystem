@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.AdminRegisCourse">
    <children>
       <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
@@ -59,7 +59,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button layoutX="521.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="提交">
+      <Button fx:id="Commit" layoutX="521.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="提交">
          <font>
             <Font size="14.0" />
          </font>
@@ -69,22 +69,23 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView layoutX="174.0" layoutY="77.0" prefHeight="252.0" prefWidth="395.0">
+      <TableView fx:id="Table" layoutX="174.0" layoutY="77.0" prefHeight="252.0" prefWidth="395.0">
         <columns>
-          <TableColumn prefWidth="71.20001220703125" text="课程名称" />
-            <TableColumn prefWidth="74.39996337890625" text="课程时间" />
-          <TableColumn prefWidth="70.39996337890625" text="授课老师" />
-            <TableColumn prefWidth="51.20001220703125" text="学分" />
-            <TableColumn prefWidth="66.4000244140625" text="时间" />
-            <TableColumn prefWidth="63.2000732421875" text="时段" />
+          <TableColumn fx:id="CourseName" prefWidth="71.20001220703125" text="课程名称" />
+            <TableColumn fx:id="CourseTime" prefWidth="74.39996337890625" text="课程时间" />
+          <TableColumn fx:id="Teacher" prefWidth="70.39996337890625" text="授课老师" />
+            <TableColumn fx:id="Credit" prefWidth="51.20001220703125" text="学分" />
+            <TableColumn fx:id="Time" prefWidth="66.4000244140625" text="时间" />
+            <TableColumn fx:id="Peroid" prefWidth="63.2000732421875" text="时段" />
         </columns>
       </TableView>
-      <Button layoutX="174.0" layoutY="345.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="47.0" text="添加">
+      <Button fx:id="AddCourse" layoutX="174.0" layoutY="345.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="47.0" text="添加">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="245.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="导入">
+      <Button fx:id="ImportCourse" layoutX="245.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="导入"
+      onAction="#onImportCourseClick">
          <font>
             <Font size="14.0" />
          </font>
