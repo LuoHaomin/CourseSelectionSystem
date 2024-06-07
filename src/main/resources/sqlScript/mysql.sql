@@ -57,3 +57,14 @@ create table major_course
     primary key (course_number, major)
 );
 
+create table teacher_course
+(
+    teacher_id nvarchar(20) not null,
+    course_id  int         not null,
+    constraint teacher_course_pk
+        primary key (course_id, teacher_id),
+    constraint teacher_course_course_id_fk
+        foreign key (course_id) references course (id),
+    constraint teacher_course_teacher_id_fk
+        foreign key (teacher_id) references teacher (id)
+);

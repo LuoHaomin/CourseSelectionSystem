@@ -12,8 +12,10 @@
     <property name="connection.pool_size">3</property>
     <property name="current_session_context_class">thread</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="format_sql">true</property>
+    <property name="show_sql">true</property>
+    <property name="highlight_sql">true</property>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
     <mapping resource="AdminEntity.hbm.xml"/>
     <mapping resource="CourseEntity.hbm.xml"/>
@@ -27,9 +29,6 @@
     <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
     <mapping resource="StudentCourseEntity.hbm.xml"/>
 
-
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
 

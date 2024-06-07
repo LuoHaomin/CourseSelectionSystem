@@ -7,7 +7,6 @@ import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 

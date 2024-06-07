@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import javafx.event.Event;
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -22,28 +23,34 @@ public class HibernateUtil {
      * @return the session factory
      */
     public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            synchronized (HibernateUtil.class) {
-                if (sessionFactory == null) {
-                    setUp();
-                }
+        synchronized (HibernateUtil.class) {
+            if (null == sessionFactory) {
+                setUp();
             }
         }
         return sessionFactory;
     }
 
+    /**
+     * Set up the session factory
+     */
     private static void setUp() {
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().build();
+//        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().build();
+//        try {
+//            sessionFactory = new MetadataSources(registry)
+//                    .addAnnotatedClasses(StudentEntity.class)
+//                    .buildMetadata()
+//                    .buildSessionFactory();
+//        }
+//        catch (HibernateException e) {
+//            // The registry would be destroyed by the SessionFactory, but we
+//            // had trouble building the SessionFactory so destroy it manually.
+//            StandardServiceRegistryBuilder.destroy(registry);
+//        }
         try {
-            sessionFactory = new MetadataSources(registry)
-                    .addAnnotatedClass(Event.class)
-                    .buildMetadata()
-                    .buildSessionFactory();
-        }
-        catch (HibernateException e) {
-            // The registry would be destroyed by the SessionFactory, but we
-            // had trouble building the SessionFactory so destroy it manually.
-            StandardServiceRegistryBuilder.destroy(registry);
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
