@@ -1,12 +1,8 @@
 package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Service.AdminService;
-import jakarta.persistence.Table;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,38 +37,30 @@ public class AdminCourseListController {
     @FXML
     private RadioButton Student;
 
-    @FXML
-    private Button lastPage;
+
 
     @FXML
-    private Button nextPage;
+    private TableView<CourseEntity> Table;
+    @FXML
+    private TableColumn<CourseEntity, String> CourseName;
 
     @FXML
-    private Label pageIndex;
+    private TableColumn<CourseEntity, String> Time;
+    @FXML
+    private TableColumn<CourseEntity, String> Teacher;
 
     @FXML
-    private TableView<CI> Table;
-    @FXML
-    private TableColumn<CI, String> CourseName;
-
-    @FXML
-    private TableColumn<CI, String> Time;
-    @FXML
-    private TableColumn<CI, String> Teacher;
+    private Pagination Paging;
 
     public void Start(String AdminID){
         this.AdminID = AdminID;
 
-        List<CI> data = new ArrayList<>();
-        for (Integer i = 0; i < 7; i++) {
-            data.add(new CI("123","234"+i.toString(),"234"));
-        }
 
-        ObservableList<CI> list = FXCollections.observableArrayList(data);
-        Time.setCellValueFactory(new PropertyValueFactory<CI, String>("Time"));
-
-        Table.setItems(list);
-//        Table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        Time.setCellValueFactory(new PropertyValueFactory<>("Time"));
+//        Teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
+        CourseName.setCellValueFactory(new PropertyValueFactory<>("Number"));
+        setupPaging();
+        Table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
     @FXML
@@ -80,50 +68,73 @@ public class AdminCourseListController {
         Start("");
     }
 
-    public class CI{
-        private final SimpleStringProperty Name;
-        private String Time;
-        private final SimpleStringProperty Teacher;
-        public CI(String Name,String Time,String Teacher){
-            this.Name = new SimpleStringProperty(Name);
-            this.Time = Time;
-            this.Teacher = new SimpleStringProperty(Teacher);
+    private void setupPaging(){
+        Paging.setPageCount(1);
+        Paging.setPageFactory(this::Paging);
+    }
+
+    ObservableList<CourseEntity> data(){
+        List<CourseEntity> data = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            data.add(new CourseEntity());
         }
 
-        public String getName() {
-            return Name.get();
-        }
+        ObservableList<CourseEntity> list = FXCollections.observableArrayList(data);
+        return list;
+    }
 
-//        public final SimpleStringProperty nameProperty() {
-//            return Name;
-//        }
 
-        public void setName(String name) {
-            this.Name.set(name);
-        }
-
-        public String getTime() {
-            return Time;
-        }
-
-//        public final SimpleStringProperty timeProperty() {
-//            return Time;
-//        }
-
-        public void setTime(String time) {
-            this.Time = time;
-        }
-
-        public String getTeacher() {
-            return Teacher.get();
-        }
-
-//        public final SimpleStringProperty teacherProperty() {
-//            return Teacher;
-//        }
-
-        public void setTeacher(String teacher) {
-            this.Teacher.set(teacher);
-        }
+    private TableView<CourseEntity> Paging(Integer index) {
+        Table.setItems(data());
+        return Table;
     }
 }
+/**
+ *     private void loadEquipmentData() {
+ *         try (BufferedReader br = new BufferedReader(new FileReader("G:\\Eclipes\\FinalHomework1\\src\\data\\equipment.txt"))) {
+ *             String line;
+ *             while ((line = br.readLine()) != null) {
+ *                 String[] parts = line.split(",");
+ *                 Equipment equipment = new Equipment(
+ *                         parts[0],
+ *                         parts[1],
+ *                         parts[2],
+ *                         parts[3],
+ *                         ""
+ *                 );
+ *                 equipmentList.add(equipment);
+ *             }
+ *         } catch (IOException e) {
+ *             e.printStackTrace();
+ *         }
+ *     }
+ *
+ *     private void setupTableColumns() {
+ *         selectColumn.setCellValueFactory(cellData -> cellData.getValue().selectedProperty());
+ *         selectColumn.setCellFactory(CheckBoxTableCell.forTableColumn(selectColumn));
+ *
+ *         idColumn.setCellValueFactory(new PropertyValueFactory<>("equipmentId"));
+ *         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+ *
+ *         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+ *         statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+ *     }
+ *
+ *     private void setupPagination() {
+ *         int pageCount = (int) Math.ceil(equipmentList.size() / (double) ROWS_PER_PAGE);
+ *         pagination.setPageCount(pageCount);
+ *         pagination.setPageFactory(this::createPage);
+ *     }
+ *
+ *     private TableView<Equipment> createPage(int pageIndex) {
+ *         int fromIndex = pageIndex * ROWS_PER_PAGE;
+ *         int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, equipmentList.size());
+ *
+ *         FilteredList<Equipment> filteredData = new FilteredList<>(equipmentList, p -> true);
+ *         SortedList<Equipment> sortedData = new SortedList<>(filteredData);
+ *
+ *         equipmentTable.setItems(FXCollections.observableArrayList(sortedData.subList(fromIndex, toIndex)));
+ *         return equipmentTable;
+ *     }
+ * }
+ */
