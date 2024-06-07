@@ -1,6 +1,8 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
 import jakarta.persistence.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @Entity
 @jakarta.persistence.Table(name = "course", schema = "hibernate", catalog = "hibernate")
@@ -9,6 +11,22 @@ public class CourseEntity {
     @Id
     @jakarta.persistence.Column(name = "id", nullable = false)
     private int id;
+
+    public CourseEntity(String number, String time, double credit, String periods, Integer capacity) {
+        this.number = number;
+        this.time = time;
+        this.credit = credit;
+        this.periods = periods;
+        this.capacity = capacity;
+    }
+
+    public CourseEntity() {
+        this.number = "testName";
+        this.time = "一（1，2）；三（4，5，6）；五（1，2）";
+        this.credit = 0;
+        this.periods = "pr";
+        this.capacity = 0;
+    }
 
     public int getId() {
         return id;
@@ -37,6 +55,10 @@ public class CourseEntity {
     public String getTime() {
         return time;
     }
+
+//    public final StringProperty getTimeProperty() {
+//        return new SimpleStringProperty(time);
+//    }
 
     public void setTime(String time) {
         this.time = time;

@@ -1,14 +1,16 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
+import cn.ustc.edu.course_selection_system.Database.DisciplinaryPlanData;
+import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 import javafx.util.Pair;
 
 import java.util.List;
-import java.util.Objects;
 
 public class StudentService
 {
@@ -48,25 +50,36 @@ public class StudentService
 
     }
 
+    /**
+     * 获得所选课程
+     * @return 课程列表
+     */
     public List<CourseEntity> getRelatedCourse() {
-        StudentImpl studentImpl = new StudentImpl();
-        return studentImpl.GetChosenCourseList(id);
+        StudentCourse studentCourse = new StudentCourse();
+        return studentCourse.GetChosenCourseList(id);
     }
 
 
     /**
      * 获得课程表数据
      */
-    public List<Objects> getSchedule(){
-        return List.of();
+    public CourseTable getCourseTable(){
+        StudentCourse studentCourse = new StudentCourse();
+        return new CourseTable(studentCourse.GetChosenCourseList(id));
     }
 
     /**
      * 获得培养方案（待选课程列表）
-     * @return 待选课程列表
+     * @return 待选课程编号列表
      */
-    public List<Integer> getProgram(){
-        return List.of();
+    public List<String> getProgram(){
+        DisciplinaryPlanData disciplinaryPlanData = new DisciplinaryPlanData();
+        List<MajorCourseEntity> majorCourseEntityList = disciplinaryPlanData.GetDisciplinaryPlan(GetID().getMajor());
+        List<String> program = new ArrayList<>();
+        for(MajorCourseEntity majorCourseEntity : majorCourseEntityList){
+            program.add(majorCourseEntity.getCourseNumber());
+        }
+        return program;
     }
 
     /**
@@ -91,8 +104,8 @@ public class StudentService
             return false;
         }
 
-        StudentImpl studentImpl = new StudentImpl();
-        studentImpl.AddCoursePair(id,courseId);
+        StudentCourse studentCourse = new StudentCourse();
+        studentCourse.AddCoursePair(id,courseId);
         return true;
     }
 
@@ -101,8 +114,8 @@ public class StudentService
      * @return 是否成功
      */
     public boolean dropCourse(int courseId){
-        StudentImpl studentImpl = new StudentImpl();
-        studentImpl.DeleteCoursePair(id,courseId);
+        StudentCourse studentCourse = new StudentCourse();
+        studentCourse.DeleteCoursePair(id,courseId);
         return true;
     }
 
@@ -110,9 +123,15 @@ public class StudentService
      * 获得课程编号—分数
      * @return 课程编号—分数对列表
      */
-    public List<Pair<Integer,Integer> > getScore(){
+    public List<Pair<String, Float>> getScore(){
+        StudentCourse studentCourse = new StudentCourse();
+        List<CourseEntity> courseList = studentCourse.GetChosenCourseList(id);
+        List<Pair<String,Float>> score = new ArrayList<>();
 
-        return List.of();
+        for(CourseEntity courseEntity : courseList){
+            score.add(new Pair<>(courseEntity.getNumber(), studentCourse.GetStudentScore(id, courseEntity.getId())));
+        }
+        return score;
     }
 
 }

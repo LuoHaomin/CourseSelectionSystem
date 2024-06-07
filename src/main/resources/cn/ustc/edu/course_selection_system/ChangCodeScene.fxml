@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.ChangeCodeSceneController">
    <children>
       <Label layoutX="53.0" layoutY="127.0" text="请输入旧密码：">
          <font>
@@ -40,12 +39,12 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Button fx:id="Sure" layoutX="388.0" layoutY="339.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="76.0" text="确定" textAlignment="CENTER">
+      <Button fx:id="Sure" layoutX="388.0" layoutY="339.0" mnemonicParsing="false" onAction="#HandleSure" prefHeight="38.0" prefWidth="76.0" text="确定" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="Back" layoutX="477.0" layoutY="340.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" text="返回">
+      <Button fx:id="Back" layoutX="477.0" layoutY="340.0" mnemonicParsing="false" onAction="#HandleBack" prefHeight="37.0" prefWidth="76.0" text="注销">
          <font>
             <Font size="18.0" />
          </font>
