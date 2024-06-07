@@ -1,14 +1,10 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 import java.io.Serializable;
 
 public class MajorCourseEntityPK implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Id
     @jakarta.persistence.Column(name = "course_number", nullable = false, length = 60)
     private String courseNumber;
 
@@ -20,8 +16,8 @@ public class MajorCourseEntityPK implements Serializable {
         this.courseNumber = courseNumber;
     }
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Id
     @jakarta.persistence.Column(name = "major", nullable = false, length = 20)
     private String major;
 

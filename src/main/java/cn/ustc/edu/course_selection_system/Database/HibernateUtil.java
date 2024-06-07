@@ -1,14 +1,7 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
-
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.usertype.UserType;
 
 public class HibernateUtil {
     private static volatile SessionFactory sessionFactory = null;

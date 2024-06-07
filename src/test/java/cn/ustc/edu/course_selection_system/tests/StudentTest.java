@@ -53,14 +53,4 @@ public class StudentTest {
         StudentImpl studentImpl = new StudentImpl();
         studentImpl.DeleteCoursePair("2019211001", 3);
     }
-
-    @Test
-    public void testGetChosenCourseList() {
-        StudentImpl studentImpl = new StudentImpl();
-        List<CourseEntity> courseEntities = new ArrayList<>();
-        courseEntities =  studentImpl.GetChosenCourseList("2019211001");
-        for (CourseEntity courseEntity : courseEntities) {
-            System.out.println(courseEntity.toString());
-        }
-    }
 }

@@ -4,8 +4,6 @@ import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntityPK;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -35,7 +33,7 @@ public class StudentImpl {
     /**
      * Update the student's information
      *
-     * @param student
+     * @param student student's information
      */
     public void updateStudent(StudentEntity student) {
         sessionFactory.inTransaction(session -> {
@@ -58,13 +56,13 @@ public class StudentImpl {
     /**
      * Add a student to the database
      *
-     * @param studentId
-     * @param studentName
-     * @param studentPassword
-     * @param phoneNUmber
-     * @param major
-     * @param admissionYear
-     * @param gender
+     * @param studentId student's id
+     * @param studentName student's name
+     * @param studentPassword student's password
+     * @param phoneNUmber student's phone number
+     * @param major student's major
+     * @param admissionYear student's admission year
+     * @param gender student's gender
      */
     public void addStudent(String studentId, String studentName, String studentPassword, String phoneNUmber,
                            String major, int admissionYear, String gender) {
@@ -82,13 +80,22 @@ public class StudentImpl {
     }
 
     /**
+     * Add a student to the database
+     * @param student StudentEntity information
+     */
+    public void addStudent(StudentEntity student) {
+        sessionFactory.inTransaction(session -> {
+            session.persist(student);
+        });
+    }
+
+    /**
      * Delete a student from the database
      *
      * @param studentId student's id
      */
     public void deleteStudent(String studentId) {
         StudentEntity student = new StudentEntity();
-//        StudentCourseEntity studentCourse = new StudentCourseEntity();
         student.setId(studentId);
         sessionFactory.inTransaction(session -> {
             session.createMutationQuery("delete StudentCourseEntity where studentId = :studentId")
@@ -106,6 +113,7 @@ public class StudentImpl {
      * @param studentId student's id
      * @param courseId  course's id
      */
+    @Deprecated
     public void AddCoursePair(String studentId, int courseId) {
         StudentCourseEntity studentCourse = new StudentCourseEntity();
         studentCourse.setStudentId(studentId);
@@ -122,50 +130,15 @@ public class StudentImpl {
      * @param studentId student's id
      * @param courseId  course's id
      */
+    @Deprecated
     public void DeleteCoursePair(String studentId, int courseId) {
         StudentCourseEntityPK studentCourseEntityPK = new StudentCourseEntityPK();
         studentCourseEntityPK.setStudentId(studentId);
         studentCourseEntityPK.setCourseId(courseId);
         sessionFactory.inTransaction(session -> {
             session.remove(session.get(StudentCourseEntity.class, studentCourseEntityPK));
-//            session.createQuery("delete StudentCourseEntity where studentId = :studentId and courseId = :courseId"
-//                    , StudentCourseEntity.class)
-//                    .setParameter("studentId", studentId)
-//                    .setParameter("courseId", courseId)
-//                    .executeUpdate();
         });
     }
 
-    public List<CourseEntity> GetChosenCourseList(String studentId) {
-        List<CourseEntity> courseList = new ArrayList<>();
 
-//            courseList = sessionFactory.inTransaction(session -> {
-//                return session.createQuery("from CourseEntity where id in (select courseId from " +
-//                                "StudentCourseEntity where studentId = :studentId)")
-//                        .setParameter("studentId", studentId)
-//                        .list();
-        sessionFactory.inTransaction(session -> {
-            List<CourseEntity> _courseList = session.createQuery("from CourseEntity where id in (select courseId from " +
-                            "StudentCourseEntity where studentId = :studentId)", CourseEntity.class)
-                    .setParameter("studentId", studentId)
-                    .getResultList();
-            courseList.addAll(_courseList);
-        });
-
-//        StudentEntity student = session.get(StudentEntity.class, id);
-        return courseList;
-    }
-
-    public float GetStudentScore(String studentId, int courseId) {
-        //与分数相关方法不如分出去？
-        return 0;
-    }
-
-    public void ImportScore(String studentId, int courseId, float score) {
-
-    }
-
-    public void ChangeScore(String studentId, int courseId, float score) {
-
-    }
 }

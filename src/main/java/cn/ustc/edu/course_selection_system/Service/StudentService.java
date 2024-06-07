@@ -10,6 +10,7 @@ import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService
@@ -100,9 +101,10 @@ public class StudentService
             return false;
         }
         //判断是否超过人数上限
-        if(courseEditor.GetNumberOfStudentsInCourse()>=courseEntity.getCapacity()){
-            return false;
-        }
+        //TODO:我需要courseId
+//        if(courseEditor.GetNumberOfStudentsInCourse()>=courseEntity.getCapacity()){
+//            return false;
+//        }
 
         StudentCourse studentCourse = new StudentCourse();
         studentCourse.AddCoursePair(id,courseId);
@@ -123,13 +125,13 @@ public class StudentService
      * 获得课程编号—分数
      * @return 课程编号—分数对列表
      */
-    public List<Pair<String, Float>> getScore(){
+    public List<Pair<String, Double>> getScore(){
         StudentCourse studentCourse = new StudentCourse();
         List<CourseEntity> courseList = studentCourse.GetChosenCourseList(id);
-        List<Pair<String,Float>> score = new ArrayList<>();
+        List<Pair<String,Double>> score = new ArrayList<>();
 
         for(CourseEntity courseEntity : courseList){
-            score.add(new Pair<>(courseEntity.getNumber(), studentCourse.GetStudentScore(id, courseEntity.getId())));
+            score.add(new Pair<>(courseEntity.getName(), studentCourse.GetStudentScore(id, courseEntity.getId())));
         }
         return score;
     }

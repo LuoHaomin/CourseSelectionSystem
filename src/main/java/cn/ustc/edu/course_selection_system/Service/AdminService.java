@@ -18,7 +18,7 @@ public class AdminService {
     public int ImportStudentID(List<StudentEntity> infos){
         StudentImpl studentImpl = new StudentImpl();
         for(StudentEntity info : infos){
-            studentImpl.insertStudent(info);
+            studentImpl.addStudent(info);
         }
         return infos.size();
     }
@@ -26,7 +26,7 @@ public class AdminService {
     public int ImportTeacherID(List<TeacherEntity> infos){
         TeacherImpl teacherImpl = new TeacherImpl();
         for(TeacherEntity info : infos){
-            teacherImpl.insertTeacher(info);
+            teacherImpl.addTeacher(info);
         }
         return infos.size();
     }

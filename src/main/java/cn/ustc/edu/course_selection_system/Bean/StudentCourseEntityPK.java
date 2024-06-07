@@ -1,12 +1,22 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
+import java.util.Objects;
 
 public class StudentCourseEntityPK implements Serializable {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "student_id", nullable = false, length = 20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "student_id", nullable = false, length = 20)
     private String studentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "course_id", nullable = false)
+    private int courseId;
+    @Basic
+    @Column(name = "score", nullable = true, precision = 0)
+    private Double score;
 
     public String getStudentId() {
         return studentId;
@@ -16,11 +26,6 @@ public class StudentCourseEntityPK implements Serializable {
         this.studentId = studentId;
     }
 
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "course_id", nullable = false)
-    private int courseId;
-
     public int getCourseId() {
         return courseId;
     }
@@ -29,15 +34,24 @@ public class StudentCourseEntityPK implements Serializable {
         this.courseId = courseId;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "score", nullable = true, precision = 0)
-    private Double score;
-
     public Double getScore() {
         return score;
     }
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentCourseEntityPK that = (StudentCourseEntityPK) o;
+        return courseId == that.courseId && Objects.equals(studentId, that.studentId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentId, courseId);
     }
 }
