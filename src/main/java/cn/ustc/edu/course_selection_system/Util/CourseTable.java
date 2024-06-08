@@ -48,7 +48,7 @@ public class CourseTable {
                     if (course.getTime().contains("Fri"))
                         timeCourse[4] = course.getName();
                     else timeCourse[4] = "";
-                    if (course.getTime().contains("Sar"))
+                    if (course.getTime().contains("Sat"))
                         timeCourse[5] = course.getName();
                     else timeCourse[5] = "";
                     if (course.getTime().contains("Sun"))
