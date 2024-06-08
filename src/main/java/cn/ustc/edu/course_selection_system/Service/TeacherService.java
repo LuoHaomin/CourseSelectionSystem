@@ -63,9 +63,9 @@ public class TeacherService {
         return false;
     }
 
-    public int importStudentsScore(Integer courseID,List< Pair<String,Float> > scorelist){
+    public int importStudentsScore(Integer courseID,List< Pair<String,Double> > scorelist){
         StudentCourse studentCourse = new StudentCourse();
-        for(Pair<String,Float> score : scorelist) {
+        for(Pair<String,Double> score : scorelist) {
             studentCourse.ChangeScore(score.getKey(),courseID,score.getValue());
         }
         return scorelist.size();
