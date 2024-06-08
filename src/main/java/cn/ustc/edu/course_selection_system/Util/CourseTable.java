@@ -3,6 +3,7 @@ package cn.ustc.edu.course_selection_system.Util;
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import cn.ustc.edu.course_selection_system.Util.Period.*;
 import cn.ustc.edu.course_selection_system.Util.Time.*;
@@ -27,7 +28,7 @@ public class CourseTable {
     }
 
 
-    public String[] TimeCourse (String time,String week) {
+    public List<String> TimeCourse (String time,String week) {
         String[] timeCourse = new String[7];
         for (CourseEntity course:list)  {
             for (Day day : Day.values()) {
@@ -57,7 +58,8 @@ public class CourseTable {
                 }
             }
         }
-        return timeCourse;
+        List<String> list = Arrays.asList(timeCourse);
+        return list;
     }
 
 
