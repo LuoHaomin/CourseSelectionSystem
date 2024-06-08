@@ -26,11 +26,18 @@ public class Time {
         }
         return timeArray;
     }
-    public static Boolean timeCoincide (CourseEntity course,CourseEntity courseEntity) {
+    public static boolean timeCoincide (CourseEntity course,CourseEntity courseEntity) {
         if (detailDay(course).equals(detailDay(courseEntity))) {
             for (String time : detailTime(course))
                 for (String time1 : detailTime(courseEntity))
                     if (time.equals(time1)) return true;
+        }
+        return false;
+    }
+
+    public static boolean timeInclude (String time,ArrayList<String> detailTime) {
+        for (String detail : detailTime) {
+            if (time.equals(detail)) return true;
         }
         return false;
     }
