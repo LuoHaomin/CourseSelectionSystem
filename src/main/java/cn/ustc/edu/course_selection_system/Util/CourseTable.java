@@ -30,33 +30,19 @@ public class CourseTable {
 
     public List<String> TimeCourse (String time,String week) {
         String[] timeCourse = new String[7];
-        for (CourseEntity course:list)  {
-            for (Day day : Day.values()) {
+        int i = 0;
+        for (Day day : Day.values())  {
+            for (CourseEntity course:list)  {
                 if (Period.periodInclude(week,getWeek(course))
                         && Time.timeInclude(time,Time.detailTime(course))) {
-                    if (course.getTime().contains("Mon"))
-                        timeCourse[0] = course.getName();
-                    else timeCourse[0] = "";
-                    if (course.getTime().contains("Tue"))
-                        timeCourse[1] = course.getName();
-                    else timeCourse[1] = "";
-                    if (course.getTime().contains("Wed"))
-                        timeCourse[2] = course.getName();
-                    else timeCourse[2] = "";
-                    if (course.getTime().contains("Thu"))
-                        timeCourse[3] = course.getName();
-                    else timeCourse[2] = "";
-                    if (course.getTime().contains("Fri"))
-                        timeCourse[4] = course.getName();
-                    else timeCourse[4] = "";
-                    if (course.getTime().contains("Sat"))
-                        timeCourse[5] = course.getName();
-                    else timeCourse[5] = "";
-                    if (course.getTime().contains("Sun"))
-                        timeCourse[6] = course.getName();
-                    else timeCourse[6] = "";
+                    if (Time.detailTime(course).equals(day)) {
+                        timeCourse[i] = course.getName();
+                        break;
+                    }
+                    else timeCourse[i] = "";
                 }
             }
+            i++;
         }
         List<String> list = Arrays.asList(timeCourse);
         return list;
