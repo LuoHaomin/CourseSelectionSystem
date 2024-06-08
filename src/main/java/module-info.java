@@ -19,6 +19,7 @@ module cn.ustc.edu.courseselectionsystem {
 
     opens cn.ustc.edu.course_selection_system to javafx.fxml;
     opens cn.ustc.edu.course_selection_system.View to javafx.fxml;
+    opens cn.ustc.edu.course_selection_system.Bean;
 
 
     exports cn.ustc.edu.course_selection_system;
