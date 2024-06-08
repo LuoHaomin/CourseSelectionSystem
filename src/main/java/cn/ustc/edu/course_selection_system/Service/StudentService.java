@@ -137,7 +137,7 @@ public class StudentService
         return score;
     }
 
-    public float translateGPA (double score){
+    public double translateGPA (double score){
         if (score < 60) return 0.0f;
         else if (score == 60) return 1.0f;
         else if (score > 60 && score <64) return 1.3f;
