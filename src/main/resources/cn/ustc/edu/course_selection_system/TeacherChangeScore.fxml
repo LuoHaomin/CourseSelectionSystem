@@ -2,14 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.TeacherChangeScoreController">
    <children>
       <AnchorPane layoutX="190.0" prefHeight="54.0" prefWidth="412.0">
          <children>
@@ -23,12 +24,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
@@ -37,46 +38,39 @@
       </AnchorPane>
       <VBox prefHeight="400.0" prefWidth="157.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="查看学生" textAlignment="CENTER">
+            <RadioButton fx:id="Student" mnemonicParsing="false" onAction="#HandleStudent" prefHeight="54.0" prefWidth="190.0" text="查看学生" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="43.0" prefWidth="177.0" selected="true" text="录入/修改成绩" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="Score" mnemonicParsing="false" onAction="#HandleScore" prefHeight="43.0" prefWidth="177.0" selected="true" text="录入/修改成绩" textAlignment="CENTER" textFill="#0006ff">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="159.0" text="返回选择页" textAlignment="CENTER">
+            <Button fx:id="backselect" mnemonicParsing="false" onAction="#Handlebackselect" prefHeight="48.0" prefWidth="159.0" text="返回选择页" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <ListView layoutX="174.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <ListView layoutX="285.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <Label layoutX="219.0" layoutY="54.0" text="ID">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="313.0" layoutY="54.0" text="用户名">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="432.0" layoutY="54.0" text="成绩">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ListView layoutX="395.0" layoutY="75.0" prefHeight="310.0" prefWidth="110.0" />
-      <Button layoutX="523.0" layoutY="341.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="62.0" text="提交">
+      <Button fx:id="summit" layoutX="523.0" layoutY="348.0" mnemonicParsing="false" onAction="#Handlesummit" prefHeight="37.0" prefWidth="62.0" text="提交">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="506.0" layoutY="311.0" text="优秀率超过40%！" textFill="RED" visible="false" />
+      <Label fx:id="wrong" layoutX="506.0" layoutY="311.0" text="优秀率超过40%！" textFill="RED" visible="false" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="224.0" layoutY="57.0" prefHeight="285.0" prefWidth="306.0">
+         <content>
+            <TableView fx:id="table" prefHeight="286.0" prefWidth="306.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="ID" />
+                <TableColumn prefWidth="99.199951171875" text="学生姓名" />
+                  <TableColumn prefWidth="119.19996643066406" text="学生成绩" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
