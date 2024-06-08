@@ -50,4 +50,16 @@ public class TeacherImpl{
                     .executeUpdate();
         });
     }
+
+    public void deleteTeacher(String teacher_id){
+        sessionFactory.inTransaction(session -> {
+            session.createMutationQuery("delete from TeacherCourseEntity where " +
+                            "teacherId = :teacherId")
+                    .setParameter("teacherId", teacher_id)
+                    .executeUpdate();
+            session.createMutationQuery("delete from TeacherEntity where id = :id")
+                    .setParameter("id", teacher_id)
+                    .executeUpdate();
+        });
+    }
 }

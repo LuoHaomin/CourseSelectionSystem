@@ -18,15 +18,28 @@ public class TeacherCourse {
     }
 
     public void DeleteCoursePair(String teacherId, int courseId) {
-
+        sessionFactory.inTransaction(session -> {
+            session.createMutationQuery("delete from TeacherCourseEntity where " +
+                            "teacherId = :teacherId and courseId = :courseId")
+                    .setParameter("teacherId", teacherId)
+                    .setParameter("courseId", courseId)
+                    .executeUpdate();
+        });
     }
 
     public List<TeacherCourseEntity> GetTeachingCourseList(String teacherId) {
         return null;
     }
+
+    public List<TeacherCourseEntity> GetTeachersOfCourse(int courseId){
+        return null;
+    }
+
+    @Deprecated
     public List<TeacherCourseEntity> GetTeachingCourseAllList(Integer page, Integer ItemPerPage) {
         return null;
     }
+    @Deprecated
     public List<TeacherCourseEntity> GetTeachingCourseAllList() {
         return null;
     }

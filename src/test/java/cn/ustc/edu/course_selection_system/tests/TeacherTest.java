@@ -9,9 +9,11 @@ public class TeacherTest {
     @Test
     public void testGetTeacher(){
         TeacherImpl teacherImpl = new TeacherImpl();
-        teacherImpl.getTeacher("1");
-
+        TeacherEntity teacher = new TeacherEntity();
+        teacher = teacherImpl.getTeacher("1");
+        System.out.println(teacher.getName());
     }
+
     @Test
     public void testAddTeacher(){
         TeacherImpl teacherImpl = new TeacherImpl();
@@ -35,4 +37,6 @@ public class TeacherTest {
         teacher.setGender("男");
         teacherImpl.updateTeacher(teacher);
     }
+
+
 }

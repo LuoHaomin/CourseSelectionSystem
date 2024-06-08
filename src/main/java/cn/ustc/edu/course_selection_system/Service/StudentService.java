@@ -3,7 +3,7 @@ package cn.ustc.edu.course_selection_system.Service;
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
-import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
+import cn.ustc.edu.course_selection_system.Database.CourseImpl;
 import cn.ustc.edu.course_selection_system.Database.DisciplinaryPlanData;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 import cn.ustc.edu.course_selection_system.Database.StudentImpl;
@@ -89,7 +89,7 @@ public class StudentService
      * @return 是否成功
      */
     public boolean chooseCourse(int courseId){
-        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        CourseImpl courseEditor = new CourseImpl();
         CourseEntity courseEntity = courseEditor.GetCourseInfo(courseId);
         //课程不存在
         if(courseEntity == null){

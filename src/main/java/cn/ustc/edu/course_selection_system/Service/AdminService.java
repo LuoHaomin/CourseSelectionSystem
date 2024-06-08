@@ -40,9 +40,9 @@ public class AdminService {
      * @return 成功导入个数
      */
 	public int ImportCourse(List<CourseEntity> courseInfos) {
-        CourseEditorImpl courseEditorImpl = new CourseEditorImpl();
+        CourseImpl courseImpl = new CourseImpl();
         for(CourseEntity info : courseInfos){
-            courseEditorImpl.AddCourse(info);
+            courseImpl.AddCourse(info);
         }
         return courseInfos.size();
     }
@@ -121,7 +121,7 @@ public class AdminService {
      */
     public List<CourseInfo>  getCourseInfoList(){
         TeacherCourse teacherCourse = new TeacherCourse();
-        CourseEditorImpl courseEditorImpl = new CourseEditorImpl();
+        CourseImpl courseImpl = new CourseImpl();
         TeacherImpl teacherImpl = new TeacherImpl();
         List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList();
 
@@ -129,7 +129,7 @@ public class AdminService {
 
 
         for(TeacherCourseEntity info : list){
-            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
+            CourseInfo courseInfo = new CourseInfo(courseImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
             courseInfos.add(courseInfo);
         }
         return courseInfos;
