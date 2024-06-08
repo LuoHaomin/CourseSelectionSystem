@@ -86,7 +86,7 @@ public class TeacherService {
         for (Pair<String, Double> score : scorelist)
             if (score.getValue() >= EXCELLENT) excellent++;
         if ((float) excellent/sum > LIMIT) {
-            return true;
+            return true; //此处表示超过了优秀率限制
         }
         return false;
     }
