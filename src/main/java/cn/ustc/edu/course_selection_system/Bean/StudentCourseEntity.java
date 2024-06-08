@@ -1,15 +1,22 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
-@jakarta.persistence.Table(name = "student_course", schema = "hibernate", catalog = "hibernate")
-@jakarta.persistence.IdClass(cn.ustc.edu.course_selection_system.Bean.StudentCourseEntityPK.class)
+@Table(name = "student_course", schema = "hibernate", catalog = "hibernate")
+@IdClass(StudentCourseEntityPK.class)
 public class StudentCourseEntity {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "student_id", nullable = false, length = 20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "student_id", nullable = false, length = 20)
     private String studentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "course_id", nullable = false)
+    private int courseId;
+    @Basic
+    @Column(name = "score", nullable = true, precision = 0)
+    private Double score;
 
     public String getStudentId() {
         return studentId;
@@ -19,11 +26,6 @@ public class StudentCourseEntity {
         this.studentId = studentId;
     }
 
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "course_id", nullable = false)
-    private int courseId;
-
     public int getCourseId() {
         return courseId;
     }
@@ -31,10 +33,6 @@ public class StudentCourseEntity {
     public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
-
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "score", nullable = true, precision = 0)
-    private Double score;
 
     public Double getScore() {
         return score;

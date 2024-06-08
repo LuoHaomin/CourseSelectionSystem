@@ -8,8 +8,8 @@
         <id name="id">
             <column name="id" sql-type="int"/>
         </id>
-        <property name="number">
-            <column name="number" sql-type="varchar(60)" length="60"/>
+        <property name="name">
+            <column name="name" sql-type="varchar(60)" length="60"/>
         </property>
         <property name="time">
             <column name="time" sql-type="varchar(40)" length="40" not-null="true"/>

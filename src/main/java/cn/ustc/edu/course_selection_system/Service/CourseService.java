@@ -37,6 +37,8 @@ public class CourseService {
 
     public Integer GetNumberOfStudentsInCourse(){
         CourseEditorImpl courseEditor = new CourseEditorImpl();
-        return courseEditor.GetNumberOfStudentsInCourse();
+//        return courseEditor.GetNumberOfStudentsInCourse();
+        //TODO:你确定这不用传参数给我吗？
+        return 0;
     }
 }

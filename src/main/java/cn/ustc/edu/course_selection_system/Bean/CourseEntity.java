@@ -1,12 +1,12 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 @Entity
 @jakarta.persistence.Table(name = "course", schema = "hibernate", catalog = "hibernate")
 public class CourseEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Id
     @jakarta.persistence.Column(name = "id", nullable = false)
     private int id;
 
@@ -18,20 +18,20 @@ public class CourseEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "number", nullable = false, length = 60)
-    private String number;
+    @jakarta.persistence.Basic
+    @jakarta.persistence.Column(name = "name", nullable = false, length = 60)
+    private String name;
 
-    public String getNumber() {
-        return number;
+    public String getName() {
+        return name;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Basic
-    @Column(name = "time", nullable = true, length = 40)
+    @jakarta.persistence.Basic
+    @jakarta.persistence.Column(name = "time", nullable = true, length = 40)
     private String time;
 
     public String getTime() {
@@ -42,8 +42,8 @@ public class CourseEntity {
         this.time = time;
     }
 
-    @Basic
-    @Column(name = "credit", nullable = false, precision = 0)
+    @jakarta.persistence.Basic
+    @jakarta.persistence.Column(name = "credit", nullable = false, precision = 0)
     private double credit;
 
     public double getCredit() {
@@ -54,8 +54,8 @@ public class CourseEntity {
         this.credit = credit;
     }
 
-    @Basic
-    @Column(name = "periods", nullable = false, length = 60)
+    @jakarta.persistence.Basic
+    @jakarta.persistence.Column(name = "periods", nullable = false, length = 60)
     private String periods;
 
     public String getPeriods() {
@@ -66,8 +66,8 @@ public class CourseEntity {
         this.periods = periods;
     }
 
-    @Basic
-    @Column(name = "capacity", nullable = true)
+    @jakarta.persistence.Basic
+    @jakarta.persistence.Column(name = "capacity", nullable = true)
     private Integer capacity;
 
     public Integer getCapacity() {

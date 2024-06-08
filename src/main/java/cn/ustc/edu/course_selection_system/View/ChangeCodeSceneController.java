@@ -2,7 +2,6 @@ package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
-import cn.ustc.edu.course_selection_system.Service.AdminService;
 import cn.ustc.edu.course_selection_system.Service.PasswordChecker;
 import cn.ustc.edu.course_selection_system.Service.StudentService;
 import cn.ustc.edu.course_selection_system.Service.TeacherService;
