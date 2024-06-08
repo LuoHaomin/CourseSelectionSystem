@@ -111,24 +111,21 @@ public class AdminService {
         return 0;
     }
 
+    @Deprecated
     public List<CourseInfo>  getCourseInfoList(Integer page,Integer Limit){
         TeacherCourse teacherCourse = new TeacherCourse();
-        CourseImpl course = new CourseImpl();
+        CourseImpl courseEditorImpl = new CourseImpl();
         TeacherImpl teacherImpl = new TeacherImpl();
-        List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList(page, Limit);
 
-        return getCourseInfos(course, teacherImpl, list);
-    }
-
-    private List<CourseInfo> getCourseInfos(CourseImpl courseEditorImpl, TeacherImpl teacherImpl, List<TeacherCourseEntity> list) {
+        List<CourseEntity> Course = courseEditorImpl.getAllCourses(page, Limit);
         List<CourseInfo> courseInfos = new ArrayList<>();
-
-        for(TeacherCourseEntity info : list){
-            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
+        for(CourseEntity info : Course){
+            CourseInfo courseInfo = new CourseInfo(info,teacherCourse.GetTeachersOfCourse(info.getId()));
             courseInfos.add(courseInfo);
         }
         return courseInfos;
     }
+
 
     /**
      * 获得课程完整信息
@@ -137,9 +134,13 @@ public class AdminService {
     public List<CourseInfo>  getCourseInfoList(){
         TeacherCourse teacherCourse = new TeacherCourse();
         CourseImpl courseEditorImpl = new CourseImpl();
-        TeacherImpl teacherImpl = new TeacherImpl();
-        List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList();
 
-        return getCourseInfos(courseEditorImpl, teacherImpl, list);
+        List<CourseEntity> Course = courseEditorImpl.getAllCourses();
+        List<CourseInfo> courseInfos = new ArrayList<>();
+        for(CourseEntity info : Course){
+            CourseInfo courseInfo = new CourseInfo(info,teacherCourse.GetTeachersOfCourse(info.getId()));
+            courseInfos.add(courseInfo);
+        }
+        return courseInfos;
     }
 }
