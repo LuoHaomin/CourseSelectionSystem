@@ -1,5 +1,4 @@
 package cn.ustc.edu.course_selection_system.View;
-import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.fxml.FXML;
@@ -10,9 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-import java.io.File;
-
-public class AdminRegisCourse {
+public class AdminRegisCourseController {
 
     @FXML
     private AnchorPane root;
@@ -76,7 +73,7 @@ public class AdminRegisCourse {
     @FXML
     protected void onImportCourseClick() {
         FileChooser chooser=new FileChooser();
-//        chooser.setInitialDirectory(new File("C:\\Users\\Administrator\\Pictures"));   //设置初始路径，默认为我的电脑
+
         chooser.setTitle("打开图片");                //设置窗口标题，默认为“打开”
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("PNG", "*.png"));
@@ -86,4 +83,11 @@ public class AdminRegisCourse {
         }
         catch (Exception ignore) {}
     }
+    @FXML
+    protected void onBackClick() {}
+
+    private void GetData(){
+
+    }
+
 }
