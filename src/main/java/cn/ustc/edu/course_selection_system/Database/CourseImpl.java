@@ -6,7 +6,7 @@ import org.hibernate.SessionFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseEditorImpl{
+public class CourseImpl {
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     /**
@@ -127,4 +127,17 @@ public class CourseEditorImpl{
         });
     }
 
+    public List<CourseEntity> getAllCourses(){
+        return null;
+    }
+
+    /**
+     *
+     * @param page
+     * @param limit maximum items in a page
+     * @return
+     */
+    public List<CourseEntity> getAllCourses(int page, int limit){
+        return null;
+    }
 }

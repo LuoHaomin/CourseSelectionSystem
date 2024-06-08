@@ -140,11 +140,18 @@ public class TeacherChangeScoreController {
             for( tableline row: items)
             {
                 String studentid=row.getID();
-                double score=Double.parseDouble(row.getTextField().getText());
+                double score;
+                try {
+                    score = Double.parseDouble(row.getTextField().getText());
+                }
+                catch(Exception exception)
+                {
+                    return;
+                }
                 studentscore.add(new Pair<>(studentid,score));
             }
             TeacherService teacherService = new TeacherService(teacherid);
-            if(teacherService.excellentRate(studentscore)) {
+            if(!teacherService.excellentRate(courseid,studentscore)) {
                 teacherService.importStudentsScore(courseid, studentscore);
             }
             else {

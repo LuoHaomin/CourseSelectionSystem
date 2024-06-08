@@ -3,17 +3,14 @@ package cn.ustc.edu.course_selection_system.Service;
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
-import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
+import cn.ustc.edu.course_selection_system.Database.CourseImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 import cn.ustc.edu.course_selection_system.Database.TeacherCourse;
 import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
-import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 
 public class TeacherService {
     String id;
@@ -40,7 +37,7 @@ public class TeacherService {
     public List<CourseEntity> getRelatedCourse() {
         TeacherCourse teacherCourse = new TeacherCourse();
         List<TeacherCourseEntity> list =  teacherCourse.GetTeachingCourseList(id);
-        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        CourseImpl courseEditor = new CourseImpl();
         List<CourseEntity> courseEntityList = new ArrayList<CourseEntity>();
 
         for (TeacherCourseEntity teacherCourseEntity : list) {
@@ -52,13 +49,13 @@ public class TeacherService {
     }
 
     public boolean AddCourse(CourseEntity courseInfo){
-        CourseEditorImpl courseEditor  = new CourseEditorImpl();
+        CourseImpl courseEditor  = new CourseImpl();
         courseEditor.AddCourse(courseInfo);
         return true;
     }
 
     public boolean delCourse(int course_id){
-        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        CourseImpl courseEditor = new CourseImpl();
         try{
             courseEditor.DelCourse(course_id);
             //TODO?

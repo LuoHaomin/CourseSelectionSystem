@@ -57,7 +57,14 @@ public class NameandPasswordController {
             }
             if(idname.getValue() =="student")//该用户是学生
             {
-
+                FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentCourseList.fxml"));
+                Parent root=loader.load();
+                StudentCourseListController studentCourseListController=loader.getController();
+                studentCourseListController.start(idname.getKey());
+                Stage stage=(Stage) login.getScene().getWindow();
+                Scene scene=new Scene(root,600,400);
+                stage.setScene(scene);
+                stage.show();
             }
     }
 
