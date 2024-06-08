@@ -8,6 +8,8 @@ import cn.ustc.edu.course_selection_system.Util.Period.*;
 import cn.ustc.edu.course_selection_system.Util.Time.*;
 import javafx.util.Pair;
 
+import static cn.ustc.edu.course_selection_system.Util.Period.getWeek;
+
 public class CourseTable {
 
     List<CourseEntity> list;
@@ -25,11 +27,12 @@ public class CourseTable {
     }
 
 
-    public String[] TimeCourse (String time) {
+    public String[] TimeCourse (String time,String period) {
         String[] dayCourse = new String[7];
         for (CourseEntity course:list)  {
             for (Day day : Day.values()) {
-                if (course.getTime().contains(time)) {
+                if (Period.periodInclude(period,getWeek(course))
+                        && Time.timeInclude(time,Time.detailTime(course))) {
                     if (course.getTime().contains("Mon"))
                         dayCourse[0] = course.getName();
                     else dayCourse[0] = "";

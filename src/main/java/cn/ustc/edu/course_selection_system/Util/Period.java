@@ -33,7 +33,7 @@ public class Period {
         }
         return week;
     }
-    public static Boolean periodCoincide(CourseEntity courseEntity, CourseEntity courseEntity1) {
+    public static boolean periodCoincide(CourseEntity courseEntity, CourseEntity courseEntity1) {
         ArrayList<String> period = getWeek(courseEntity);
         ArrayList<String> period1 = getWeek(courseEntity1);
         for (String i : period) {
@@ -41,5 +41,12 @@ public class Period {
                 if (i.equals(j)) return true;
         }
     return false;
+    }
+
+    public static boolean periodInclude (String period,ArrayList<String> detailPeriod) {
+        for (String detail : detailPeriod) {
+            if (period.equals(detail)) return true;
+        }
+        return false;
     }
 }
