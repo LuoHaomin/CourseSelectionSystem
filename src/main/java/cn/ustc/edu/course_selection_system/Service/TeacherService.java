@@ -75,6 +75,7 @@ public class TeacherService {
         return scorelist.size();
     }
 
+
     public boolean changeScore(Integer courseID,Pair<String,Double> score){
         StudentCourse studentCourse = new StudentCourse();
         studentCourse.ChangeScore(score.getKey(),courseID,score.getValue());
@@ -94,4 +95,9 @@ public class TeacherService {
         return false;
     }
 
+    public double GetScore(Integer courseID,String studentID) {
+        StudentCourse studentCourse = new StudentCourse();
+
+        return studentCourse.GetStudentScore(studentID,courseID);
+    }
 }
