@@ -42,6 +42,11 @@
                   <Font size="18.0" />
                </font>
             </RadioButton>
+            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="53.0" prefWidth="178.0" text="培养方案" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
             <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="55.0" prefWidth="178.0" text="查看成绩" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
