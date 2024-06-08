@@ -11,11 +11,13 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 
 public class TeacherService {
     String id;
 
-    public static final float EXCELLENT = 3.7f;
+    public static final float EXCELLENT = 85f;
     public static final float LIMIT = 0.4f;
 
     public TeacherService(String id) {
@@ -75,10 +77,12 @@ public class TeacherService {
         return false;
     }
 
-  /*  public boolean excellentRate (Integer courseID,List< Pair<String,Float> > scorelist) {
+    public boolean excellentRate (Integer courseID) {
+        StudentCourse studentCourse = new StudentCourse();
+        List<String> studentList = studentCourse.GetStudentList(courseID);
         int excellent = 0,sum = 0;
-        for (Pair<String,Float> score : scorelist) {
-            if (score.getValue() >= EXCELLENT) excellent++;
+        for (String student: studentList) {
+            if (studentCourse.GetStudentScore(student,courseID) >= EXCELLENT) excellent++;
             sum++;
         }
         if ((float) excellent/sum > LIMIT) {
@@ -86,5 +90,5 @@ public class TeacherService {
         }
         return false;
     }
-*/
+
 }
