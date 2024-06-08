@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -82,7 +83,28 @@ public class StudentCourseListController {
     @FXML
     public void HandleCourseList(ActionEvent event) throws IOException
     {}
-    @
+    class tableline
+    {
+        String Monday;
+        String Tuesday;
+        String Thursday;
+        String Wednesday;
+        String Friday;
+        String Saturday;
+        String Sunday;
+        public tableline(String Monday,String Tuesday,String Wednesday,String Thursday,String Friday,String Saturday,String Sunday)
+        {
+            this.Monday=Monday;
+            this.Tuesday=Tuesday;
+            this.Wednesday=Wednesday;
+            this.Thursday=Thursday;
+            this.Friday=Friday;
+            this.Saturday=Saturday;
+            this.Sunday=Sunday;
+        }
+    }
+    @FXML
+    private TableView<tableline> table;
     public void start(String id)
     {
         this.id=id;

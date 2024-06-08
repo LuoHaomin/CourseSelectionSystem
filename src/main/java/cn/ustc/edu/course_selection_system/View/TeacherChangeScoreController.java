@@ -137,12 +137,15 @@ public class TeacherChangeScoreController {
         {
             List<Pair<String,Double>> studentscore=new ArrayList<>();
             ObservableList<tableline> items=table.getItems();
+            TeacherService teacherService=new TeacherService(teacherid);
             for( tableline row: items)
             {
                 String studentid=row.getID();
                 double score;
                 try {
-                    score = Double.parseDouble(row.getTextField().getText());
+                    if(row.getTextField().getText()=="")
+                        score=teacherService.GetScore(courseid,studentid);
+                    else score = Double.parseDouble(row.getTextField().getText());
                 }
                 catch(Exception exception)
                 {
@@ -150,7 +153,6 @@ public class TeacherChangeScoreController {
                 }
                 studentscore.add(new Pair<>(studentid,score));
             }
-            TeacherService teacherService = new TeacherService(teacherid);
             if(!teacherService.excellentRate(courseid,studentscore)) {
                 teacherService.importStudentsScore(courseid, studentscore);
             }
