@@ -11,4 +11,10 @@ public class MajorCourseTest {
         disciplinaryPlanData.AddDisciplinaryPlan("软件工程", "Java");
         disciplinaryPlanData.AddDisciplinaryPlan("软件工程", "Python");
     }
+
+    @Test
+    public void testGetDisciplinaryPlan() {
+        DisciplinaryPlanData disciplinaryPlanData = new DisciplinaryPlanData();
+        System.out.println(disciplinaryPlanData.GetDisciplinaryPlan("软件工程"));
+    }
 }
