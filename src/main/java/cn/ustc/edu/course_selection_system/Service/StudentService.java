@@ -151,6 +151,7 @@ public class StudentService
         else if (score > 84 && score < 90) return 3.7f;
         else if (score > 89 && score < 95) return 4.0f;
         else if (score > 94 && score <= 100) return 4.3f;
+        return 0.0f;
     }
 
     public double generalGPA () {
