@@ -34,7 +34,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="137.0" layoutY="66.0" prefHeight="317.0" prefWidth="383.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="130.0" layoutY="62.0" prefHeight="317.0" prefWidth="383.0">
          <content>
             <TableView fx:id="Table" prefHeight="317.0" prefWidth="383.0">
               <columns>
