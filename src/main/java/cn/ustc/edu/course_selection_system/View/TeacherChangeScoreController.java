@@ -143,7 +143,12 @@ public class TeacherChangeScoreController {
                 double score=Double.parseDouble(row.getTextField().getText());
                 studentscore.add(new Pair<>(studentid,score));
             }
-            TeacherService teacherService=new TeacherService(teacherid);
-            teacherService.importStudentsScore(courseid,studentscore);
+            TeacherService teacherService = new TeacherService(teacherid);
+            if(teacherService.excellentRate(studentscore)) {
+                teacherService.importStudentsScore(courseid, studentscore);
+            }
+            else {
+                wrong.setVisible(true);
+            }
         }
     }

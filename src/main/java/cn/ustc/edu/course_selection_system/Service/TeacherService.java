@@ -7,6 +7,7 @@ import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 import cn.ustc.edu.course_selection_system.Database.TeacherCourse;
 import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
+import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -58,9 +59,15 @@ public class TeacherService {
 
     public boolean delCourse(int course_id){
         CourseEditorImpl courseEditor = new CourseEditorImpl();
-        courseEditor.DelCourse(course_id);
-        //TODO: 关联键
-        return false;
+        try{
+            courseEditor.DelCourse(course_id);
+            //TODO?
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public int importStudentsScore(Integer courseID,List< Pair<String,Double> > scorelist){
@@ -77,16 +84,15 @@ public class TeacherService {
         return false;
     }
 
-    public boolean excellentRate (Integer courseID) {
+    public boolean excellentRate (int courseID,List<Pair<String,Double>> scorelist) {
         StudentCourse studentCourse = new StudentCourse();
-        List<String> studentList = studentCourse.GetStudentList(courseID);
-        int excellent = 0,sum = 0;
-        for (String student: studentList) {
-            if (studentCourse.GetStudentScore(student,courseID) >= EXCELLENT) excellent++;
-            sum++;
-        }
+        CourseService courseService = new CourseService(courseID);
+        int excellent = 0;
+        Integer sum = courseService.GetNumberOfStudentsInCourse();
+        for (Pair<String, Double> score : scorelist)
+            if (score.getValue() >= EXCELLENT) excellent++;
         if ((float) excellent/sum > LIMIT) {
-            return true;
+            return true; //此处表示超过了优秀率限制
         }
         return false;
     }
