@@ -111,7 +111,7 @@ public class AdminService {
         return 0;
     }
 
-    @Deprecated
+
     public List<CourseInfo>  getCourseInfoList(Integer page,Integer Limit){
         TeacherCourse teacherCourse = new TeacherCourse();
         CourseImpl courseEditorImpl = new CourseImpl();
@@ -126,6 +126,11 @@ public class AdminService {
         return courseInfos;
     }
 
+
+    public int getNumberOfCourses(){
+        CourseImpl courseEditorImpl = new CourseImpl();
+        return courseEditorImpl.getNumberOfCourses();
+    }
 
     /**
      * 获得课程完整信息

@@ -58,7 +58,7 @@ public class StudentCourseListController {
             FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentHandleCourse.fxml"));
             Parent root=loader.load();
             StudentHandleCourseController studentHandleCourseController =loader.getController();
-            studentHandleCourseController.start(id);
+//            studentHandleCourseController.start(id);
             Stage stage=(Stage) Course.getScene().getWindow();
             Scene scene=new Scene(root,600,400);
             stage.setScene(scene);
@@ -73,7 +73,7 @@ public class StudentCourseListController {
             FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentScore.fxml"));
             Parent root=loader.load();
             StudentScoreController studentScoreController =loader.getController();
-            studentScoreController.start(id);
+//            studentScoreController.start(id);
             Stage stage=(Stage) Score.getScene().getWindow();
             Scene scene=new Scene(root,600,400);
             stage.setScene(scene);

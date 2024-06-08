@@ -12,5 +12,24 @@ public class CourseInfo {
         this.teacherEntity = teacherEntity;
     }
 
+    public String getCourseName() {
+        return courseEntity.getName();
+    }
+    public String getTeacher() {
+        StringBuilder teacher = new StringBuilder();
+        for (TeacherEntity teacherEntity : teacherEntity) {
+            teacher.append(",").append(teacherEntity.getName());
+        }
+        return teacher.toString();
+    }
+    public String getTime() {
+        return courseEntity.getTime();
+    }
+    public String getPeriod() {
+        return courseEntity.getPeriods();
+    }
+    public Double getCredit(){
+        return courseEntity.getCredit();
+    }
 
 }
