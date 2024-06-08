@@ -80,7 +80,7 @@ public class TeacherService {
 
     public boolean excellentRate (int courseID,List<Pair<String,Double>> scorelist) {
         StudentCourse studentCourse = new StudentCourse();
-        CourseService courseService = new CourseService();
+        CourseService courseService = new CourseService(courseID);
         int excellent = 0;
         Integer sum = courseService.GetNumberOfStudentsInCours(courseID);
         for (Pair<String, Double> score : scorelist)
