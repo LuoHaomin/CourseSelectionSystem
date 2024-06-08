@@ -131,6 +131,10 @@ public class CourseImpl {
         return null;
     }
 
+    public Integer getNumberOfCourses(){
+        return 1;
+    }
+
     /**
      *
      * @param page
