@@ -139,7 +139,7 @@ public class StudentCourseListController {
         String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
         for(int i=1;i<=13;i++)
         {
-            List<String> timecourse=courseTable.TimeCourse("1",time[i]);
+            List<String> timecourse=courseTable.TimeCourse(time[i],"1");
             table.getItems().add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
     }
@@ -161,7 +161,7 @@ public class StudentCourseListController {
         String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
         for(int i=1;i<=13;i++)
         {
-            List<String> timecourse=courseTable.TimeCourse(Week,time[i]);
+            List<String> timecourse=courseTable.TimeCourse(time[i],Week);
             table.getItems().add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
     }
