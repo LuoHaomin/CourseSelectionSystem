@@ -25,31 +25,31 @@ public class CourseTable {
     }
 
 
-    public List<String> TimeCourse (String time) {
-        List<String> dayCourse = new ArrayList<>();
+    public String[] TimeCourse (String time) {
+        String[] dayCourse = new String[7];
         for (CourseEntity course:list)  {
             for (Day day : Day.values()) {
                 if (course.getTime().contains(time)) {
                     if (course.getTime().contains("Mon"))
-                        dayCourse.add(course.getName());
+                        dayCourse[0] = course.getName();
                     else dayCourse.add("");
                     if (course.getTime().contains("Tue"))
-                        dayCourse.add(course.getName());
+                        dayCourse[1] = course.getName();
                     else dayCourse.add("");
                     if (course.getTime().contains("Wed"))
-                        dayCourse.add(course.getName());
+                        dayCourse[2] = course.getName();
                     else dayCourse.add("");
                     if (course.getTime().contains("Thr"))
-                        dayCourse.add(course.getName());
+                        dayCourse[3] = course.getName();
                     else dayCourse.add("");
                     if (course.getTime().contains("Fri"))
-                        dayCourse.add(course.getName());
+                        dayCourse[4] = course.getName();
                     else dayCourse.add("");
                     if (course.getTime().contains("Sar"))
-                        dayCourse.add(course.getName());
+                        dayCourse[5] = course.getName();
                     else dayCourse.add("");
                     if (course.getTime().contains("Sun"))
-                        dayCourse.add(course.getName());
+                        dayCourse[6] = course.getName();
                     else dayCourse.add("");
                 }
             }
