@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Database;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -127,21 +128,44 @@ public class CourseImpl {
         });
     }
 
-    public List<CourseEntity> getAllCourses(){
-        return null;
+    /**
+     * Get the number of courses in the database
+     * @return the number of courses
+     */
+    public Integer getNumberOfCourses(){
+        List<Long> integers = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            Long _integer = session.createQuery("select count(*) from CourseEntity", Long.class)
+                    .getSingleResult();
+            integers.add(_integer);
+        });
+        return integers.get(0).intValue();
     }
 
-    public Integer getNumberOfCourses(){
-        return 1;
+    @Deprecated
+    public List<CourseEntity> getAllCourses(){
+        List<CourseEntity> courseEntities = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            courseEntities.addAll(session.createQuery("from CourseEntity", CourseEntity.class)
+                    .getResultList());
+        });
+        return courseEntities;
     }
 
     /**
-     *
-     * @param page
+     * Get all courses in the database
+     * @param page the page number
      * @param limit maximum items in a page
-     * @return
+     * @return a list of courses
      */
     public List<CourseEntity> getAllCourses(int page, int limit){
-        return null;
+        List<CourseEntity> courseEntities = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            courseEntities.addAll(session.createQuery("from CourseEntity", CourseEntity.class)
+                    .setFirstResult((page) * limit)
+                    .setMaxResults(limit)
+                    .getResultList());
+        });
+        return courseEntities;
     }
 }
