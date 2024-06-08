@@ -40,7 +40,7 @@ public class AdminService {
      * @return 成功导入个数
      */
 	public int ImportCourse(List<CourseEntity> courseInfos) {
-        CourseEditorImpl courseEditorImpl = new CourseEditorImpl();
+        CourseImpl courseEditorImpl = new CourseImpl();
         for(CourseEntity info : courseInfos){
             courseEditorImpl.AddCourse(info);
         }
@@ -111,8 +111,23 @@ public class AdminService {
         return 0;
     }
 
-    public List<CourseInfo>  getCourseInfoList(Integer page,Integer ItemsPerPage){
-        return null;
+    public List<CourseInfo>  getCourseInfoList(Integer page,Integer Limit){
+        TeacherCourse teacherCourse = new TeacherCourse();
+        CourseImpl course = new CourseImpl();
+        TeacherImpl teacherImpl = new TeacherImpl();
+        List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList(page, Limit);
+
+        return getCourseInfos(course, teacherImpl, list);
+    }
+
+    private List<CourseInfo> getCourseInfos(CourseImpl courseEditorImpl, TeacherImpl teacherImpl, List<TeacherCourseEntity> list) {
+        List<CourseInfo> courseInfos = new ArrayList<>();
+
+        for(TeacherCourseEntity info : list){
+            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
+            courseInfos.add(courseInfo);
+        }
+        return courseInfos;
     }
 
     /**
@@ -121,17 +136,10 @@ public class AdminService {
      */
     public List<CourseInfo>  getCourseInfoList(){
         TeacherCourse teacherCourse = new TeacherCourse();
-        CourseEditorImpl courseEditorImpl = new CourseEditorImpl();
+        CourseImpl courseEditorImpl = new CourseImpl();
         TeacherImpl teacherImpl = new TeacherImpl();
         List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList();
 
-        List<CourseInfo> courseInfos = new ArrayList<>();
-
-
-        for(TeacherCourseEntity info : list){
-            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
-            courseInfos.add(courseInfo);
-        }
-        return courseInfos;
+        return getCourseInfos(courseEditorImpl, teacherImpl, list);
     }
 }

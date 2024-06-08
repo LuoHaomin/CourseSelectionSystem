@@ -1,7 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
+import cn.ustc.edu.course_selection_system.Database.CourseImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 
 import java.util.List;
@@ -31,12 +31,12 @@ public class CourseService {
      * @return 课程信息
      */
     public CourseEntity GetCourseInfo(){
-        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        CourseImpl courseEditor = new CourseImpl();
         return courseEditor.GetCourseInfo(id);
     }
 
     public Integer GetNumberOfStudentsInCourse(){
-        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        CourseImpl courseEditor = new CourseImpl();
         return courseEditor.GetNumberOfStudentsInCourse(id);
     }
 }
