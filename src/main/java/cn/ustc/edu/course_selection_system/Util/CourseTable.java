@@ -42,7 +42,7 @@ public class CourseTable {
                     if (course.getTime().contains("Wed"))
                         dayCourse[2] = course.getName();
                     else dayCourse[2] = "";
-                    if (course.getTime().contains("Thr"))
+                    if (course.getTime().contains("Thu"))
                         dayCourse[3] = course.getName();
                     else dayCourse[2] = "";
                     if (course.getTime().contains("Fri"))
