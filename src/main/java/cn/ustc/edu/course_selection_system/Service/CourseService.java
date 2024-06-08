@@ -1,9 +1,13 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Database.CourseImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
+import cn.ustc.edu.course_selection_system.Database.TeacherCourse;
+import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseService {
@@ -38,5 +42,42 @@ public class CourseService {
     public Integer GetNumberOfStudentsInCourse(){
         CourseImpl courseEditor = new CourseImpl();
         return courseEditor.GetNumberOfStudentsInCourse(id);
+    }
+
+    public static List<CourseInfo>  getCourseInfoList(Integer page, Integer Limit){
+        TeacherCourse teacherCourse = new TeacherCourse();
+        CourseImpl courseEditorImpl = new CourseImpl();
+        TeacherImpl teacherImpl = new TeacherImpl();
+
+        List<CourseEntity> Course = courseEditorImpl.getAllCourses(page, Limit);
+        List<CourseInfo> courseInfos = new ArrayList<>();
+        for(CourseEntity info : Course){
+            CourseInfo courseInfo = new CourseInfo(info,teacherCourse.GetTeachersOfCourse(info.getId()));
+            courseInfos.add(courseInfo);
+        }
+        return courseInfos;
+    }
+
+
+    public static int getNumberOfCourses(){
+        CourseImpl courseEditorImpl = new CourseImpl();
+        return courseEditorImpl.getNumberOfCourses();
+    }
+
+    /**
+     * 获得课程完整信息
+     * @return 课程完整信息
+     */
+    public static List<CourseInfo>  getCourseInfoList(){
+        TeacherCourse teacherCourse = new TeacherCourse();
+        CourseImpl courseEditorImpl = new CourseImpl();
+
+        List<CourseEntity> Course = courseEditorImpl.getAllCourses();
+        List<CourseInfo> courseInfos = new ArrayList<>();
+        for(CourseEntity info : Course){
+            CourseInfo courseInfo = new CourseInfo(info,teacherCourse.GetTeachersOfCourse(info.getId()));
+            courseInfos.add(courseInfo);
+        }
+        return courseInfos;
     }
 }

@@ -2,6 +2,7 @@ package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Service.AdminService;
+import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -74,15 +75,13 @@ public class AdminCourseListController {
 
 
     private void setupPaging(){
-        AdminService adminService = new AdminService();
 
-        Paging.setPageCount((int) Math.ceil((double) adminService.getNumberOfCourses() / PageSize));
+        Paging.setPageCount((int) Math.ceil((double) CourseService.getNumberOfCourses() / PageSize));
         Paging.setPageFactory(this::Paging);
     }
 
     ObservableList<CourseInfo> GetData(Integer page, Integer pageSize){
-        AdminService adminService = new AdminService();
-        return FXCollections.observableArrayList(adminService.getCourseInfoList(page,pageSize));
+        return FXCollections.observableArrayList(CourseService.getCourseInfoList(page,pageSize));
     }
 
     private TableView<CourseInfo> Paging(Integer index) {

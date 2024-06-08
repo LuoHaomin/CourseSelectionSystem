@@ -94,7 +94,7 @@ public class StudentCourseListController {
             FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentProgram.fxml"));
             Parent root=loader.load();
             StudentProgramController studentProgramController =loader.getController();
-            studentProgramController.start(id);
+//            studentProgramController.start(id);
             Stage stage=(Stage) Program.getScene().getWindow();
             Scene scene=new Scene(root,600,400);
             stage.setScene(scene);
