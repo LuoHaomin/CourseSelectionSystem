@@ -38,5 +38,9 @@ public class TeacherTest {
         teacherImpl.updateTeacher(teacher);
     }
 
-
+    @Test
+    public void testDeleteTeacher(){
+        TeacherImpl teacherImpl = new TeacherImpl();
+        teacherImpl.deleteTeacher("1");
+    }
 }

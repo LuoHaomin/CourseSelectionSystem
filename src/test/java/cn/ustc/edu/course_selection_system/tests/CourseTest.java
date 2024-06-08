@@ -12,7 +12,8 @@ public class CourseTest {
     @Test
     public void testAddCourse(){
         CourseImpl courseEditor = new CourseImpl();
-        courseEditor.AddCourse("数分", "周一", 3, "1-14周", 80);
+        courseEditor.AddCourse("数分", "周一", 6, "1-14周", 100);
+        courseEditor.AddCourse("线代", "周二", 3, "1-14周", 80);
     }
 
     @Test
@@ -51,5 +52,12 @@ public class CourseTest {
         CourseEntity course = courseEditor.GetCourseInfo(3);
         course.setCapacity(100);
         courseEditor.UpdateCourseInfo(3, "数分", "周一", 3, "1-14周", 100);
+    }
+
+    @Test
+    public void testGetNumberOfCourses(){
+        CourseImpl course = new CourseImpl();
+        int i = course.getNumberOfCourses();
+        System.out.println(i);
     }
 }
