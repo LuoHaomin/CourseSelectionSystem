@@ -68,10 +68,11 @@ public class TeacherService {
     }
 
     public boolean excellentRate (Integer courseID) {
-        List<String> studentList = StudentCourse.GetStudentList(courseID);
+        StudentCourse studentCourse = new StudentCourse();
+        List<String> studentList = studentCourse.GetStudentList(courseID);
         int excellent = 0,sum = 0;
         for (String student: studentList) {
-            if (StudentCourse.GetStudentScore(student,courseID) >= EXCELLENT) excellent++;
+            if (studentCourse.GetStudentScore(student,courseID) >= EXCELLENT) excellent++;
             sum++;
         }
         if ((float) excellent/sum > LIMIT) {
