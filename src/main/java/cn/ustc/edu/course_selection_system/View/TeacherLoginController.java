@@ -57,7 +57,7 @@ public class TeacherLoginController {
         Button btgo;
         public tableline(CourseEntity courseEntity)
         {
-           coursename=courseEntity.getNumber();
+           coursename=courseEntity.getName();
             btgo=new Button("前往"+coursename);
             btgo.setOnAction(e -> {
                         FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherWelcome.fxml"));
