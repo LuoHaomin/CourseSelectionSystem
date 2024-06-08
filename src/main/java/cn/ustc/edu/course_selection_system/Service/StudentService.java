@@ -8,6 +8,7 @@ import cn.ustc.edu.course_selection_system.Database.DisciplinaryPlanData;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
 import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
+
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -134,6 +135,34 @@ public class StudentService
             score.add(new Pair<>(courseEntity.getName(), studentCourse.GetStudentScore(id, courseEntity.getId())));
         }
         return score;
+    }
+
+    public float translateGPA (double score){
+        if (score < 60) return 0.0f;
+        else if (score == 60) return 1.0f;
+        else if (score > 60 && score <64) return 1.3f;
+        else if (score == 64) return 1.5f;
+        else if (score > 64 && score < 68) return 1.7f;
+        else if (score > 67 && score < 72) return 2.0f;
+        else if (score > 71 && score < 75) return 2.3f;
+        else if (score > 74 && score < 78) return 2.7f;
+        else if (score > 77 && score < 82) return 3.0f;
+        else if (score > 81 && score < 85) return 3.3f;
+        else if (score > 84 && score < 90) return 3.7f;
+        else if (score > 89 && score < 95) return 4.0f;
+        else if (score > 94 && score <= 100) return 4.3f;
+    }
+
+    public double generalGPA () {
+        StudentCourse studentCourse = new StudentCourse();
+        double totalGPA = 0,totalCredit = 0,generalGPA = 0;
+        List<CourseEntity> courseEntityList = studentCourse.GetChosenCourseList(id);
+        for (CourseEntity course : courseEntityList) {
+            totalGPA += course.getCredit()*studentCourse.GetStudentScore(id,course.getId());
+            totalCredit += course.getCredit();
+        }
+        generalGPA = totalGPA/totalCredit;
+        return generalGPA;
     }
 
 }
