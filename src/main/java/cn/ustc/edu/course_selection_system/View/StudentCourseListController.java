@@ -82,7 +82,7 @@ public class StudentCourseListController {
     @FXML
     public void HandleCourseList(ActionEvent event) throws IOException
     {}
-    @
+    @FXML
     public void start(String id)
     {
         this.id=id;
