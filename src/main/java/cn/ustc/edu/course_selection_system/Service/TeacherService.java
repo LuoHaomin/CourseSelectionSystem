@@ -59,9 +59,15 @@ public class TeacherService {
 
     public boolean delCourse(int course_id){
         CourseEditorImpl courseEditor = new CourseEditorImpl();
-        courseEditor.DelCourse(course_id);
-        //TODO: 关联键
-        return false;
+        try{
+            courseEditor.DelCourse(course_id);
+            //TODO?
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public int importStudentsScore(Integer courseID,List< Pair<String,Double> > scorelist){
