@@ -3,12 +3,23 @@ package cn.ustc.edu.course_selection_system.Database;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeacherImpl{
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-    public TeacherEntity getTeacher(String teacher_id){
 
-        return null;
+    public TeacherEntity getTeacher(String teacher_id){
+        List<TeacherEntity> teachers = new ArrayList<>();
+        sessionFactory.inTransaction(session -> {
+            List<TeacherEntity> _teachers = session.createQuery("from TeacherEntity where id = :id",
+                            TeacherEntity.class)
+                    .setParameter("id", teacher_id)
+                    .getResultList();
+            teachers.addAll(_teachers);
+        });
+        return teachers.get(0);
     }
 
     /**

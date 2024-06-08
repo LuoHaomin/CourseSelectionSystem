@@ -8,7 +8,7 @@ import java.util.List;
 public class PasswordCheckerImpl{
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-    //TODO:
+    @Deprecated
     public boolean isPasswordCorrect(String id, String password) {
         List<Boolean> result = new ArrayList<>();
         sessionFactory.inSession(session -> {

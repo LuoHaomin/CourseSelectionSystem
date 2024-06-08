@@ -59,9 +59,15 @@ public class TeacherService {
 
     public boolean delCourse(int course_id){
         CourseEditorImpl courseEditor = new CourseEditorImpl();
-        courseEditor.DelCourse(course_id);
-        //TODO: 关联键
-        return false;
+        try{
+            courseEditor.DelCourse(course_id);
+            //TODO?
+            return true;
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public int importStudentsScore(Integer courseID,List< Pair<String,Double> > scorelist){
@@ -86,7 +92,7 @@ public class TeacherService {
         for (Pair<String, Double> score : scorelist)
             if (score.getValue() >= EXCELLENT) excellent++;
         if ((float) excellent/sum > LIMIT) {
-            return true;
+            return true; //此处表示超过了优秀率限制
         }
         return false;
     }
