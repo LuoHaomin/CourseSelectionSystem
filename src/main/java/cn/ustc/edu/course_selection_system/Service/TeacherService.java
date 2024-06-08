@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
@@ -8,6 +9,7 @@ import cn.ustc.edu.course_selection_system.Database.TeacherCourse;
 import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherService {
@@ -34,7 +36,16 @@ public class TeacherService {
 
     public List<CourseEntity> getRelatedCourse() {
         TeacherCourse teacherCourse = new TeacherCourse();
-        return teacherCourse.GetTeachingCourseList(id);
+        List<TeacherCourseEntity> list =  teacherCourse.GetTeachingCourseList(id);
+        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        List<CourseEntity> courseEntityList = new ArrayList<CourseEntity>();
+
+        for (TeacherCourseEntity teacherCourseEntity : list) {
+            CourseEntity courseEntity = courseEditor.GetCourseInfo(teacherCourseEntity.getCourseId());
+            courseEntityList.add(courseEntity);
+        }
+
+        return courseEntityList;
     }
 
     public boolean AddCourse(CourseEntity courseInfo){
