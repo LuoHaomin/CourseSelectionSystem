@@ -27,37 +27,37 @@ public class CourseTable {
     }
 
 
-    public String[] TimeCourse (String time,String period) {
-        String[] dayCourse = new String[7];
+    public String[] TimeCourse (String time,String week) {
+        String[] timeCourse = new String[7];
         for (CourseEntity course:list)  {
             for (Day day : Day.values()) {
-                if (Period.periodInclude(period,getWeek(course))
+                if (Period.periodInclude(week,getWeek(course))
                         && Time.timeInclude(time,Time.detailTime(course))) {
                     if (course.getTime().contains("Mon"))
-                        dayCourse[0] = course.getName();
-                    else dayCourse[0] = "";
+                        timeCourse[0] = course.getName();
+                    else timeCourse[0] = "";
                     if (course.getTime().contains("Tue"))
-                        dayCourse[1] = course.getName();
-                    else dayCourse[1] = "";
+                        timeCourse[1] = course.getName();
+                    else timeCourse[1] = "";
                     if (course.getTime().contains("Wed"))
-                        dayCourse[2] = course.getName();
-                    else dayCourse[2] = "";
+                        timeCourse[2] = course.getName();
+                    else timeCourse[2] = "";
                     if (course.getTime().contains("Thu"))
-                        dayCourse[3] = course.getName();
-                    else dayCourse[2] = "";
+                        timeCourse[3] = course.getName();
+                    else timeCourse[2] = "";
                     if (course.getTime().contains("Fri"))
-                        dayCourse[4] = course.getName();
-                    else dayCourse[4] = "";
+                        timeCourse[4] = course.getName();
+                    else timeCourse[4] = "";
                     if (course.getTime().contains("Sar"))
-                        dayCourse[5] = course.getName();
-                    else dayCourse[5] = "";
+                        timeCourse[5] = course.getName();
+                    else timeCourse[5] = "";
                     if (course.getTime().contains("Sun"))
-                        dayCourse[6] = course.getName();
-                    else dayCourse[6] = "";
+                        timeCourse[6] = course.getName();
+                    else timeCourse[6] = "";
                 }
             }
         }
-        return dayCourse;
+        return timeCourse;
     }
 
 
