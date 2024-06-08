@@ -159,7 +159,7 @@ public class StudentService
         double totalGPA = 0,totalCredit = 0,generalGPA = 0;
         List<CourseEntity> courseEntityList = studentCourse.GetChosenCourseList(id);
         for (CourseEntity course : courseEntityList) {
-            totalGPA += course.getCredit()*studentCourse.GetStudentScore(id,course.getId());
+            totalGPA += course.getCredit()*translateGPA(studentCourse.GetStudentScore(id,course.getId()));
             totalCredit += course.getCredit();
         }
         generalGPA = totalGPA/totalCredit;
