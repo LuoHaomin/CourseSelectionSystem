@@ -50,12 +50,7 @@ public class CourseService {
         TeacherImpl teacherImpl = new TeacherImpl();
 
         List<CourseEntity> Course = courseEditorImpl.getAllCourses(page, Limit);
-        List<CourseInfo> courseInfos = new ArrayList<>();
-        for(CourseEntity info : Course){
-            CourseInfo courseInfo = new CourseInfo(info,teacherCourse.GetTeachersOfCourse(info.getId()));
-            courseInfos.add(courseInfo);
-        }
-        return courseInfos;
+        return getCourseInfos(Course, teacherCourse);
     }
 
 
@@ -73,11 +68,21 @@ public class CourseService {
         CourseImpl courseEditorImpl = new CourseImpl();
 
         List<CourseEntity> Course = courseEditorImpl.getAllCourses();
+
+        return getCourseInfos(Course, teacherCourse);
+    }
+
+    private static List<CourseInfo> getCourseInfos(List<CourseEntity> Course, TeacherCourse teacherCourse) {
         List<CourseInfo> courseInfos = new ArrayList<>();
         for(CourseEntity info : Course){
-            CourseInfo courseInfo = new CourseInfo(info,teacherCourse.GetTeachersOfCourse(info.getId()));
+            CourseInfo courseInfo = new CourseInfo(info, teacherCourse.GetTeachersOfCourse(info.getId()));
             courseInfos.add(courseInfo);
         }
         return courseInfos;
+    }
+
+    public List<CourseInfo> GetCourseInfoByName(String courseName){
+        CourseImpl courseEditorImpl = new CourseImpl();
+        return getCourseInfos(courseEditorImpl.FindByCourseName(courseName),new TeacherCourse());
     }
 }
