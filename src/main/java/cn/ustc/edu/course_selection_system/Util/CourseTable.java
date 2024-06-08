@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import cn.ustc.edu.course_selection_system.Util.Period.*;
 import cn.ustc.edu.course_selection_system.Util.Time.*;
+import javafx.util.Pair;
 
 public class CourseTable {
 
@@ -24,11 +25,33 @@ public class CourseTable {
     }
 
 
-    public List<CourseEntity> DayCourse (String day) {
-        List<CourseEntity> dayCourse = new ArrayList<>();
+    public List<String> TimeCourse (String time) {
+        List<String> dayCourse = new ArrayList<>();
         for (CourseEntity course:list)  {
-            if (course.getTime().contains(day)) {
-                dayCourse.add(course);
+            for (Day day : Day.values()) {
+                if (course.getTime().contains(time)) {
+                    if (course.getTime().contains("Mon"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                    if (course.getTime().contains("Tue"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                    if (course.getTime().contains("Wed"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                    if (course.getTime().contains("Thr"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                    if (course.getTime().contains("Fri"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                    if (course.getTime().contains("Sar"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                    if (course.getTime().contains("Sun"))
+                        dayCourse.add(course.getName());
+                    else dayCourse.add("");
+                }
             }
         }
         return dayCourse;

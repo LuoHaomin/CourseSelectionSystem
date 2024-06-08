@@ -9,7 +9,11 @@ import java.util.List;
 public class TeacherImpl{
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-
+    /**
+     * get teacher by his/her id
+     * @param teacher_id teacher's id
+     * @return teacher's TescherEntity
+     */
     public TeacherEntity getTeacher(String teacher_id){
         List<TeacherEntity> teachers = new ArrayList<>();
         sessionFactory.inTransaction(session -> {
