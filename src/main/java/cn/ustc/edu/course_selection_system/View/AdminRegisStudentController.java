@@ -1,4 +1,4 @@
 package cn.ustc.edu.course_selection_system.View;
 
-public class AdminRegisStudent {
+public class AdminRegisStudentController {
 }

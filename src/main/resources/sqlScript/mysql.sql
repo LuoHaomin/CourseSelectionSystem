@@ -66,4 +66,4 @@ create table teacher_course
 create index teacher_course_teacher_id_fk
     on teacher_course (teacher_id);
 
-grant delete, insert, select, update on table test to test;
+# grant delete, insert, select, update on table test to test;

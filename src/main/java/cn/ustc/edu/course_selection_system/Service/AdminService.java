@@ -1,11 +1,10 @@
 package cn.ustc.edu.course_selection_system.Service;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
-import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
+import cn.ustc.edu.course_selection_system.Bean.*;
 import cn.ustc.edu.course_selection_system.Database.*;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminService {
@@ -23,6 +22,11 @@ public class AdminService {
         return infos.size();
     }
 
+    /**
+     * 批量导入教师信息
+     * @param infos 教师信息
+     * @return 成功导入人数
+     */
     public int ImportTeacherID(List<TeacherEntity> infos){
         TeacherImpl teacherImpl = new TeacherImpl();
         for(TeacherEntity info : infos){
@@ -105,5 +109,29 @@ public class AdminService {
      */
     public int DelT_C(Pair<Integer,Integer> T_CList){
         return 0;
+    }
+
+    public List<CourseInfo>  getCourseInfoList(Integer page,Integer ItemsPerPage){
+        return null;
+    }
+
+    /**
+     * 获得课程完整信息
+     * @return 课程完整信息
+     */
+    public List<CourseInfo>  getCourseInfoList(){
+        TeacherCourse teacherCourse = new TeacherCourse();
+        CourseEditorImpl courseEditorImpl = new CourseEditorImpl();
+        TeacherImpl teacherImpl = new TeacherImpl();
+        List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList();
+
+        List<CourseInfo> courseInfos = new ArrayList<>();
+
+
+        for(TeacherCourseEntity info : list){
+            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
+            courseInfos.add(courseInfo);
+        }
+        return courseInfos;
     }
 }

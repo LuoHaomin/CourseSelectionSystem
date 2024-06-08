@@ -57,23 +57,28 @@ public class AdminCourseListController {
 
 
         Time.setCellValueFactory(new PropertyValueFactory<>("Time"));
-//        Teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
         CourseName.setCellValueFactory(new PropertyValueFactory<>("Number"));
+
         setupPaging();
+
         Table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
     @FXML
     void initialize() {
         Start("");
+
+
     }
+
+
 
     private void setupPaging(){
         Paging.setPageCount(1);
         Paging.setPageFactory(this::Paging);
     }
 
-    ObservableList<CourseEntity> data(){
+    ObservableList<CourseEntity> Getdata(){
         List<CourseEntity> data = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
             data.add(new CourseEntity());
@@ -83,12 +88,12 @@ public class AdminCourseListController {
         return list;
     }
 
-
     private TableView<CourseEntity> Paging(Integer index) {
-        Table.setItems(data());
+        Table.setItems(Getdata());
         return Table;
     }
 }
+
 /**
  *     private void loadEquipmentData() {
  *         try (BufferedReader br = new BufferedReader(new FileReader("G:\\Eclipes\\FinalHomework1\\src\\data\\equipment.txt"))) {

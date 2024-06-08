@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import cn.ustc.edu.course_selection_system.Database.CourseEditorImpl;
 import cn.ustc.edu.course_selection_system.Database.StudentCourse;
@@ -37,7 +38,16 @@ public class TeacherService {
 
     public List<CourseEntity> getRelatedCourse() {
         TeacherCourse teacherCourse = new TeacherCourse();
-        return teacherCourse.GetTeachingCourseList(id);
+        List<TeacherCourseEntity> list =  teacherCourse.GetTeachingCourseList(id);
+        CourseEditorImpl courseEditor = new CourseEditorImpl();
+        List<CourseEntity> courseEntityList = new ArrayList<CourseEntity>();
+
+        for (TeacherCourseEntity teacherCourseEntity : list) {
+            CourseEntity courseEntity = courseEditor.GetCourseInfo(teacherCourseEntity.getCourseId());
+            courseEntityList.add(courseEntity);
+        }
+
+        return courseEntityList;
     }
 
     public boolean AddCourse(CourseEntity courseInfo){
@@ -53,9 +63,9 @@ public class TeacherService {
         return false;
     }
 
-    public int importStudentsScore(Integer courseID,List< Pair<String,Float> > scorelist){
+    public int importStudentsScore(Integer courseID,List< Pair<String,Double> > scorelist){
         StudentCourse studentCourse = new StudentCourse();
-        for(Pair<String,Float> score : scorelist) {
+        for(Pair<String,Double> score : scorelist) {
             studentCourse.ChangeScore(score.getKey(),courseID,score.getValue());
         }
         return scorelist.size();
