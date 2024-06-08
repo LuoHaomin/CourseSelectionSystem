@@ -58,7 +58,7 @@ public class TeacherService {
         return scorelist.size();
     }
 
-    public boolean changeScore(Integer courseID,Pair<String,Float> score){
+    public boolean changeScore(Integer courseID,Pair<String,Double> score){
         StudentCourse studentCourse = new StudentCourse();
         studentCourse.ChangeScore(score.getKey(),courseID,score.getValue());
         return false;

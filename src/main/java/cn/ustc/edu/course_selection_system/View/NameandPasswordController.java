@@ -40,7 +40,7 @@ public class NameandPasswordController {
             {
                 wronglabel.setVisible(true);
             }
-            if(idname.getValue() =="admin")//该用户是管理员
+            if(idname.getValue() == "admin")//该用户是管理员
             {
 
             }

@@ -71,7 +71,7 @@ public class TeacherLoginController {
         {
             //加入课程名
             CourseEntity courseEntity=courselist.get(i);
-            String coursename=courseEntity.getNumber();
+            String coursename=courseEntity.getName();
             HBox hBox1=new HBox(10);
             hBox1.getChildren().add(new Label(coursename));
             courseobser.add(hBox1);

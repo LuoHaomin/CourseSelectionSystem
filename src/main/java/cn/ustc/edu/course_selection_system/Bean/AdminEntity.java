@@ -3,7 +3,7 @@ package cn.ustc.edu.course_selection_system.Bean;
 import jakarta.persistence.Entity;
 
 @Entity
-@jakarta.persistence.Table(name = "admin", schema = "hibernate", catalog = "hibernate")
+@jakarta.persistence.Table(name = "admin", schema = "hibernate", catalog = "")
 public class AdminEntity {
     @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     @jakarta.persistence.Id

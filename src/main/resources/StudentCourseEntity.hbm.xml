@@ -15,7 +15,7 @@
             </key-property>
         </composite-id>
         <property name="score">
-            <column name="score" sql-type="float" precision="-1" not-null="true"/>
+            <column name="score" sql-type="double" precision="-1" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

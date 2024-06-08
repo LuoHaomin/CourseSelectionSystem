@@ -9,27 +9,29 @@
 <!--    下面的两行请使用本地数据库用户名和密码-->
     <property name="connection.username">test</property>
     <property name="connection.password">123456</property>
+
     <property name="connection.pool_size">3</property>
     <property name="current_session_context_class">thread</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="format_sql">true</property>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
+    <property name="show_sql">true</property>
+    <property name="highlight_sql">true</property>
     <mapping resource="AdminEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
     <mapping resource="CourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
     <mapping resource="MajorCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity"/>
-    <mapping resource="TeacherEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
     <mapping resource="StudentEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
+    <mapping resource="TeacherEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
     <mapping resource="StudentCourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
+    <mapping resource="TeacherCourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity"/>
 
-
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
 
     <!-- DB schema will be updated if needed -->
 
