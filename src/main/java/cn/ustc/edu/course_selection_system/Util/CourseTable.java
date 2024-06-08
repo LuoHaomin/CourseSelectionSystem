@@ -27,7 +27,6 @@ public class CourseTable {
         return false;
     }
 
-
     public List<String> TimeCourse (String time,String week) {
         String[] timeCourse = new String[7];
         int i = 0;
@@ -44,9 +43,8 @@ public class CourseTable {
             }
             i++;
         }
-        List<String> list = Arrays.asList(timeCourse);
-        return list;
+        List<String> timecourse = Arrays.asList(timeCourse);
+        return timecourse;
     }
-
 
 }
