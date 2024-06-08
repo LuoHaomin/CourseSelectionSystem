@@ -111,8 +111,23 @@ public class AdminService {
         return 0;
     }
 
-    public List<CourseInfo>  getCourseInfoList(Integer page,Integer ItemsPerPage){
-        return null;
+    public List<CourseInfo>  getCourseInfoList(Integer page,Integer Limit){
+        TeacherCourse teacherCourse = new TeacherCourse();
+        CourseEditorImpl courseEditorImpl = new CourseEditorImpl();
+        TeacherImpl teacherImpl = new TeacherImpl();
+        List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList(page, Limit);
+
+        return getCourseInfos(courseEditorImpl, teacherImpl, list);
+    }
+
+    private List<CourseInfo> getCourseInfos(CourseEditorImpl courseEditorImpl, TeacherImpl teacherImpl, List<TeacherCourseEntity> list) {
+        List<CourseInfo> courseInfos = new ArrayList<>();
+
+        for(TeacherCourseEntity info : list){
+            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
+            courseInfos.add(courseInfo);
+        }
+        return courseInfos;
     }
 
     /**
@@ -125,13 +140,6 @@ public class AdminService {
         TeacherImpl teacherImpl = new TeacherImpl();
         List<TeacherCourseEntity> list =teacherCourse.GetTeachingCourseAllList();
 
-        List<CourseInfo> courseInfos = new ArrayList<>();
-
-
-        for(TeacherCourseEntity info : list){
-            CourseInfo courseInfo = new CourseInfo(courseEditorImpl.GetCourseInfo(info.getCourseId()), teacherImpl.getTeacher(info.getTeacherId()));
-            courseInfos.add(courseInfo);
-        }
-        return courseInfos;
+        return getCourseInfos(courseEditorImpl, teacherImpl, list);
     }
 }

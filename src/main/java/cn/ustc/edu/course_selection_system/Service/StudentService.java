@@ -102,10 +102,9 @@ public class StudentService
             return false;
         }
         //判断是否超过人数上限
-        //TODO:我需要courseId
-//        if(courseEditor.GetNumberOfStudentsInCourse()>=courseEntity.getCapacity()){
-//            return false;
-//        }
+        if(courseEditor.GetNumberOfStudentsInCourse(courseId)>=courseEntity.getCapacity()){
+            return false;
+        }
 
         StudentCourse studentCourse = new StudentCourse();
         studentCourse.AddCoursePair(id,courseId);
