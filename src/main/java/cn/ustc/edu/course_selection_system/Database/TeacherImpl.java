@@ -55,6 +55,10 @@ public class TeacherImpl{
         });
     }
 
+    /**
+     * Delete a teacher from the database
+     * @param teacher_id teacher's id
+     */
     public void deleteTeacher(String teacher_id){
         sessionFactory.inTransaction(session -> {
             session.createMutationQuery("delete from TeacherCourseEntity where " +
