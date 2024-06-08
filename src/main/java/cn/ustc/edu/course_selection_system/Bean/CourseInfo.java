@@ -9,4 +9,6 @@ public class CourseInfo {
         this.courseEntity = courseEntity;
         this.teacherEntity = teacherEntity;
     }
+
+
 }
