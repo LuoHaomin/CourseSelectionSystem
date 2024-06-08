@@ -67,9 +67,8 @@
           <TableColumn fx:id="CourseName" prefWidth="85.60003662109375" text="课程名称" />
             <TableColumn fx:id="Time" prefWidth="82.4000244140625" text="课程时间" />
           <TableColumn fx:id="Teacher" minWidth="0.0" prefWidth="64.79998779296875" text="授课老师" />
-            <TableColumn prefWidth="38.39996337890625" text="学分" />
-            <TableColumn prefWidth="81.60000610351562" text="时间" />
-            <TableColumn prefWidth="44.0" text="时段" />
+            <TableColumn fx:id="Credit" prefWidth="38.39996337890625" text="学分" />
+            <TableColumn fx:id="Period" prefWidth="44.0" text="时段" />
         </columns>
       </TableView>
       <Button fx:id="AddCourse" layoutX="532.0" layoutY="367.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="52.0" text="导入">
