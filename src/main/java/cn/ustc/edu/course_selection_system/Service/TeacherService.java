@@ -82,7 +82,7 @@ public class TeacherService {
         StudentCourse studentCourse = new StudentCourse();
         CourseService courseService = new CourseService(courseID);
         int excellent = 0;
-        Integer sum = courseService.GetNumberOfStudentsInCours();
+        Integer sum = courseService.GetNumberOfStudentsInCourse();
         for (Pair<String, Double> score : scorelist)
             if (score.getValue() >= EXCELLENT) excellent++;
         if ((float) excellent/sum > LIMIT) {
