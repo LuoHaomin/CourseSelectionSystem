@@ -54,16 +54,16 @@ public class AdminRegisCourseController {
     private TableColumn<CourseInfo,  String> Period;
 
     @FXML
-    private RadioButton Score;
+    private RadioButton StudentAndTeacher;
 
     @FXML
-    private RadioButton Score1;
+    private RadioButton Course;
 
     @FXML
-    private RadioButton Score11;
+    private RadioButton StuTeaList;
 
     @FXML
-    private RadioButton Student;
+    private RadioButton CList;
 
     @FXML
     private TableView<CourseInfo> Table;

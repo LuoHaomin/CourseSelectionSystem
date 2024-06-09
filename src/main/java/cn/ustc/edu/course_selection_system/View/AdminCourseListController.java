@@ -26,16 +26,16 @@ public class AdminCourseListController {
     private Label Name;
 
     @FXML
-    private RadioButton Score;
+    private RadioButton StudentAndTeacher;
 
     @FXML
-    private RadioButton Score1;
+    private RadioButton Course;
 
     @FXML
-    private RadioButton Score11;
+    private RadioButton StuTeaList;
 
     @FXML
-    private RadioButton Student;
+    private RadioButton CourseList;
 
 
 
@@ -64,6 +64,7 @@ public class AdminCourseListController {
     @FXML
     private Button Search;
 
+    @FXML
     private String SearchWord;
 
     @FXML
@@ -71,7 +72,7 @@ public class AdminCourseListController {
         SearchWord="";
         SetColumn();
         setupPaging();
-
+        Table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     private void SetColumn(){

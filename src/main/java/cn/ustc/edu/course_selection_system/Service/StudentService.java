@@ -1,12 +1,10 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
-import cn.ustc.edu.course_selection_system.Database.CourseImpl;
-import cn.ustc.edu.course_selection_system.Database.DisciplinaryPlanData;
-import cn.ustc.edu.course_selection_system.Database.StudentCourse;
-import cn.ustc.edu.course_selection_system.Database.StudentImpl;
+import cn.ustc.edu.course_selection_system.Database.*;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 
 import javafx.util.Pair;
@@ -76,9 +74,9 @@ public class StudentService
      * @param limit
      * @return
      */
-    public List<CourseEntity> getRelatedCourse(Integer page, Integer limit) {
+    public List<CourseInfo> getRelatedCourse(Integer page, Integer limit) {
         StudentCourse studentCourse = new StudentCourse();
-        return studentCourse.GetChosenCourseList(id, page, limit);
+        return CourseService.getCourseInfos(studentCourse.GetChosenCourseList(id, page, limit),new TeacherCourse()) ;
     }
     /**
      * 获得课程表数据
