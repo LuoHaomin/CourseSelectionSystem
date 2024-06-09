@@ -53,4 +53,14 @@ public class StudentTest {
         StudentImpl studentImpl = new StudentImpl();
         studentImpl.DeleteCoursePair("2019211001", 3);
     }
+
+    @Test
+    public void testFindWithConstraint() {
+        StudentImpl studentImpl = new StudentImpl();
+        String test = "%";
+        List<StudentEntity> studentList = studentImpl.FindWithConstraint("%", "%", test);
+        for (StudentEntity student : studentList) {
+            System.out.println(student.toString());
+        }
+    }
 }

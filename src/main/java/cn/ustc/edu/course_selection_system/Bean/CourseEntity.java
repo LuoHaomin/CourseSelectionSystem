@@ -1,14 +1,29 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
-@jakarta.persistence.Table(name = "course", schema = "hibernate", catalog = "hibernate")
+@Table(name = "course", schema = "hibernate", catalog = "hibernate")
 public class CourseEntity {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id", nullable = false)
     private int id;
+    @Basic
+    @Column(name = "name", nullable = false, length = 60)
+    private String name;
+    @Basic
+    @Column(name = "time", nullable = true, length = 40)
+    private String time;
+    @Basic
+    @Column(name = "credit", nullable = false, precision = 0)
+    private double credit;
+    @Basic
+    @Column(name = "periods", nullable = false, length = 60)
+    private String periods;
+    @Basic
+    @Column(name = "capacity", nullable = true)
+    private Integer capacity;
 
     public CourseEntity(String name, String time, double credit, String periods, Integer capacity) {
 
@@ -31,10 +46,6 @@ public class CourseEntity {
         this.id = id;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "name", nullable = false, length = 60)
-    private String name;
-
     public String getName() {
         return name;
     }
@@ -42,10 +53,6 @@ public class CourseEntity {
     public void setName(String name) {
         this.name = name;
     }
-
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "time", nullable = true, length = 40)
-    private String time;
 
     public String getTime() {
         return time;
@@ -55,10 +62,6 @@ public class CourseEntity {
         this.time = time;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "credit", nullable = false, precision = 0)
-    private double credit;
-
     public double getCredit() {
         return credit;
     }
@@ -67,10 +70,6 @@ public class CourseEntity {
         this.credit = credit;
     }
 
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "periods", nullable = false, length = 60)
-    private String periods;
-
     public String getPeriods() {
         return periods;
     }
@@ -78,10 +77,6 @@ public class CourseEntity {
     public void setPeriods(String periods) {
         this.periods = periods;
     }
-
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "capacity", nullable = true)
-    private Integer capacity;
 
     public Integer getCapacity() {
         return capacity;

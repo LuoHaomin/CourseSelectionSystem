@@ -4,6 +4,7 @@ import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntityPK;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -108,6 +109,30 @@ public class StudentImpl {
     }
 
     /**
+     * Find students with constraints
+     *
+     * @param name student's name
+     * @param major student's major
+     * @param admissionYear student's admission year
+     * @return List<StudentEntity>
+     */
+    public List<StudentEntity> FindWithConstraint(String name, String major, String admissionYear){
+        List<StudentEntity> studentList = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            List<StudentEntity> _studentList = session.createQuery("from StudentEntity where name " +
+                                    "like :name and major like :major and cast(admissionYear as string ) " +
+                                    "like :admissionYear",
+                            StudentEntity.class)
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("major", "%" + major + "%")
+                    .setParameter("admissionYear", admissionYear)
+                    .getResultList();
+            studentList.addAll(_studentList);
+        });
+        return studentList;
+    }
+
+    /**
      * Add a course to the student's course list
      *
      * @param studentId student's id
@@ -139,6 +164,5 @@ public class StudentImpl {
             session.remove(session.get(StudentCourseEntity.class, studentCourseEntityPK));
         });
     }
-
 
 }

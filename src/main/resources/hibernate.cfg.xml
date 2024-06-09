@@ -19,8 +19,6 @@
     <property name="highlight_sql">true</property>
     <mapping resource="AdminEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
-    <mapping resource="CourseEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
     <mapping resource="MajorCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity"/>
     <mapping resource="StudentEntity.hbm.xml"/>
@@ -31,6 +29,8 @@
     <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
     <mapping resource="TeacherCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity"/>
+    <mapping resource="CourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
 
 
     <!-- DB schema will be updated if needed -->

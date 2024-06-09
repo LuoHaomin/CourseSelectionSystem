@@ -38,10 +38,12 @@ public class CourseImpl {
      * @return the id of the course
      */
     public int AddCourse(CourseEntity info) {
+        List<Integer> id = new ArrayList<>();
         sessionFactory.inTransaction(session -> {
             session.persist(info);
+            id.add(info.getId());
         });
-        return 0;
+        return id.get(0);
     }
 
     /**

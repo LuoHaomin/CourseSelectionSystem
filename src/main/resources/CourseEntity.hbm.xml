@@ -15,7 +15,7 @@
             <column name="time" sql-type="varchar(40)" length="40" not-null="true"/>
         </property>
         <property name="credit">
-            <column name="credit" sql-type="float" precision="-1"/>
+            <column name="credit" sql-type="double" precision="-1"/>
         </property>
         <property name="periods">
             <column name="periods" sql-type="varchar(60)" length="60"/>
