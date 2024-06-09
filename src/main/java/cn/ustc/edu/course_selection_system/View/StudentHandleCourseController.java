@@ -99,7 +99,7 @@ public class StudentHandleCourseController {
         }
     }
     @FXML
-    TextField Flag;
+    TextField Symbol;
     class tableline
     {
         String CourseName;
@@ -123,9 +123,9 @@ public class StudentHandleCourseController {
                 Conduct.setOnAction(event -> {
                     if(!studentService.chooseCourse(CourseID))
                     {
-                        Flag.setText("选课未成功");
+                        Symbol.setText("选课未成功");
                     }
-                    else Flag.setText("选课成功");
+                    else Symbol.setText("选课成功");
                 });
             }
             else{
@@ -133,9 +133,9 @@ public class StudentHandleCourseController {
                 Conduct.setOnAction(event -> {
                     if(!studentService.dropCourse(CourseID))
                     {
-                        Flag.setText("退课未成功");
+                        Symbol.setText("退课未成功");
                     }
-                    else Flag.setText("退课成功");
+                    else Symbol.setText("退课成功");
                 });
             }
         }

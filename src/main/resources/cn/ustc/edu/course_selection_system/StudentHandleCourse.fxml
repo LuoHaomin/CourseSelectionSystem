@@ -70,7 +70,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="CourseName" layoutX="209.0" layoutY="49.0" prefHeight="29.0" prefWidth="244.0" promptText="请输入完整课程名称">
+      <TextField fx:id="QCourseName" layoutX="209.0" layoutY="49.0" prefHeight="29.0" prefWidth="244.0" promptText="请输入完整课程名称">
          <font>
             <Font size="14.0" />
          </font>
@@ -92,6 +92,6 @@
             <TableColumn fx:id="Conduct" prefWidth="40.80002441406248" text="操作" />
          </columns>
       </TableView>
-      <Label fx:id="Flag" layoutX="500.0" layoutY="341.0" prefHeight="24.0" prefWidth="75.0" textFill="RED" />
+      <Label fx:id="Symbol" layoutX="500.0" layoutY="341.0" prefHeight="24.0" prefWidth="75.0" textFill="RED" />
    </children>
 </AnchorPane>
