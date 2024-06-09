@@ -60,6 +60,22 @@ public class TeacherWelcomeController {
             studentid = studentEntity.getId();
             studentname = studentEntity.getName();
         }
+        public String getstudentid()
+        {
+            return studentid;
+        }
+        public String getstudentname()
+        {
+            return studentname;
+        }
+        public void setstudentid(String studentid)
+        {
+            this.studentid = studentid;
+        }
+        public void setstudentname(String studentname)
+        {
+            this.studentname = studentname;
+        }
     }
     @FXML
     private Button backselect;
