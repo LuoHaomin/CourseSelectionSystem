@@ -6,7 +6,21 @@ public class PersonInfo {
     TeacherEntity teacherEntity;
 
 
-    public PersonInfo() {
+    public PersonInfo(StudentEntity studentEntity) {
+
+        this.studentEntity = studentEntity;
+    }
+    public PersonInfo(TeacherEntity teacherEntity) {
+        isTeacher = true;
+        this.teacherEntity = teacherEntity;
+    }
+    public String getId(){
+        if(isTeacher){
+            return teacherEntity.getId();
+        }
+        else {
+            return studentEntity.getId();
+        }
     }
 
     public String getName(){
