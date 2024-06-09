@@ -47,13 +47,16 @@ public class AdminRegisStudentController {
     private Label Name;
 
     @FXML
-    private RadioButton Score;
+    private RadioButton StudentAndTeacher;
 
     @FXML
-    private RadioButton Score1;
+    private RadioButton Course;
 
     @FXML
-    private RadioButton Score11;
+    private RadioButton StuTeaList;
+
+    @FXML
+    private RadioButton CourseList;
 
     @FXML
     private TableColumn<StudentEntity, String> StuGender;

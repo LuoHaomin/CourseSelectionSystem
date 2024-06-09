@@ -13,22 +13,22 @@
    <children>
       <VBox layoutY="1.0" prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" selected="true" text="录入学生/教师" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="StudentAndTeacher" mnemonicParsing="false" onAction="#HandleStudentAndTeacher" prefHeight="54.0" prefWidth="190.0" selected="true" text="录入学生/教师" textAlignment="CENTER" textFill="#0006ff">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
+            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="师生名单" textAlignment="CENTER">
+            <RadioButton fx:id="StuTeaList" mnemonicParsing="false" onAction="#HandleStuTeaList" prefHeight="51.0" prefWidth="158.0" text="师生名单" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -47,19 +47,19 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="Commit" layoutX="520.0" layoutY="340.0" mnemonicParsing="false" text="提交" onAction="#onCommitClicked">
+      <Button fx:id="Commit" layoutX="520.0" layoutY="340.0" mnemonicParsing="false" onAction="#onCommitClicked" text="提交">
          <font>
             <Font size="18.0" />
          </font>
@@ -94,8 +94,8 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button fx:id="AddStudent" layoutX="228.0" layoutY="59.0" mnemonicParsing="false" text="添加" onAction="#onAddStudentClicked"/>
-      <Button fx:id="AddTeacher" layoutX="227.0" layoutY="204.0" mnemonicParsing="false" text="添加" onAction="#onAddTeacherClicked"/>
+      <Button fx:id="AddStudent" layoutX="228.0" layoutY="59.0" mnemonicParsing="false" onAction="#onAddStudentClicked" text="添加" />
+      <Button fx:id="AddTeacher" layoutX="227.0" layoutY="204.0" mnemonicParsing="false" onAction="#onAddTeacherClicked" text="添加" />
       <Button fx:id="ImportStu" layoutX="284.0" layoutY="59.0" mnemonicParsing="false" text="导入" />
       <Button fx:id="ImportTeacher" layoutX="283.0" layoutY="204.0" mnemonicParsing="false" text="导入" />
    </children>

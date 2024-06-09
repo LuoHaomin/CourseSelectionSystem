@@ -2,22 +2,28 @@ package cn.ustc.edu.course_selection_system.Util;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import cn.ustc.edu.course_selection_system.Util.Period.*;
-import cn.ustc.edu.course_selection_system.Util.Time.*;
-import javafx.util.Pair;
 
 import static cn.ustc.edu.course_selection_system.Util.Period.getWeek;
 
+/**
+ * 课程表（用于判断课程是否冲突
+ ，以及获取当周时间段内课程表）
+ */
 public class CourseTable {
 
     List<CourseEntity> list;
 
+
     public CourseTable (List<CourseEntity> courseList) { list = courseList; }
 
-    public Boolean IsConflicted(CourseEntity courseEntity){
+    /**
+     * 判断课程是否冲突
+     * @param courseEntity 课程
+     * @return 是否冲突
+     */
+    public Boolean IsConflict(CourseEntity courseEntity){
         for (CourseEntity course:list) {
             if ( ( Time.timeCoincide(course,courseEntity) )
                     && ( Period.periodCoincide(courseEntity,course) ) )  {
@@ -27,6 +33,12 @@ public class CourseTable {
         return false;
     }
 
+    /**
+     * 获取当周时间段内课程表
+     * @param time 时间
+     * @param week 周
+     * @return 课程表
+     */
     public List<String> TimeCourse (String time,String week) {
         String[] timeCourse = new String[7];
         int i = 0;

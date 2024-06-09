@@ -27,12 +27,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
@@ -41,22 +41,22 @@
       </AnchorPane>
       <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="录入学生/教师" textAlignment="CENTER">
+            <RadioButton fx:id="StudentAndTeacher" mnemonicParsing="false" onAction="#HandleStudentAndTeacher" prefHeight="54.0" prefWidth="190.0" text="录入学生/教师" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
+            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="师生名单" textAlignment="CENTER">
+            <RadioButton fx:id="StuTeaList" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="师生名单" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" selected="true" text="课程列表" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" selected="true" text="课程列表" textAlignment="CENTER" textFill="#0006ff">
                <font>
                   <Font size="18.0" />
                </font>

@@ -101,15 +101,14 @@ public class AdminPersonInfoList {
         return Table;
     }
     List<PersonInfo> getData(Integer page, Integer limit){
-        List<PersonInfo> list = new ArrayList<PersonInfo>();
+        List<PersonInfo> list;
 
         if(!IdOrName.getText().isEmpty()){
             list=(AdminService.getPersonInfo(IdOrName.getText()));
         }
         else {
-            list=AdminService.getPersonInfo(Major.getText().isEmpty()?"%":Major.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText(),page,limit);
+            list=AdminService.getPersonInfo(SearchMajor.getText().isEmpty()?"%":Major.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText(),page,limit);
         }
-
         return list;
     }
 
