@@ -1,6 +1,9 @@
 package cn.ustc.edu.course_selection_system.View;
 
+import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Service.CourseService;
 import cn.ustc.edu.course_selection_system.Service.StudentService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class StudentHandleCourseController {
     private String id;
@@ -110,11 +114,11 @@ public class StudentHandleCourseController {
         String CourseName;
         String Time;
         String Teacher;
-        String Credit;
+        double Credit;
         String Period;
-        String Capacity;
+        int Capacity;
         Button Conduct;
-        public tableline(String CourseName, String Time, String Teacher, String Credit, String Period, String Capacity,String StudentID,int CourseID,boolean selectordrop) {
+        public tableline(String CourseName, String Time, String Teacher, double Credit, String Period, int Capacity,String StudentID,int CourseID,boolean selectordrop) {
             this.CourseName = CourseName;
             this.Time = Time;
             this.Teacher = Teacher;
@@ -151,15 +155,15 @@ public class StudentHandleCourseController {
         public String getCourseName() {return CourseName;}
         public String getTime() {return Time;}
         public String getTeacher() {return Teacher;}
-        public String getCredit() {return Credit;}
+        public double getCredit() {return Credit;}
         public String getPeriod() {return Period;}
-        public String getCapacity() {return Capacity;}
+        public int getCapacity() {return Capacity;}
         public void setCourseName(String CourseName) {this.CourseName = CourseName;}
         public void setTime(String Time) {this.Time = Time;}
         public void setTeacher(String Teacher) {this.Teacher = Teacher;}
-        public void setCredit(String Credit) {this.Credit = Credit;}
+        public void setCredit(double Credit) {this.Credit = Credit;}
         public void setPeriod(String Period) {this.Period = Period;}
-        public void setCapacity(String Capacity) {this.Capacity = Capacity;}
+        public void setCapacity(int Capacity) {this.Capacity = Capacity;}
     }
     @FXML
     private TableView<tableline> Table;
@@ -172,11 +176,11 @@ public class StudentHandleCourseController {
     @FXML
     private TableColumn<tableline,String> Teacher;
     @FXML
-    private TableColumn<tableline,String> Credit;
+    private TableColumn<tableline,Double> Credit;
     @FXML
     private TableColumn<tableline,String> Period;
     @FXML
-    private TableColumn<tableline,String> Capacity;
+    private TableColumn<tableline,Integer> Capacity;
     @FXML
     private TableColumn<tableline,Button> Conduct;
     public void start(String id)
@@ -198,6 +202,32 @@ public class StudentHandleCourseController {
     {
         ObservableList<tableline> list= FXCollections.observableArrayList();
         StudentService studentService=new StudentService(id);
-
+        int studentcoursesize=studentService.getNumberOfCourse();
+        int droppage=(int) Math.ceil((double)studentcoursesize/ PageSize);
+        int selectpage=(int)Math.ceil((double)CourseService.getNumberOfCourses()/PageSize);
+        int allpage=droppage+selectpage;
+        Paging.setPageCount(allpage);
+        Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
+            int currentpage=Paging.currentPageIndexProperty().get()+1;
+            if(currentpage<=droppage)
+            {
+                List<CourseEntity> thispage=studentService.getRelatedCourse(currentpage,PageSize);
+                for(int i=0;i<thispage.size();i++)
+                {
+                    CourseEntity courseEntity=thispage.get(i);
+                    list.add(new tableline());
+                }
+                Table=new TableView<>(list);
+            }
+            else {
+                currentpage=currentpage-droppage;
+                List<CourseInfo> thispage=CourseService.getCourseInfoList(currentpage,PageSize);
+                for(int i=0;i<thispage.size();i++)
+                {
+                    CourseInfo courseInfo=thispage.get(i);
+                    list.add(new tableline(courseInfo.getCourseName(),courseInfo.getTime(),courseInfo.getTeacher(),courseInfo.getCredit(),courseInfo.getPeriod(),courseInfo.getCapacity(),id,courseInfo.getCourseEntity().getId(),true));
+                }
+            }
+        });
     }
 }
