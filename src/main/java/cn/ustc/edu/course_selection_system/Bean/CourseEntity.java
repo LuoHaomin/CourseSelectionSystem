@@ -2,6 +2,8 @@ package cn.ustc.edu.course_selection_system.Bean;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "course", schema = "hibernate", catalog = "hibernate")
 public class CourseEntity {
@@ -24,6 +26,10 @@ public class CourseEntity {
     @Basic
     @Column(name = "capacity", nullable = true)
     private Integer capacity;
+    @OneToMany(mappedBy = "courseByCourseId")
+    private Collection<StudentCourseEntity> studentCoursesById;
+    @OneToMany(mappedBy = "courseByCourseId")
+    private Collection<TeacherCourseEntity> teacherCoursesById;
 
     public CourseEntity(String name, String time, double credit, String periods, Integer capacity) {
 
@@ -84,5 +90,21 @@ public class CourseEntity {
 
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
+    }
+
+    public Collection<StudentCourseEntity> getStudentCoursesById() {
+        return studentCoursesById;
+    }
+
+    public void setStudentCoursesById(Collection<StudentCourseEntity> studentCoursesById) {
+        this.studentCoursesById = studentCoursesById;
+    }
+
+    public Collection<TeacherCourseEntity> getTeacherCoursesById() {
+        return teacherCoursesById;
+    }
+
+    public void setTeacherCoursesById(Collection<TeacherCourseEntity> teacherCoursesById) {
+        this.teacherCoursesById = teacherCoursesById;
     }
 }
