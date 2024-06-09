@@ -123,8 +123,11 @@ public class AdminService {
         for(StudentEntity studentEntity : studentEntities){
             personInfos.add(new PersonInfo(studentEntity));
         }
-
-        //TODO:教师
+        List<TeacherEntity> teacherEntities = ;
+        //Todo:teacher
+        for(TeacherEntity teacherEntity : teacherEntities){
+            personInfos.add(new PersonInfo(teacherEntity));
+        }
         return personInfos;
     }
     public static List<PersonInfo> getPersonInfo(String Id){

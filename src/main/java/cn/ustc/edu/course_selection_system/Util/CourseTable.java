@@ -34,7 +34,7 @@ public class CourseTable {
             for (CourseEntity course:list)  {
                 if (Period.periodInclude(week,getWeek(course))
                         && Time.timeInclude(time,Time.detailTime(course))) {
-                    if (Time.detailTime(course).equals(day)) {
+                    if (Time.detailDay(course).equals(day.toString())) {
                         timeCourse[i] = course.getName();
                         break;
                     }

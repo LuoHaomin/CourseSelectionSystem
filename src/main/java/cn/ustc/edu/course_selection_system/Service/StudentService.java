@@ -97,8 +97,10 @@ public class StudentService
         }
         //判断是否重叠
         CourseTable courseTable = new CourseTable(getRelatedCourse());
-        if((courseTable.IsConflicted(courseEntity))){
-            //Todo：改为丢异常
+        try {
+            courseTable.IsConflicted(courseEntity);
+        }
+        catch (Exception isconflicted) {
             return false;
         }
         //判断是否超过人数上限

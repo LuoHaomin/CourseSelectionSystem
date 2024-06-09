@@ -1,15 +1,25 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
-@jakarta.persistence.Table(name = "teacher_course", schema = "hibernate", catalog = "hibernate")
-@jakarta.persistence.IdClass(cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntityPK.class)
+@Table(name = "teacher_course", schema = "hibernate", catalog = "hibernate")
+@IdClass(TeacherCourseEntityPK.class)
 public class TeacherCourseEntity {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "teacher_id", nullable = false, length = 20)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "teacher_id", nullable = false, length = 20)
     private String teacherId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "course_id", nullable = false)
+    private int courseId;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id", nullable = false)
+    private TeacherEntity teacherByTeacherId;
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
+    private CourseEntity courseByCourseId;
 
     public String getTeacherId() {
         return teacherId;
@@ -19,16 +29,27 @@ public class TeacherCourseEntity {
         this.teacherId = teacherId;
     }
 
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "course_id", nullable = false)
-    private int courseId;
-
     public int getCourseId() {
         return courseId;
     }
 
     public void setCourseId(int courseId) {
         this.courseId = courseId;
+    }
+
+    public TeacherEntity getTeacherByTeacherId() {
+        return teacherByTeacherId;
+    }
+
+    public void setTeacherByTeacherId(TeacherEntity teacherByTeacherId) {
+        this.teacherByTeacherId = teacherByTeacherId;
+    }
+
+    public CourseEntity getCourseByCourseId() {
+        return courseByCourseId;
+    }
+
+    public void setCourseByCourseId(CourseEntity courseByCourseId) {
+        this.courseByCourseId = courseByCourseId;
     }
 }

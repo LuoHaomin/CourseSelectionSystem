@@ -2,6 +2,8 @@ package cn.ustc.edu.course_selection_system.Bean;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "teacher", schema = "hibernate", catalog = "hibernate")
 public class TeacherEntity {
@@ -21,6 +23,8 @@ public class TeacherEntity {
     @Basic
     @Column(name = "gender", nullable = false, length = 1)
     private String gender;
+    @OneToMany(mappedBy = "teacherByTeacherId")
+    private Collection<TeacherCourseEntity> teacherCoursesById;
 
     public String getId() {
         return id;
@@ -60,5 +64,13 @@ public class TeacherEntity {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Collection<TeacherCourseEntity> getTeacherCoursesById() {
+        return teacherCoursesById;
+    }
+
+    public void setTeacherCoursesById(Collection<TeacherCourseEntity> teacherCoursesById) {
+        this.teacherCoursesById = teacherCoursesById;
     }
 }

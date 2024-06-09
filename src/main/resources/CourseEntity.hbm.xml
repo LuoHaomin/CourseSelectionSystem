@@ -23,5 +23,17 @@
         <property name="capacity">
             <column name="capacity" sql-type="int" not-null="true"/>
         </property>
+        <set name="studentCoursesById" inverse="true">
+            <key>
+                <column name="course_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
+        </set>
+        <set name="teacherCoursesById" inverse="true">
+            <key>
+                <column name="course_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

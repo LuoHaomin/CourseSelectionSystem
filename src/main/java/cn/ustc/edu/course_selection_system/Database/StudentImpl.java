@@ -28,6 +28,10 @@ public class StudentImpl {
                     .getResultList();
             studentList.addAll(_studentList);
         });
+        if (studentList.size() == 0)
+        {
+            return null;
+        }
         return studentList.get(0);
     }
 
@@ -109,6 +113,26 @@ public class StudentImpl {
     }
 
     /**
+     * Get the number of students in the database
+     *
+     * @return Integer
+     */
+    public Long NumberInConstraint(String name, String major, String admissionYear){
+        List<Long> numberInCourse = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            numberInCourse.addAll(session.createQuery("select count(*) from StudentEntity where name " +
+                                    "like :name and major like :major and cast(admissionYear as string ) " +
+                                    "like :admissionYear",
+                            Long.class)
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("major", "%" + major + "%")
+                    .setParameter("admissionYear", admissionYear)
+                    .getResultList());
+        });
+        return numberInCourse.get(0);
+    }
+
+    /**
      * Find students with constraints
      *
      * @param name student's name
@@ -126,6 +150,35 @@ public class StudentImpl {
                     .setParameter("name", "%" + name + "%")
                     .setParameter("major", "%" + major + "%")
                     .setParameter("admissionYear", admissionYear)
+                    .getResultList();
+            studentList.addAll(_studentList);
+        });
+        return studentList;
+    }
+
+/**
+     * Display students with constraints
+     *
+     * @param name student's name
+     * @param major student's major
+     * @param admissionYear student's admission year
+     * @param page page number
+     * @param limit number of students per page
+     * @return List<StudentEntity>
+     */
+    public List<StudentEntity> FindWithConstraint(String name, String major, String admissionYear,
+                                                     int page, int limit){
+        List<StudentEntity> studentList = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            List<StudentEntity> _studentList = session.createQuery("from StudentEntity where name " +
+                                    "like :name and major like :major and cast(admissionYear as string ) " +
+                                    "like :admissionYear",
+                            StudentEntity.class)
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("major", "%" + major + "%")
+                    .setParameter("admissionYear", admissionYear)
+                    .setFirstResult((page) * limit)
+                    .setMaxResults(limit)
                     .getResultList();
             studentList.addAll(_studentList);
         });

@@ -70,4 +70,22 @@ public class TeacherImpl{
                     .executeUpdate();
         });
     }
+
+    /**
+     * Find teachers by their name
+     * @param name teacher's name
+     * @return a list of teachers with the same name
+     */
+    public List<TeacherEntity> FindWithConstraint(String name){
+        List<TeacherEntity> teachers = new ArrayList<>();
+        sessionFactory.inTransaction(session -> {
+            List<TeacherEntity> _teachers = session.createQuery("from TeacherEntity " +
+                                    "where name like :name",
+                            TeacherEntity.class)
+                    .setParameter("name", name)
+                    .getResultList();
+            teachers.addAll(_teachers);
+        });
+        return teachers;
+    }
 }

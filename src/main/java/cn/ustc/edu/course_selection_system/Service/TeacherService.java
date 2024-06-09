@@ -61,7 +61,6 @@ public class TeacherService {
         CourseImpl courseEditor = new CourseImpl();
         try{
             courseEditor.DelCourse(course_id);
-            //TODO?
             return true;
         }
         catch(Exception e){
