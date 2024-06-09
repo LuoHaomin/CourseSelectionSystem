@@ -99,6 +99,22 @@ public class CourseImpl {
     }
 
     /**
+     * Get the number of courses with the same name
+     * @param name the name of the course
+     * @return the number of courses
+     */
+    public Long NumberOfCoursesInConstraint(String name){
+        List<Long> integers = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            Long _integer = session.createQuery("select count(*) from CourseEntity where name = :name", Long.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+            integers.add(_integer);
+        });
+        return integers.get(0);
+    }
+
+    /**
      * Get the number of students in a course
      * @param courseId the id of the course
      * @return the number of students in the course

@@ -80,23 +80,31 @@ public class AdminService {
 
     /**
      * 删除人员（包括关联键）
-     * @param id_list 删除人员id名单
+     * @param personInfoList 删除人员id名单
      * @return 成功删除个数
      */
-    public int DelID(List<String> id_list){
-        for(String id : id_list){
-//            Student
-//            PersonInfo personInfo = new PersonInfo(id.GetId());
+    public int DelID(List<PersonInfo> personInfoList){
+        for(PersonInfo personInfo : personInfoList){
+            boolean isTeacher = personInfo.isTeacher();
+            if(isTeacher){
+                TeacherImpl teacherImpl = new TeacherImpl();
+                teacherImpl.deleteTeacher(personInfo.getId());
+            }
+            else {
+                StudentImpl studentImpl = new StudentImpl();
+                studentImpl.deleteStudent(personInfo.getId());
+            }
         }
         return 0;
     }
 
     /**
      * 删除课程（包括关联键）
-     * @param id_list  删除课程id名单
+     * @param courseInfoList  删除课程id名单
      * @return 成功删除个数
      */
-	public int DelCourse(List<Integer> id_list){
+	public int DelCourse(List<CourseInfo> courseInfoList){
+        CourseImpl courseImpl = new CourseImpl();
         return 0;
     }
 
