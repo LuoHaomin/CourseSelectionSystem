@@ -166,7 +166,7 @@ public class CourseImpl {
         List<CourseEntity> courseEntities = new ArrayList<>();
         sessionFactory.inSession(session -> {
             courseEntities.addAll(session.createQuery("from CourseEntity", CourseEntity.class)
-                    .setFirstResult((page) * limit)
+                    .setFirstResult(page * limit)
                     .setMaxResults(limit)
                     .getResultList());
         });
