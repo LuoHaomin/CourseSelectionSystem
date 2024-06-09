@@ -115,10 +115,38 @@ public class AdminService {
         return 0;
     }
 
-    public List<PersonInfo> getPersonInfo(String Field, String Value){
+    public static List<PersonInfo> getPersonInfo(String name, String major, String admissionYear){
         StudentImpl studentImpl = new StudentImpl();
         TeacherImpl teacherImpl = new TeacherImpl();
-        //TODO:FindBy
-        return new ArrayList<>();
+        List<PersonInfo> personInfos = new ArrayList<>();
+        List<StudentEntity> studentEntities = studentImpl.FindWithConstraint(name,major,admissionYear);
+        for(StudentEntity studentEntity : studentEntities){
+            personInfos.add(new PersonInfo(studentEntity));
+        }
+
+        //TODO:教师
+        return personInfos;
+    }
+    public static List<PersonInfo> getPersonInfo(String Id){
+        StudentImpl studentImpl = new StudentImpl();
+        TeacherImpl teacherImpl = new TeacherImpl();
+        List<PersonInfo> personInfos = new ArrayList<>();
+
+
+        try {
+            StudentEntity student = studentImpl.getStudent(Id);
+            TeacherEntity teacher = teacherImpl.getTeacher(Id);
+
+            if(student!=null){
+                personInfos.add(new PersonInfo(student));
+            }
+            if(teacher!=null){
+                personInfos.add(new PersonInfo(teacher));
+            }
+        } catch (Exception ignored) {
+
+        }
+
+        return personInfos;
     }
 }
