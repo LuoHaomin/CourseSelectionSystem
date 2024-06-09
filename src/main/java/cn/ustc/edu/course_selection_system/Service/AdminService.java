@@ -119,6 +119,7 @@ public class AdminService {
         StudentImpl studentImpl = new StudentImpl();
         return studentImpl.NumberInConstraint("%",major,admissionYear);
     }
+
     public static List<PersonInfo> getPersonInfo(String major, String admissionYear,Integer page,Integer pageSize){
         StudentImpl studentImpl = new StudentImpl();
         List<PersonInfo> personInfos = new ArrayList<>();
