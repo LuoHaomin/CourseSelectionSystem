@@ -139,7 +139,18 @@ public class StudentHandleCourseController {
                 });
             }
         }
-
+        public String getCourseName() {return CourseName;}
+        public String getTime() {return Time;}
+        public String getTeacher() {return Teacher;}
+        public String getCredit() {return Credit;}
+        public String getPeriod() {return Period;}
+        public String getCapacity() {return Capacity;}
+        public void setCourseName(String CourseName) {this.CourseName = CourseName;}
+        public void setTime(String Time) {this.Time = Time;}
+        public void setTeacher(String Teacher) {this.Teacher = Teacher;}
+        public void setCredit(String Credit) {this.Credit = Credit;}
+        public void setPeriod(String Period) {this.Period = Period;}
+        public void setCapacity(String Capacity) {this.Capacity = Capacity;}
     }
     @FXML
     private TableView<tableline> Table;
