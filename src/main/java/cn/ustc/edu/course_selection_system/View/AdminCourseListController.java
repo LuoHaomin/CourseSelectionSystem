@@ -71,7 +71,7 @@ public class AdminCourseListController {
         SearchWord="";
         SetColumn();
         setupPaging();
-
+        Table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     private void SetColumn(){

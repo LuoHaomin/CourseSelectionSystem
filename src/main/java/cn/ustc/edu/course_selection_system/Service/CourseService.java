@@ -72,7 +72,7 @@ public class CourseService {
         return getCourseInfos(Course, teacherCourse);
     }
 
-    private static List<CourseInfo> getCourseInfos(List<CourseEntity> Course, TeacherCourse teacherCourse) {
+    public static List<CourseInfo> getCourseInfos(List<CourseEntity> Course, TeacherCourse teacherCourse) {
         List<CourseInfo> courseInfos = new ArrayList<>();
         for(CourseEntity info : Course){
             CourseInfo courseInfo = new CourseInfo(info, teacherCourse.GetTeachersOfCourse(info.getId()));
@@ -86,13 +86,15 @@ public class CourseService {
         return null;
         //TODO:
     }
-    public List<CourseInfo> GetCourseInfoByName(String courseName){
+    public static List<CourseInfo> GetCourseInfoByName(String courseName){
         CourseImpl courseEditorImpl = new CourseImpl();
         return getCourseInfos(courseEditorImpl.FindByCourseName(courseName),new TeacherCourse());
     }
 
-    public List<CourseInfo> GetCourseInfoByName(String courseName,Integer page,Integer Limit){
+    public static List<CourseInfo> GetCourseInfoByName(String courseName,Integer page,Integer Limit){
         CourseImpl courseEditorImpl = new CourseImpl();
         return getCourseInfos(courseEditorImpl.FindByCourseName(courseName),new TeacherCourse());
     }
+
+
 }

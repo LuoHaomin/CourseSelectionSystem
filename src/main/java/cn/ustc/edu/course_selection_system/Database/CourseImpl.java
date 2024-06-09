@@ -55,6 +55,9 @@ public class CourseImpl {
             session.createMutationQuery("delete from StudentCourseEntity where courseId = :id")
                     .setParameter("id", courseId)
                     .executeUpdate();
+            session.createMutationQuery("delete from TeacherCourseEntity where courseId = :id")
+                    .setParameter("id", courseId)
+                    .executeUpdate();
             session.createMutationQuery("delete from CourseEntity where id = :id")
                     .setParameter("id", courseId)
                     .executeUpdate();
@@ -71,6 +74,25 @@ public class CourseImpl {
         sessionFactory.inTransaction(session -> {
              courses.addAll(session.createQuery("from CourseEntity where name = :name", CourseEntity.class)
                     .setParameter("name", name)
+                    .getResultList());
+        });
+        return courses;
+    }
+
+    /**
+     * Find courses(id) by name
+     * @param name the name of the course
+     * @param page the page number
+     * @param limit maximum items in a page
+     * @return a list of courses with the same name
+     */
+    public List<CourseEntity> FindByCourseName(String name, int page, int limit){
+        List<CourseEntity> courses = new ArrayList<>();
+        sessionFactory.inTransaction(session -> {
+            courses.addAll(session.createQuery("from CourseEntity where name = :name", CourseEntity.class)
+                    .setParameter("name", name)
+                    .setFirstResult(page * limit)
+                    .setMaxResults(limit)
                     .getResultList());
         });
         return courses;

@@ -157,7 +157,7 @@ public class StudentScoreController {
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
         List<Pair<String,Double>> scorelist=studentService.getScore();
-        GGPA.setText(Double.toString(studentService.generalGPA()));
+        GGPA.setText(Double.toString(studentService.averageGPA()));
         CourseName.setCellValueFactory(new PropertyValueFactory<>("coursename"));
         TScore.setCellValueFactory(new PropertyValueFactory<>("score"));
         GPA.setCellValueFactory(new PropertyValueFactory<>("gpa"));
