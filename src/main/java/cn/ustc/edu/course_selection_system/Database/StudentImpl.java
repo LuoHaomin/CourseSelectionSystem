@@ -28,6 +28,10 @@ public class StudentImpl {
                     .getResultList();
             studentList.addAll(_studentList);
         });
+        if (studentList.size() == 0)
+        {
+            return null;
+        }
         return studentList.get(0);
     }
 

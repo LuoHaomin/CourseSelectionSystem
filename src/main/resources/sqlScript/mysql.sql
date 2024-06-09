@@ -11,7 +11,7 @@ create table course
         primary key,
     name     varchar(60) charset utf8mb3 not null,
     time     varchar(40) charset utf8mb3 null,
-    credit   double                       not null,
+    credit   double                      not null,
     periods  varchar(60) charset utf8mb3 not null comment 'the start time and end time of the course',
     capacity int                         null
 );
@@ -40,11 +40,12 @@ create table student_course
     student_id varchar(20) charset utf8mb3 not null,
     course_id  int                         not null,
     score      double                      null,
-    primary key (student_id, course_id)
+    primary key (student_id, course_id),
+    constraint student_course_course_FK
+        foreign key (course_id) references course (id),
+    constraint student_course_student_FK
+        foreign key (student_id) references student (id)
 );
-
-create index student_course_course_id_fk
-    on student_course (course_id);
 
 create table teacher
 (
@@ -60,10 +61,12 @@ create table teacher_course
 (
     teacher_id varchar(20) charset utf8mb3 not null,
     course_id  int                         not null,
-    primary key (course_id, teacher_id)
+    primary key (course_id, teacher_id),
+    constraint teacher_course_course_FK
+        foreign key (course_id) references course (id),
+    constraint teacher_course_teacher_FK
+        foreign key (teacher_id) references teacher (id)
 );
 
-create index teacher_course_teacher_id_fk
-    on teacher_course (teacher_id);
 
 # grant delete, insert, select, update on table test to test;

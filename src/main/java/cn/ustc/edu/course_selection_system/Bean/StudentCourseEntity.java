@@ -17,6 +17,12 @@ public class StudentCourseEntity {
     @Basic
     @Column(name = "score", nullable = true, precision = 0)
     private Double score;
+    @ManyToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id", nullable = false)
+    private StudentEntity studentByStudentId;
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
+    private CourseEntity courseByCourseId;
 
     public String getStudentId() {
         return studentId;
@@ -40,5 +46,21 @@ public class StudentCourseEntity {
 
     public void setScore(Double score) {
         this.score = score;
+    }
+
+    public StudentEntity getStudentByStudentId() {
+        return studentByStudentId;
+    }
+
+    public void setStudentByStudentId(StudentEntity studentByStudentId) {
+        this.studentByStudentId = studentByStudentId;
+    }
+
+    public CourseEntity getCourseByCourseId() {
+        return courseByCourseId;
+    }
+
+    public void setCourseByCourseId(CourseEntity courseByCourseId) {
+        this.courseByCourseId = courseByCourseId;
     }
 }

@@ -21,16 +21,16 @@
     <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
     <mapping resource="MajorCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity"/>
-    <mapping resource="StudentEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
-    <mapping resource="TeacherEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
-    <mapping resource="StudentCourseEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
-    <mapping resource="TeacherCourseEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity"/>
     <mapping resource="CourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
+    <mapping resource="StudentEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
+    <mapping resource="StudentCourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
+    <mapping resource="TeacherEntity.hbm.xml"/>
+    <mapping resource="TeacherCourseEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity"/>
 
 
     <!-- DB schema will be updated if needed -->

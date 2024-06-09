@@ -26,5 +26,11 @@
         <property name="gender">
             <column name="gender" sql-type="varchar(1)" length="1"/>
         </property>
+        <set name="studentCoursesById" inverse="true">
+            <key>
+                <column name="student_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
+        </set>
     </class>
 </hibernate-mapping>
