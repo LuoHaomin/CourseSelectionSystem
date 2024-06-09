@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.View;
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
+import cn.ustc.edu.course_selection_system.Service.AdminService;
 import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -108,9 +109,8 @@ public class AdminRegisCourseController {
     }
     @FXML
     protected void onCommitClick() {
-        for (CourseInfo courseInfo : CourseList) {
-            System.out.println(courseInfo.getCredit());
-        }
+        AdminService adminService = new AdminService();
+        adminService.ImportCourse(CourseList);
     }
 
     private void SetColumn(){

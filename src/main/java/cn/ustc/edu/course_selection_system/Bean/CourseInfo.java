@@ -1,5 +1,7 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
+import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,14 @@ public class CourseInfo {
         return teacher.toString();
     }
     public void setTeacher(String teacher) {
+        TeacherImpl teacherImpl = new TeacherImpl();
+        String[] split = teacher.split(",");
+        for (String s : split) {
+            TeacherEntity newTeacherEntity=teacherImpl.getTeacher(s);
+            if (newTeacherEntity!=null){
+                this.teacherEntity.add(newTeacherEntity);
+            }
+        }
 
     }
     public String getTime() {

@@ -59,27 +59,29 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button layoutX="520.0" layoutY="340.0" mnemonicParsing="false" text="提交">
+      <Button fx:id="Commit" layoutX="520.0" layoutY="340.0" mnemonicParsing="false" text="提交" onAction="#onCommitClicked">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView editable="true" layoutX="174.0" layoutY="83.0" prefHeight="102.0" prefWidth="406.0">
+      <TableView fx:id="StuTable" editable="true" layoutX="174.0" layoutY="83.0" prefHeight="102.0" prefWidth="406.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="姓名" />
-          <TableColumn prefWidth="60.0" text="密码" />
-            <TableColumn prefWidth="60.0" text="性别" />
-            <TableColumn text="电话" />
-            <TableColumn prefWidth="69.5999755859375" text="专业" />
-            <TableColumn prefWidth="60.0" text="学年" />
+            <TableColumn fx:id="StuID" prefWidth="75.0" text="学号" />
+          <TableColumn fx:id="StuName" prefWidth="75.0" text="姓名" />
+          <TableColumn fx:id="StuPassword" prefWidth="60.0" text="密码" />
+            <TableColumn fx:id="StuGender" prefWidth="40.800048828125" text="性别" />
+            <TableColumn fx:id="StuTele" prefWidth="99.199951171875" text="电话" />
+            <TableColumn fx:id="Major" prefWidth="56.0" text="专业" />
+            <TableColumn fx:id="Year" prefWidth="73.5999755859375" text="学年" />
         </columns>
       </TableView>
-      <TableView editable="true" layoutX="174.0" layoutY="239.0" prefHeight="90.0" prefWidth="406.0">
+      <TableView fx:id="TeacherTable" editable="true" layoutX="174.0" layoutY="239.0" prefHeight="90.0" prefWidth="406.0">
         <columns>
-            <TableColumn prefWidth="75.0" text="姓名" />
-            <TableColumn prefWidth="84.0" text="密码" />
-            <TableColumn prefWidth="79.20001220703125" text="性别" />
-            <TableColumn prefWidth="162.4000244140625" text="电话" />
+            <TableColumn fx:id="TeacherID" prefWidth="75.0" text="教工号" />
+            <TableColumn fx:id="TeacherName" prefWidth="75.0" text="姓名" />
+            <TableColumn fx:id="TeacherPassword" prefWidth="84.0" text="密码" />
+            <TableColumn fx:id="TeacherGender" prefWidth="79.20001220703125" text="性别" />
+            <TableColumn fx:id="TeacherTele" prefWidth="91.19998779296873" text="电话" />
         </columns>
       </TableView>
       <Label layoutX="174.0" layoutY="56.0" prefHeight="29.0" prefWidth="54.0" text="学生">
@@ -92,9 +94,9 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="228.0" layoutY="59.0" mnemonicParsing="false" text="添加" />
-      <Button layoutX="227.0" layoutY="204.0" mnemonicParsing="false" text="添加" />
-      <Button layoutX="284.0" layoutY="59.0" mnemonicParsing="false" text="导入" />
-      <Button layoutX="283.0" layoutY="204.0" mnemonicParsing="false" text="导入" />
+      <Button fx:id="AddStudent" layoutX="228.0" layoutY="59.0" mnemonicParsing="false" text="添加" onAction="#onAddStudentClicked"/>
+      <Button fx:id="AddTeacher" layoutX="227.0" layoutY="204.0" mnemonicParsing="false" text="添加" onAction="#onAddTeacherClicked"/>
+      <Button fx:id="ImportStu" layoutX="284.0" layoutY="59.0" mnemonicParsing="false" text="导入" />
+      <Button fx:id="ImportTeacher" layoutX="283.0" layoutY="204.0" mnemonicParsing="false" text="导入" />
    </children>
 </AnchorPane>
