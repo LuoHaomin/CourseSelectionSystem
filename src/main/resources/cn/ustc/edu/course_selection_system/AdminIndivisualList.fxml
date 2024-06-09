@@ -39,22 +39,22 @@
       </AnchorPane>
       <VBox prefHeight="400.0" prefWidth="158.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="录入学生/教师" textAlignment="CENTER">
+            <RadioButton fx:id="StudentAndTeacher" mnemonicParsing="false" onAction="#HandleStudentAndTeacher" prefHeight="54.0" prefWidth="190.0" text="录入学生/教师" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
+            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" selected="true" text="师生名单" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="StuTeaList" mnemonicParsing="false" onAction="#HandleStuTeaList" prefHeight="51.0" prefWidth="158.0" selected="true" text="师生名单" textAlignment="CENTER" textFill="#0006ff">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
