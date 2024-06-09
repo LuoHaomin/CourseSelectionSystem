@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -68,6 +69,10 @@ public class TeacherWelcomeController {
     private RadioButton Score;
     @FXML
     private TableView<tableline> Table;
+    @FXML
+    private TableColumn<tableline,String> StudentID;
+    @FXML
+    private TableColumn<tableline,String> StudentName;
 
     public void start(String tearcherid, int courseid)
     {
@@ -76,18 +81,19 @@ public class TeacherWelcomeController {
         TeacherService teacherService=new TeacherService(teacherid);
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
+        StudentID.setCellValueFactory(new PropertyValueFactory<>("studentid"));
+        StudentName.setCellValueFactory(new PropertyValueFactory<>("studentname"));
         CourseService courseService=new CourseService(courseid);
         List<String> studentlist=courseService.GetStudentInCourse();
         ObservableList<tableline> list=FXCollections.observableArrayList();
-        Table=new TableView<>(list);
         int size= list.size();
-
         for(int i=0;i<size;i++)
         {
             StudentService studentService=new StudentService(studentlist.get(i));
             StudentEntity studentEntity=studentService.GetID();
             Table.getItems().add(new tableline(studentEntity));
         }
+        Table=new TableView<>(list);
     }
     @FXML
     public void Handlebackselect(ActionEvent event) throws IOException

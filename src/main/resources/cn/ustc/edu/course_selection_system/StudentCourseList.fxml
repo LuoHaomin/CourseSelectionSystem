@@ -69,13 +69,13 @@
          <content>
             <TableView fx:id="table" prefHeight="278.0" prefWidth="371.0">
               <columns>
-                <TableColumn prefWidth="50.40008622407913" text="星期一" />
-                <TableColumn prefWidth="50.400020599365234" text="星期二" />
-                  <TableColumn prefWidth="53.5999755859375" text="星期三" />
-                  <TableColumn prefWidth="52.79998779296875" text="星期四" />
-                  <TableColumn prefWidth="52.00001525878906" text="星期五" />
-                  <TableColumn prefWidth="79.20001220703125" text="星期六" />
-                  <TableColumn prefWidth="90.39996337890625" text="星期日" />
+                <TableColumn fx:id="Mon" prefWidth="50.40008622407913" text="星期一" />
+                <TableColumn fx:id="Tue" prefWidth="50.400020599365234" text="星期二" />
+                  <TableColumn fx:id="Wed" prefWidth="53.5999755859375" text="星期三" />
+                  <TableColumn fx:id="Thu" prefWidth="52.79998779296875" text="星期四" />
+                  <TableColumn fx:id="Fri" prefWidth="52.00001525878906" text="星期五" />
+                  <TableColumn fx:id="Sat" prefWidth="48.0" text="星期六" />
+                  <TableColumn fx:id="Sun" prefWidth="48.79998779296875" text="星期日" />
               </columns>
             </TableView>
          </content>

@@ -10,10 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -80,16 +78,20 @@ public class TeacherLoginController {
 
     @FXML
     private TableView<tableline> Table;
-
+    @FXML
+    private TableColumn<tableline,String> CourseName;
+    @FXML
+    private TableColumn<tableline,Button> Login;
     public void start(String id)
     {
         this.id=id;
         TeacherService teacherService=new TeacherService(id);
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
+        CourseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        Login.setCellValueFactory(new PropertyValueFactory<>("btgo"));
         List<CourseEntity> courselist=teacherService.getRelatedCourse();
         ObservableList<tableline> list=FXCollections.observableArrayList();
-        Table=new TableView<>(list);
         int size=courselist.size();
         for(int i=0;i<size;i++)
         {
@@ -97,5 +99,6 @@ public class TeacherLoginController {
             CourseEntity courseEntity=courselist.get(i);
             Table.getItems().add(new tableline(courseEntity));
         }
+        Table=new TableView<>(list);
     }
 }

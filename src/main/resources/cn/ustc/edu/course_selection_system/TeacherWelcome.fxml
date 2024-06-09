@@ -62,8 +62,8 @@
          <content>
             <TableView fx:id="Table" prefHeight="295.0" prefWidth="318.0">
               <columns>
-                <TableColumn prefWidth="154.39996033906937" text="学生id" />
-                <TableColumn prefWidth="151.20005798339844" text="学生姓名" />
+                <TableColumn fx:id="StudentID" prefWidth="154.39996033906937" text="学生id" />
+                <TableColumn fx:id="StudentName" prefWidth="151.20005798339844" text="学生姓名" />
               </columns>
             </TableView>
          </content>

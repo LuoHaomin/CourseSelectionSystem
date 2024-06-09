@@ -2,13 +2,16 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.StudentScoreController">
    <children>
       <AnchorPane layoutX="188.0" prefHeight="54.0" prefWidth="412.0">
          <children>
@@ -22,12 +25,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
@@ -36,22 +39,25 @@
       </AnchorPane>
       <VBox prefHeight="400.0" prefWidth="185.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="选课/退课" textAlignment="CENTER">
+            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="54.0" prefWidth="190.0" text="选课/退课" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="group" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Program" mnemonicParsing="false" onAction="#HandleProgram" prefHeight="53.0" prefWidth="178.0" text="培养方案" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="53.0" prefWidth="178.0" text="培养方案" textAlignment="CENTER">
+            <RadioButton fx:id="Score" mnemonicParsing="false" onAction="#HandleScore" prefHeight="55.0" prefWidth="178.0" selected="true" text="查看成绩" textAlignment="CENTER" textFill="#0006ff" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="55.0" prefWidth="178.0" selected="true" text="查看成绩" textAlignment="CENTER" textFill="#0006ff">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="53.0" prefWidth="178.0" text="课程表" textAlignment="CENTER">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="53.0" prefWidth="178.0" text="课程表" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
@@ -63,28 +69,21 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="239.0" layoutY="87.0" text="课程名称">
+      <Label fx:id="GGPA" layoutX="284.0" layoutY="54.0" prefHeight="24.0" prefWidth="198.0" textFill="#0006ff">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="376.0" layoutY="87.0" text="分数">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="478.0" layoutY="87.0" text="GPA">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ListView layoutX="220.0" layoutY="111.0" prefHeight="274.0" prefWidth="110.0" />
-      <ListView layoutX="332.0" layoutY="111.0" prefHeight="274.0" prefWidth="110.0" />
-      <ListView layoutX="442.0" layoutY="111.0" prefHeight="274.0" prefWidth="110.0" />
-      <Label layoutX="275.0" layoutY="54.0" prefHeight="24.0" prefWidth="198.0" textFill="#0006ff">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
+      <ScrollPane hbarPolicy="NEVER" layoutX="206.0" layoutY="78.0" prefHeight="282.0" prefWidth="355.0">
+         <content>
+            <TableView fx:id="table" prefHeight="281.0" prefWidth="353.0">
+              <columns>
+                <TableColumn fx:id="CourseName" prefWidth="75.0" text="课程名称" />
+                <TableColumn fx:id="TScore" prefWidth="75.0" text="课程成绩" />
+                  <TableColumn fx:id="GPA" prefWidth="75.0" text="GPA" />
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

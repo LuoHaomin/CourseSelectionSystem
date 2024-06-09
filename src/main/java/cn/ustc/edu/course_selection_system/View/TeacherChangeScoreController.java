@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -109,6 +110,12 @@ public class TeacherChangeScoreController {
         }
         @FXML
         private TableView<tableline> table;
+        @FXML
+        private TableColumn<tableline,String> StudentID;
+        @FXML
+        private TableColumn<tableline,String> StudentName;
+        @FXML
+        private TableColumn<tableline,TextField> StudentScore;
         public void start(String teacherid,int courseid)
         {
             this.teacherid=teacherid;
@@ -116,10 +123,12 @@ public class TeacherChangeScoreController {
             TeacherService teacherService=new TeacherService(teacherid);
             TeacherEntity teacherEntity=teacherService.GetID();
             Name.setText(teacherEntity.getName());
+            StudentID.setCellValueFactory(new PropertyValueFactory<>("studentid"));
+            StudentName.setCellValueFactory(new PropertyValueFactory<>("studentname"));
+            StudentScore.setCellValueFactory(new PropertyValueFactory<>("textField"));
             CourseService courseService=new CourseService(courseid);
             List<String> studentlist=courseService.GetStudentInCourse();
             ObservableList<tableline> list= FXCollections.observableArrayList();
-            table=new TableView<>(list);
             int size=studentlist.size();
             for(int i=0;i<size;i++)
             {
@@ -127,6 +136,7 @@ public class TeacherChangeScoreController {
                 StudentEntity studentEntity=studentService.GetID();
                 table.getItems().add(new tableline(studentEntity));
             }
+            table=new TableView<>(list);
         }
         @FXML
         private Label wrong;

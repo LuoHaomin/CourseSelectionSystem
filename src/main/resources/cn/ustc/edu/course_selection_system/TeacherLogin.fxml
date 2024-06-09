@@ -38,8 +38,8 @@
          <content>
             <TableView fx:id="Table" prefHeight="317.0" prefWidth="383.0">
               <columns>
-                <TableColumn prefWidth="214.40000611543655" text="课程名称" />
-                <TableColumn minWidth="0.0" prefWidth="155.2000274658203" text="进入" />
+                <TableColumn fx:id="CourseName" prefWidth="214.40000611543655" text="课程名称" />
+                <TableColumn fx:id="Login" minWidth="0.0" prefWidth="155.2000274658203" text="进入" />
               </columns>
             </TableView>
          </content>

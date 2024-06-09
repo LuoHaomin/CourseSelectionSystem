@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -126,22 +127,43 @@ public class StudentCourseListController {
     }
     @FXML
     private TableView<tableline> table;
+    @FXML
+    private TableColumn<tableline,String> Mon;
+    @FXML
+    private TableColumn<tableline,String> Tue;
+    @FXML
+    private TableColumn<tableline,String> Wed;
+    @FXML
+    private TableColumn<tableline,String> Thu;
+    @FXML
+    private TableColumn<tableline,String> Fri;
+    @FXML
+    private TableColumn<tableline,String> Sat;
+    @FXML
+    private TableColumn<tableline,String> Sun;
     public void start(String id)
     {
         this.id=id;
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
+        Name.setText(studentEntity.getName());
         List<CourseEntity> studentcourse=studentService.getRelatedCourse();
         CourseTable courseTable=new CourseTable(studentcourse);
-        Name.setText(studentEntity.getName());
+        Mon.setCellValueFactory(new PropertyValueFactory<>("Monday"));
+        Tue.setCellValueFactory(new PropertyValueFactory<>("Tuesday"));
+        Wed.setCellValueFactory(new PropertyValueFactory<>("Wednesday"));
+        Thu.setCellValueFactory(new PropertyValueFactory<>("Thursday"));
+        Fri.setCellValueFactory(new PropertyValueFactory<>("Friday"));
+        Sat.setCellValueFactory(new PropertyValueFactory<>("Saturday"));
+        Sun.setCellValueFactory(new PropertyValueFactory<>("Sunday"));
         ObservableList<tableline> list= FXCollections.observableArrayList();
-        table=new TableView<>(list);
         String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],"1");
             table.getItems().add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
+        table=new TableView<>(list);
     }
     @FXML
     private TextField textfield;
@@ -157,12 +179,12 @@ public class StudentCourseListController {
         CourseTable courseTable=new CourseTable(studentcourse);
         Name.setText(studentEntity.getName());
         ObservableList<tableline> list= FXCollections.observableArrayList();
-        table=new TableView<>(list);
         String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],Week);
             table.getItems().add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
+        table=new TableView<>(list);
     }
 }

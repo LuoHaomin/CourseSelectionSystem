@@ -65,9 +65,9 @@
          <content>
             <TableView fx:id="table" prefHeight="286.0" prefWidth="306.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="99.199951171875" text="学生姓名" />
-                  <TableColumn prefWidth="119.19996643066406" text="学生成绩" />
+                <TableColumn fx:id="StudentID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="StudentName" prefWidth="99.199951171875" text="学生姓名" />
+                  <TableColumn fx:id="StudentScore" prefWidth="119.19996643066406" text="学生成绩" />
               </columns>
             </TableView>
          </content>

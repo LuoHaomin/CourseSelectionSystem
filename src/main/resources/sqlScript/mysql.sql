@@ -11,7 +11,7 @@ create table course
         primary key,
     name     varchar(60) charset utf8mb3 not null,
     time     varchar(40) charset utf8mb3 null,
-    credit   float                       not null,
+    credit   double                       not null,
     periods  varchar(60) charset utf8mb3 not null comment 'the start time and end time of the course',
     capacity int                         null
 );
