@@ -99,13 +99,29 @@ public class TeacherChangeScoreController {
                 studentname=student.getName();
                 textField=new TextField("请输入分数");
             }
-            public TextField getTextField()
+            public TextField gettextField()
             {
                 return textField;
             }
-            public String getID()
+            public String getstudentid()
             {
                 return studentid;
+            }
+            public String getstudentname()
+            {
+                return studentname;
+            }
+            public void settextField(TextField t)
+            {
+                textField=t;
+            }
+            public void setstudentid(String s)
+            {
+                studentid=s;
+            }
+            public void setstudentname(String s)
+            {
+                studentname=s;
             }
         }
         @FXML
@@ -150,12 +166,12 @@ public class TeacherChangeScoreController {
             TeacherService teacherService=new TeacherService(teacherid);
             for( tableline row: items)
             {
-                String studentid=row.getID();
+                String studentid=row.getstudentid();
                 double score;
                 try {
-                    if(row.getTextField().getText()=="")
+                    if(row.gettextField().getText()=="")
                         score=teacherService.GetScore(courseid,studentid);
-                    else score = Double.parseDouble(row.getTextField().getText());
+                    else score = Double.parseDouble(row.gettextField().getText());
                 }
                 catch(Exception exception)
                 {

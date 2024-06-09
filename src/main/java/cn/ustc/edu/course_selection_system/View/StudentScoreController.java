@@ -115,6 +115,30 @@ public class StudentScoreController {
             this.score=score;
             this.gpa=gpa;
         }
+        public Double getgpa()
+        {
+            return gpa;
+        }
+        public void setgpa(Double gpa)
+        {
+            this.gpa = gpa;
+        }
+        public Double getscore()
+        {
+            return score;
+        }
+        public void setscore(Double score)
+        {
+            this.score = score;
+        }
+        public String getcoursename()
+        {
+            return coursename;
+        }
+        public void setcoursename(String coursename)
+        {
+            this.coursename = coursename;
+        }
     }
     @FXML
     private TextField GGPA;

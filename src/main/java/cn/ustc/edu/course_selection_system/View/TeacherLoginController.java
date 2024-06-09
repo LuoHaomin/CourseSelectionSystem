@@ -74,6 +74,22 @@ public class TeacherLoginController {
                     }
             );
         }
+        public String getcoursename()
+        {
+            return coursename;
+        }
+        public Button getbtgo()
+        {
+            return btgo;
+        }
+        public void setcoursename(String coursename)
+        {
+            this.coursename = coursename;
+        }
+        public void setbtgo(Button btgo)
+        {
+            this.btgo = btgo;
+        }
     }
 
     @FXML
