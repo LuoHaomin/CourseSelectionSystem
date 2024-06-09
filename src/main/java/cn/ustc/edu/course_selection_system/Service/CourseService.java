@@ -81,10 +81,9 @@ public class CourseService {
         return courseInfos;
     }
 
-    public static Integer GetNumberOfCourseInfoByName(String courseName){
+    public static Long GetNumberOfCourseInfoByName(String courseName){
         CourseImpl courseEditorImpl = new CourseImpl();
-        return null;
-        //TODO:
+        return courseEditorImpl.NumberOfCoursesInConstraint(courseName);
     }
     public static List<CourseInfo> GetCourseInfoByName(String courseName){
         CourseImpl courseEditorImpl = new CourseImpl();
@@ -93,7 +92,7 @@ public class CourseService {
 
     public static List<CourseInfo> GetCourseInfoByName(String courseName,Integer page,Integer Limit){
         CourseImpl courseEditorImpl = new CourseImpl();
-        return getCourseInfos(courseEditorImpl.FindByCourseName(courseName),new TeacherCourse());
+        return getCourseInfos(courseEditorImpl.FindByCourseName(courseName,page,Limit),new TeacherCourse());
     }
 
 

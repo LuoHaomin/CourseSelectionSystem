@@ -103,7 +103,7 @@ public class AdminService {
      * @param courseInfoList  删除课程id名单
      * @return 成功删除个数
      */
-	public int DelCourse(List<CourseInfo> courseInfoList){
+	public static int DelCourse(List<CourseInfo> courseInfoList){
         CourseImpl courseImpl = new CourseImpl();
         return 0;
     }

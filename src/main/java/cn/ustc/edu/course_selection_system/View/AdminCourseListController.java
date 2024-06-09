@@ -10,11 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.List;
+
 public class AdminCourseListController {
     static int PageSize = 12;
     private String AdminID;
-    @FXML
-    private Button AddCourse;
+
 
     @FXML
     private Button Back;
@@ -60,7 +61,8 @@ public class AdminCourseListController {
     private Pagination Paging;
     @FXML
     private TextField SearchName;
-
+    @FXML
+    private Button DelCourse;
     @FXML
     private Button Search;
 
@@ -104,6 +106,12 @@ public class AdminCourseListController {
     @FXML
     void onSearchClicked(ActionEvent event) {
         SearchWord = SearchName.getText();
+    }
+
+    @FXML
+    void onDelCourseClicked(ActionEvent event) {
+        List<CourseInfo> courseInfoList = Table.getSelectionModel().getSelectedItems();
+        AdminService.DelCourse(courseInfoList);
     }
 }
 
