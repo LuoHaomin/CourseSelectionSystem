@@ -59,6 +59,44 @@ public class TeacherCourse {
     }
 
     /**
+     * Get the teacher's teaching course list
+     * @param teacherId teacher's id
+     * @param page the page number
+     * @param limit the number of items per page
+     * @return the teacher's teaching course list
+     */
+    public List<CourseEntity> GetTeachingCourseList(String teacherId, int page, int limit){
+        List<CourseEntity> courseList = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            List<CourseEntity> _courseList = session.createQuery("from CourseEntity where id in (select courseId from " +
+                            "TeacherCourseEntity where teacherId = :teacherId)", CourseEntity.class)
+                    .setParameter("teacherId", teacherId)
+                    .setFirstResult(page * limit)
+                    .setMaxResults(limit)
+                    .getResultList();
+            courseList.addAll(_courseList);
+        });
+        return courseList;
+    }
+
+    /**
+     * Get the number of courses a teacher is teaching constrained by his/her id
+     * @param teacherId teacher's id
+     * @return the number of courses a teacher is teaching
+     */
+    public Long NumberInConstraint(String teacherId){
+        List<Long> numberInCourse = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            numberInCourse.addAll(session.createQuery("select count(*) from TeacherCourseEntity " +
+                                    "where teacherId = :teacherId",
+                            Long.class)
+                    .setParameter("teacherId", teacherId)
+                    .getResultList());
+        });
+        return numberInCourse.get(0);
+    }
+
+    /**
      * Get the teachers of a course
      * @param courseId course's id
      * @return the teachers of the course

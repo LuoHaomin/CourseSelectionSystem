@@ -117,11 +117,19 @@ public class StudentImpl {
      *
      * @return Integer
      */
-    public Integer NumberInConstraint(String name, String major, String admissionYear){
-        List<StudentEntity> studentList = new ArrayList<>();
-        StudentImpl studentImpl = new StudentImpl();
-        studentList = studentImpl.FindWithConstraint(name, major, admissionYear);
-        return studentList.size();
+    public Long NumberInConstraint(String name, String major, String admissionYear){
+        List<Long> numberInCourse = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            numberInCourse.addAll(session.createQuery("select count(*) from StudentEntity where name " +
+                                    "like :name and major like :major and cast(admissionYear as string ) " +
+                                    "like :admissionYear",
+                            Long.class)
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("major", "%" + major + "%")
+                    .setParameter("admissionYear", admissionYear)
+                    .getResultList());
+        });
+        return numberInCourse.get(0);
     }
 
     /**
