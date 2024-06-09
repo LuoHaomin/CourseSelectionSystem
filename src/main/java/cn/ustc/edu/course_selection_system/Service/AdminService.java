@@ -118,6 +118,9 @@ public class AdminService {
     public static List<PersonInfo> getPersonInfo(String name, String major, String admissionYear){
         StudentImpl studentImpl = new StudentImpl();
         TeacherImpl teacherImpl = new TeacherImpl();
+
+
+
         List<PersonInfo> personInfos = new ArrayList<>();
         List<StudentEntity> studentEntities = studentImpl.FindWithConstraint(name,major,admissionYear);
         for(StudentEntity studentEntity : studentEntities){

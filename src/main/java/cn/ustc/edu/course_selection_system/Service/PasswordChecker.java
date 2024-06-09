@@ -38,7 +38,7 @@ public class PasswordChecker {
                 }
             }
             catch (Exception ignored){
-                //ToDo:
+
                 return new Pair<>("","");
             }
         }

@@ -5,6 +5,7 @@ import cn.ustc.edu.course_selection_system.Service.AdminService;
 import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -57,10 +58,17 @@ public class AdminCourseListController {
     private TableColumn<CourseInfo, Integer> Capacity;
     @FXML
     private Pagination Paging;
+    @FXML
+    private TextField SearchName;
 
+    @FXML
+    private Button Search;
+
+    private String SearchWord;
 
     @FXML
     void initialize() {
+        SearchWord="";
         SetColumn();
         setupPaging();
 
@@ -90,6 +98,11 @@ public class AdminCourseListController {
     private TableView<CourseInfo> Paging(Integer index) {
         Table.setItems(GetData(index,PageSize));
         return Table;
+    }
+
+    @FXML
+    void onSearchClicked(ActionEvent event) {
+        SearchWord = SearchName.getText();
     }
 }
 

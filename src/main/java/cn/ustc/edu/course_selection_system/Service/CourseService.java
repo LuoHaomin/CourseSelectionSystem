@@ -81,7 +81,17 @@ public class CourseService {
         return courseInfos;
     }
 
+    public static Integer GetNumberOfCourseInfoByName(String courseName){
+        CourseImpl courseEditorImpl = new CourseImpl();
+        return null;
+        //TODO:
+    }
     public List<CourseInfo> GetCourseInfoByName(String courseName){
+        CourseImpl courseEditorImpl = new CourseImpl();
+        return getCourseInfos(courseEditorImpl.FindByCourseName(courseName),new TeacherCourse());
+    }
+
+    public List<CourseInfo> GetCourseInfoByName(String courseName,Integer page,Integer Limit){
         CourseImpl courseEditorImpl = new CourseImpl();
         return getCourseInfos(courseEditorImpl.FindByCourseName(courseName),new TeacherCourse());
     }

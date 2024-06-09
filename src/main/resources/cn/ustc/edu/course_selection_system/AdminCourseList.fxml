@@ -88,12 +88,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="234.0" layoutY="63.0" prefHeight="30.0" prefWidth="274.0" promptText="请输入完整课程名称">
+      <TextField fx:id="SearchName" layoutX="234.0" layoutY="63.0" prefHeight="30.0" prefWidth="274.0" promptText="请输入完整课程名称">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="522.0" layoutY="64.0" mnemonicParsing="false" text="查找">
+      <Button fx:id="Search" layoutX="522.0" layoutY="64.0" mnemonicParsing="false" text="查找">
          <font>
             <Font size="14.0" />
          </font>

@@ -61,7 +61,25 @@ public class StudentService
         return studentCourse.GetChosenCourseList(id);
     }
 
-
+    /**
+     * 获得所选课程数量
+     * @return 所选课程数量
+     */
+    public Integer getNumberOfCourse() {
+        StudentCourse studentCourse = new StudentCourse();
+        return null;
+    }
+//TODO
+    /**
+     * 分页获取
+     * @param page
+     * @param limit
+     * @return
+     */
+    public List<CourseEntity> getRelatedCourse(Integer page, Integer limit) {
+        StudentCourse studentCourse = new StudentCourse();
+        return studentCourse.GetChosenCourseList(id);
+    }
     /**
      * 获得课程表数据
      */
