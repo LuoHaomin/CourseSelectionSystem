@@ -93,8 +93,14 @@ public class AdminPersonInfoList {
 
     List<PersonInfo> getData(){
         List<PersonInfo> list = new ArrayList<PersonInfo>();
-        list.addAll(AdminService.getPersonInfo(IdOrName.getText()));
-        list.addAll(AdminService.getPersonInfo(IdOrName.getText(),SearchMajor.getText(),SearchYear.getText()));
+        var searchById =AdminService.getPersonInfo(IdOrName.getText());
+        var searchByCons =AdminService.getPersonInfo(IdOrName.getText(),SearchMajor.getText(),SearchYear.getText());
+        if(!searchById.isEmpty()){
+            list.addAll(searchById);
+        }
+        if(!searchByCons.isEmpty()){
+            list.addAll(searchByCons);
+        }
         return list;
     }
 

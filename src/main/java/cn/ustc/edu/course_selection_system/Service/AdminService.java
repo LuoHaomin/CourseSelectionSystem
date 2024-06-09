@@ -133,14 +133,18 @@ public class AdminService {
         List<PersonInfo> personInfos = new ArrayList<>();
 
 
-        StudentEntity student = studentImpl.getStudent(Id);
-        TeacherEntity teacher = teacherImpl.getTeacher(Id);
+        try {
+            StudentEntity student = studentImpl.getStudent(Id);
+            TeacherEntity teacher = teacherImpl.getTeacher(Id);
 
-        if(student!=null){
-            personInfos.add(new PersonInfo(student));
-        }
-        if(teacher!=null){
-            personInfos.add(new PersonInfo(teacher));
+            if(student!=null){
+                personInfos.add(new PersonInfo(student));
+            }
+            if(teacher!=null){
+                personInfos.add(new PersonInfo(teacher));
+            }
+        } catch (Exception ignored) {
+
         }
 
         return personInfos;
