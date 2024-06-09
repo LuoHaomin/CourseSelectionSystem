@@ -58,6 +58,41 @@ public class StudentCourse {
     }
 
     /**
+     * Get the student's chosen course list
+     * @param studentId student's id
+     * @return List<CourseEntity>
+     */
+    public List<CourseEntity> GetChosenCourseList(String studentId, int page, int limit) {
+        List<CourseEntity> courseList = new ArrayList<>();
+        sessionFactory.inTransaction(session -> {
+            List<CourseEntity> _courseList = session.createQuery("from CourseEntity where id in (select courseId from " +
+                            "StudentCourseEntity where studentId = :studentId)", CourseEntity.class)
+                    .setParameter("studentId", studentId)
+                    .setFirstResult((page) * limit)
+                    .setMaxResults(limit)
+                    .getResultList();
+            courseList.addAll(_courseList);
+        });
+        return courseList;
+    }
+
+    /**
+     * Get how many courses has student chosen
+     * @param studentId student's id
+     * @return number of courses
+     */
+    public Integer NumberInConstraint(String studentId){
+        List<Long> numberInCourse = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            numberInCourse.addAll(session.createQuery("select count(*) from StudentCourseEntity where " +
+                                    "studentId = :studentId", Long.class)
+                    .setParameter("studentId", studentId)
+                    .getResultList());
+        });
+        return numberInCourse.get(0).intValue();
+    }
+
+    /**
      * Get the student's score of a course
      * @param studentId student's id
      * @param courseId course's id

@@ -113,6 +113,18 @@ public class StudentImpl {
     }
 
     /**
+     * Get the number of students in the database
+     *
+     * @return Integer
+     */
+    public Integer NumberInConstraint(String name, String major, String admissionYear){
+        List<StudentEntity> studentList = new ArrayList<>();
+        StudentImpl studentImpl = new StudentImpl();
+        studentList = studentImpl.FindWithConstraint(name, major, admissionYear);
+        return studentList.size();
+    }
+
+    /**
      * Find students with constraints
      *
      * @param name student's name
@@ -130,6 +142,35 @@ public class StudentImpl {
                     .setParameter("name", "%" + name + "%")
                     .setParameter("major", "%" + major + "%")
                     .setParameter("admissionYear", admissionYear)
+                    .getResultList();
+            studentList.addAll(_studentList);
+        });
+        return studentList;
+    }
+
+/**
+     * Display students with constraints
+     *
+     * @param name student's name
+     * @param major student's major
+     * @param admissionYear student's admission year
+     * @param page page number
+     * @param limit number of students per page
+     * @return List<StudentEntity>
+     */
+    public List<StudentEntity> FindWithConstraint(String name, String major, String admissionYear,
+                                                     int page, int limit){
+        List<StudentEntity> studentList = new ArrayList<>();
+        sessionFactory.inSession(session -> {
+            List<StudentEntity> _studentList = session.createQuery("from StudentEntity where name " +
+                                    "like :name and major like :major and cast(admissionYear as string ) " +
+                                    "like :admissionYear",
+                            StudentEntity.class)
+                    .setParameter("name", "%" + name + "%")
+                    .setParameter("major", "%" + major + "%")
+                    .setParameter("admissionYear", admissionYear)
+                    .setFirstResult((page) * limit)
+                    .setMaxResults(limit)
                     .getResultList();
             studentList.addAll(_studentList);
         });
