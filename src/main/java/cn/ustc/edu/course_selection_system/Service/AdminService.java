@@ -115,29 +115,24 @@ public class AdminService {
         return 0;
     }
 
-    public static List<PersonInfo> getPersonInfo(String name, String major, String admissionYear){
+    public static Long getNumOfStuByCons(String major, String admissionYear){
         StudentImpl studentImpl = new StudentImpl();
-        TeacherImpl teacherImpl = new TeacherImpl();
-
-
-
+        return studentImpl.NumberInConstraint("%",major,admissionYear);
+    }
+    public static List<PersonInfo> getPersonInfo(String major, String admissionYear,Integer page,Integer pageSize){
+        StudentImpl studentImpl = new StudentImpl();
         List<PersonInfo> personInfos = new ArrayList<>();
-        List<StudentEntity> studentEntities = studentImpl.FindWithConstraint(name,major,admissionYear);
+        List<StudentEntity> studentEntities = studentImpl.FindWithConstraint("%",major,admissionYear,page,pageSize);
         for(StudentEntity studentEntity : studentEntities){
             personInfos.add(new PersonInfo(studentEntity));
         }
-        List<TeacherEntity> teacherEntities = ;
-        //Todo:teacher
-        for(TeacherEntity teacherEntity : teacherEntities){
-            personInfos.add(new PersonInfo(teacherEntity));
-        }
         return personInfos;
     }
+
     public static List<PersonInfo> getPersonInfo(String Id){
         StudentImpl studentImpl = new StudentImpl();
         TeacherImpl teacherImpl = new TeacherImpl();
         List<PersonInfo> personInfos = new ArrayList<>();
-
 
         try {
             StudentEntity student = studentImpl.getStudent(Id);
@@ -146,13 +141,21 @@ public class AdminService {
             if(student!=null){
                 personInfos.add(new PersonInfo(student));
             }
+
             if(teacher!=null){
                 personInfos.add(new PersonInfo(teacher));
             }
-        } catch (Exception ignored) {
+        } catch (Exception ignored) {}
 
+        List<StudentEntity> studentEntities = studentImpl.FindWithConstraint(Id,"%","%");
+        for(StudentEntity studentEntity : studentEntities){
+            personInfos.add(new PersonInfo(studentEntity));
         }
+        List<TeacherEntity> teacherEntities = teacherImpl.FindWithConstraint(Id) ;
 
+        for(TeacherEntity teacherEntity : teacherEntities){
+            personInfos.add(new PersonInfo(teacherEntity));
+        }
         return personInfos;
     }
 }

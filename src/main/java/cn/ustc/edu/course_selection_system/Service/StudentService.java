@@ -27,7 +27,6 @@ public class StudentService
      */
     public StudentEntity GetID() {
         StudentImpl studentImpl = new StudentImpl();
-
         return studentImpl.getStudent(id);
     }
 
@@ -67,9 +66,9 @@ public class StudentService
      */
     public Integer getNumberOfCourse() {
         StudentCourse studentCourse = new StudentCourse();
-        return null;
+        return studentCourse.NumberInConstraint(id);
     }
-//TODO
+
     /**
      * 分页获取
      * @param page
@@ -78,7 +77,7 @@ public class StudentService
      */
     public List<CourseEntity> getRelatedCourse(Integer page, Integer limit) {
         StudentCourse studentCourse = new StudentCourse();
-        return studentCourse.GetChosenCourseList(id);
+        return studentCourse.GetChosenCourseList(id, page, limit);
     }
     /**
      * 获得课程表数据

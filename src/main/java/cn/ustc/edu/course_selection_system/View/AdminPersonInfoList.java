@@ -2,6 +2,7 @@ package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Service.AdminService;
+import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -91,28 +92,31 @@ public class AdminPersonInfoList {
     }
 
     void SetUpPaging(){
-//        Paging.setPageFactory();
+        Paging.setPageCount(IdOrName.getText().isEmpty()?(int) Math.ceil((double) AdminService.getNumOfStuByCons(Major.getText().isEmpty()?"%":Major.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText()) / PageSize):1);
+        Paging.setPageFactory(this::getTable);
     }
 
+    TableView<PersonInfo> getTable(Integer index) {
+        Table.setItems(FXCollections.observableArrayList(getData(index,PageSize)) );
+        return Table;
+    }
     List<PersonInfo> getData(Integer page, Integer limit){
         List<PersonInfo> list = new ArrayList<PersonInfo>();
-        var searchById =AdminService.getPersonInfo(IdOrName.getText().isEmpty()?"%":IdOrName.getText());
-        var searchByCons =AdminService.getPersonInfo(IdOrName.getText().isEmpty()?"%":IdOrName.getText(),SearchMajor.getText().isEmpty()?"%":SearchMajor.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText());
-        if(!searchById.isEmpty()){
-            list.addAll(searchById);
+
+        if(!IdOrName.getText().isEmpty()){
+            list=(AdminService.getPersonInfo(IdOrName.getText()));
         }
-        if(!searchByCons.isEmpty()){
-            list.addAll(searchByCons);
+        else {
+            list=AdminService.getPersonInfo(Major.getText().isEmpty()?"%":Major.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText(),page,limit);
         }
+
         return list;
     }
 
 
     @FXML
     void onSearchClicked() {
-        List<PersonInfo> list = getData();
-        Table.getItems().clear();
-        Table.setItems(FXCollections.observableArrayList(list));
+        SetUpPaging();
     }
 
 }
