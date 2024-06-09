@@ -49,13 +49,13 @@ public class AdminPersonInfoList {
     private TableColumn<PersonInfo, String> PhoneNumber;
 
     @FXML
-    private RadioButton Score;
+    private RadioButton Course;
 
     @FXML
-    private RadioButton Score1;
+    private RadioButton StuTeaList;
 
     @FXML
-    private RadioButton Score11;
+    private RadioButton CourseList;
 
     @FXML
     private Button Search;
@@ -67,7 +67,7 @@ public class AdminPersonInfoList {
     private TextField SearchYear;
 
     @FXML
-    private RadioButton Student;
+    private RadioButton StudentAndTeacher;
 
     @FXML
     private TableView<PersonInfo> Table;

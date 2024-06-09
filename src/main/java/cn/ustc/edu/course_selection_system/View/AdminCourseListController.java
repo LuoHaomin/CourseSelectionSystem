@@ -64,6 +64,7 @@ public class AdminCourseListController {
     @FXML
     private Button Search;
 
+    @FXML
     private String SearchWord;
 
     @FXML
