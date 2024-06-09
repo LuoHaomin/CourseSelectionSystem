@@ -1,18 +1,23 @@
 package cn.ustc.edu.course_selection_system.View;
 
+import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Service.StudentService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class StudentHandleCourseController {
     private String id;
+    private int PageSize=12;
     @FXML
     private Label Name;
     @FXML
@@ -125,7 +130,9 @@ public class StudentHandleCourseController {
                     {
                         Symbol.setText("选课未成功");
                     }
-                    else Symbol.setText("选课成功");
+                    else {
+                        setTable(id);
+                    }
                 });
             }
             else{
@@ -135,7 +142,9 @@ public class StudentHandleCourseController {
                     {
                         Symbol.setText("退课未成功");
                     }
-                    else Symbol.setText("退课成功");
+                    else {
+                        setTable(id);
+                    }
                 });
             }
         }
@@ -156,4 +165,39 @@ public class StudentHandleCourseController {
     private TableView<tableline> Table;
     @FXML
     private Pagination Paging;
+    @FXML
+    private TableColumn<tableline,String> CourseName;
+    @FXML
+    private TableColumn<tableline,String> Time;
+    @FXML
+    private TableColumn<tableline,String> Teacher;
+    @FXML
+    private TableColumn<tableline,String> Credit;
+    @FXML
+    private TableColumn<tableline,String> Period;
+    @FXML
+    private TableColumn<tableline,String> Capacity;
+    @FXML
+    private TableColumn<tableline,Button> Conduct;
+    public void start(String id)
+    {
+        this.id = id;
+        StudentService studentService=new StudentService(id);
+        StudentEntity studentEntity=studentService.GetID();
+        Name.setText(studentEntity.getName());
+        CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
+        Time.setCellValueFactory(new PropertyValueFactory<>("Time"));
+        Teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
+        Credit.setCellValueFactory(new PropertyValueFactory<>("Credit"));
+        Period.setCellValueFactory(new PropertyValueFactory<>("Period"));
+        Capacity.setCellValueFactory(new PropertyValueFactory<>("Capacity"));
+        Conduct.setCellValueFactory(new PropertyValueFactory<>("Conduct"));
+        setTable(id);
+    }
+    public void setTable(String id)
+    {
+        ObservableList<tableline> list= FXCollections.observableArrayList();
+        StudentService studentService=new StudentService(id);
+
+    }
 }
