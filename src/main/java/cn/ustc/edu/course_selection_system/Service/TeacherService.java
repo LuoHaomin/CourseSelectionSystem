@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import cn.ustc.edu.course_selection_system.Database.CourseImpl;
@@ -48,9 +49,11 @@ public class TeacherService {
         return courseEntityList;
     }
 
-    public boolean AddCourse(CourseEntity courseInfo){
+    public boolean AddCourse(CourseEntity courseEntity){
         CourseImpl courseEditor  = new CourseImpl();
-        courseEditor.AddCourse(courseInfo);
+        TeacherCourse teacherCourse = new TeacherCourse();
+        int courseId = courseEditor.AddCourse(courseEntity);
+        teacherCourse.AddCoursePair(id,courseId);
         return true;
     }
 

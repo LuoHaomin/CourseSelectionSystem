@@ -4,7 +4,6 @@ import cn.ustc.edu.course_selection_system.Bean.*;
 import cn.ustc.edu.course_selection_system.Database.*;
 import javafx.util.Pair;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdminService {
@@ -39,10 +38,14 @@ public class AdminService {
      * @param courseInfos 课程信息
      * @return 成功导入个数
      */
-	public int ImportCourse(List<CourseEntity> courseInfos) {
-        CourseImpl courseEditorImpl = new CourseImpl();
-        for(CourseEntity info : courseInfos){
-            courseEditorImpl.AddCourse(info);
+	public int ImportCourse(List<CourseInfo> courseInfos) {
+        CourseImpl courseImpl = new CourseImpl();
+        TeacherCourse teacherCourse = new TeacherCourse();
+        for(CourseInfo info : courseInfos){
+            int courseId = courseImpl.AddCourse(info.getCourseEntity());
+            for(TeacherEntity teacher : info.getTeacherEntity()){
+                teacherCourse.AddCoursePair(teacher.getId(),courseId);
+            }
         }
         return courseInfos.size();
     }

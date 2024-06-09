@@ -59,7 +59,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="Commit" layoutX="521.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="提交">
+      <Button fx:id="Commit" layoutX="521.0" layoutY="345.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="提交" onAction="#onCommitClick">
          <font>
             <Font size="14.0" />
          </font>
@@ -69,23 +69,22 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="Table" layoutX="174.0" layoutY="77.0" prefHeight="252.0" prefWidth="395.0">
+      <TableView fx:id="Table" editable="true" layoutX="174.0" layoutY="77.0" prefHeight="252.0" prefWidth="395.0">
         <columns>
           <TableColumn fx:id="CourseName" prefWidth="71.20001220703125" text="课程名称" />
-            <TableColumn fx:id="CourseTime" prefWidth="74.39996337890625" text="课程时间" />
+            <TableColumn fx:id="Time" prefWidth="74.39996337890625" text="课程时间" />
           <TableColumn fx:id="Teacher" prefWidth="70.39996337890625" text="授课老师" />
             <TableColumn fx:id="Credit" prefWidth="51.20001220703125" text="学分" />
-            <TableColumn fx:id="Time" prefWidth="66.4000244140625" text="时间" />
-            <TableColumn fx:id="Peroid" prefWidth="63.2000732421875" text="时段" />
+            <TableColumn fx:id="Period" prefWidth="63.2000732421875" text="时段" />
+            <TableColumn fx:id="Capacity" prefWidth="61.59991455078125" text="容量" />
         </columns>
       </TableView>
-      <Button fx:id="AddCourse" layoutX="174.0" layoutY="345.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="47.0" text="添加">
+      <Button fx:id="AddCourse" layoutX="174.0" layoutY="345.0" mnemonicParsing="false" onAction="#onAddCourseClick" prefHeight="29.0" prefWidth="47.0" text="添加">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="ImportCourse" layoutX="245.0" layoutY="346.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="47.0" text="导入"
-      onAction="#onImportCourseClick">
+      <Button fx:id="ImportCourse" layoutX="245.0" layoutY="346.0" mnemonicParsing="false" onAction="#onImportCourseClick" prefHeight="30.0" prefWidth="47.0" text="导入">
          <font>
             <Font size="14.0" />
          </font>

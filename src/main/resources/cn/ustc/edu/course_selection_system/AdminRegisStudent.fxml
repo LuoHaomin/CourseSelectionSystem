@@ -64,7 +64,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TableView layoutX="174.0" layoutY="83.0" prefHeight="102.0" prefWidth="406.0">
+      <TableView editable="true" layoutX="174.0" layoutY="83.0" prefHeight="102.0" prefWidth="406.0">
         <columns>
           <TableColumn prefWidth="75.0" text="姓名" />
           <TableColumn prefWidth="60.0" text="密码" />
@@ -74,7 +74,7 @@
             <TableColumn prefWidth="60.0" text="学年" />
         </columns>
       </TableView>
-      <TableView layoutX="174.0" layoutY="239.0" prefHeight="90.0" prefWidth="406.0">
+      <TableView editable="true" layoutX="174.0" layoutY="239.0" prefHeight="90.0" prefWidth="406.0">
         <columns>
             <TableColumn prefWidth="75.0" text="姓名" />
             <TableColumn prefWidth="84.0" text="密码" />

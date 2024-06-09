@@ -1,7 +1,7 @@
 package cn.ustc.edu.course_selection_system.Database;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -35,11 +35,13 @@ public class CourseImpl {
     /**
      * Add a course to the database
      * @param info the course entity
+     * @return the id of the course
      */
-    public void AddCourse(CourseEntity info) {
+    public int AddCourse(CourseEntity info) {
         sessionFactory.inTransaction(session -> {
             session.persist(info);
         });
+        return 0;
     }
 
     /**

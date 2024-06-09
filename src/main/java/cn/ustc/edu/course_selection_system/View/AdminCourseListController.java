@@ -54,6 +54,8 @@ public class AdminCourseListController {
     @FXML
     private TableColumn<CourseInfo, Double> Credit;
     @FXML
+    private TableColumn<CourseInfo, Integer> Capacity;
+    @FXML
     private Pagination Paging;
 
 
@@ -70,6 +72,7 @@ public class AdminCourseListController {
         Teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
         Period.setCellValueFactory(new PropertyValueFactory<>("Period"));
         Credit.setCellValueFactory(new PropertyValueFactory<>("Credit"));
+        Capacity.setCellValueFactory(new PropertyValueFactory<>("Capacity"));
     }
 
 
