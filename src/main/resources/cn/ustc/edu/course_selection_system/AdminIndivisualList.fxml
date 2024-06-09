@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -60,12 +61,7 @@
             </RadioButton>
          </children>
       </VBox>
-      <Label layoutX="332.0" layoutY="367.0" text="*教师以绿色字体显示，学生以黑色字体显示" textFill="RED">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <TableView fx:id="Table" layoutX="188.0" layoutY="92.0" prefHeight="213.0" prefWidth="386.0">
+      <TableView fx:id="Table" layoutX="188.0" layoutY="92.0" prefHeight="240.0" prefWidth="386.0">
         <columns>
             <TableColumn fx:id="Id" prefWidth="66.4000244140625" text="ID" />
             <TableColumn fx:id="Name" prefWidth="64.79998779296875" text="姓名" />
@@ -101,5 +97,6 @@
             <Font size="14.0" />
          </font>
       </TextField>
+      <Pagination fx:id="Paging" layoutX="182.0" layoutY="90.0" prefHeight="298.0" prefWidth="402.0" />
    </children>
 </AnchorPane>

@@ -94,7 +94,7 @@ public class PersonInfo {
     }
 
     public int getAdmissionYear() {
-        if (!isTeacher) {
+        if (isTeacher) {
             return 0;
         } else {
             return studentEntity.getAdmissionYear();

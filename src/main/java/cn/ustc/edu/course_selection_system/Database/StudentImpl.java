@@ -28,7 +28,7 @@ public class StudentImpl {
                     .getResultList();
             studentList.addAll(_studentList);
         });
-        if (studentList.size() == 0)
+        if (studentList.isEmpty())
         {
             return null;
         }

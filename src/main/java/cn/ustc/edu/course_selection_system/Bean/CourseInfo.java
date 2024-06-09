@@ -5,9 +5,14 @@ import cn.ustc.edu.course_selection_system.Database.TeacherImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 课程完整信息，包括其courseEntity与其教师的List<TeacherEntity>
+ */
 public class CourseInfo {
+
     CourseEntity courseEntity;
     List<TeacherEntity> teacherEntity;
+
 
     public CourseEntity getCourseEntity() {
         return courseEntity;

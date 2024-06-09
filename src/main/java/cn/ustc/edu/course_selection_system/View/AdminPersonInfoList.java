@@ -2,15 +2,11 @@ package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Service.AdminService;
+import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
@@ -18,6 +14,7 @@ import java.util.List;
 
 public class AdminPersonInfoList {
 
+    static Integer  PageSize=12;
     @FXML
     private TableColumn<PersonInfo, Integer> AdmissionYear;
 
@@ -76,9 +73,12 @@ public class AdminPersonInfoList {
     private TableView<PersonInfo> Table;
 
     @FXML
+    private Pagination Paging;
+
+    @FXML
     void initialize() {
         SetColumn();
-
+        SetUpPaging();
     }
 
     void SetColumn(){
@@ -88,27 +88,35 @@ public class AdminPersonInfoList {
         Major.setCellValueFactory(new PropertyValueFactory<PersonInfo, String>("Major"));
         PhoneNumber.setCellValueFactory(new PropertyValueFactory<PersonInfo, String>("PhoneNumber"));
         Password.setCellValueFactory(new PropertyValueFactory<PersonInfo, String>("Password"));
-        AdmissionYear.setCellValueFactory(new PropertyValueFactory<PersonInfo, Integer>("AdmissionYear"));
+        AdmissionYear.setCellValueFactory(new PropertyValueFactory<>("AdmissionYear"));
     }
 
-    List<PersonInfo> getData(){
+    void SetUpPaging(){
+        Paging.setPageCount(IdOrName.getText().isEmpty()?(int) Math.ceil((double) AdminService.getNumOfStuByCons(Major.getText().isEmpty()?"%":Major.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText()) / PageSize):1);
+        Paging.setPageFactory(this::getTable);
+    }
+
+    TableView<PersonInfo> getTable(Integer index) {
+        Table.setItems(FXCollections.observableArrayList(getData(index,PageSize)) );
+        return Table;
+    }
+    List<PersonInfo> getData(Integer page, Integer limit){
         List<PersonInfo> list = new ArrayList<PersonInfo>();
-        var searchById =AdminService.getPersonInfo(IdOrName.getText());
-        var searchByCons =AdminService.getPersonInfo(IdOrName.getText(),SearchMajor.getText(),SearchYear.getText());
-        if(!searchById.isEmpty()){
-            list.addAll(searchById);
+
+        if(!IdOrName.getText().isEmpty()){
+            list=(AdminService.getPersonInfo(IdOrName.getText()));
         }
-        if(!searchByCons.isEmpty()){
-            list.addAll(searchByCons);
+        else {
+            list=AdminService.getPersonInfo(Major.getText().isEmpty()?"%":Major.getText(),SearchYear.getText().isEmpty()?"%":SearchYear.getText(),page,limit);
         }
+
         return list;
     }
 
+
     @FXML
     void onSearchClicked() {
-        List<PersonInfo> list = getData();
-        Table.getItems().clear();
-        Table.setItems(FXCollections.observableArrayList(list));
+        SetUpPaging();
     }
 
 }
