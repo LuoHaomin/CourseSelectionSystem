@@ -4,6 +4,7 @@ import cn.ustc.edu.course_selection_system.Bean.*;
 import cn.ustc.edu.course_selection_system.Database.*;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminService {
@@ -114,5 +115,10 @@ public class AdminService {
         return 0;
     }
 
-
+    public List<PersonInfo> getPersonInfo(String Field, String Value){
+        StudentImpl studentImpl = new StudentImpl();
+        TeacherImpl teacherImpl = new TeacherImpl();
+        //TODO:FindBy
+        return new ArrayList<>();
+    }
 }
