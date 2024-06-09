@@ -10,6 +10,7 @@ import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 
 import javafx.util.Pair;
+import org.hibernate.HibernateException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class StudentService
             studentImpl.updateStudent(studentEntity);
             return true;
         }
-        catch (Exception e) {
+        catch (HibernateException e) {
             return false;
         }
 
@@ -55,7 +56,7 @@ public class StudentService
      * 获得所选课程
      * @return 课程列表
      */
-    public List<CourseEntity> getRelatedCourse() {
+    public List<CourseEntity> getRelatedCourses() {
         StudentCourse studentCourse = new StudentCourse();
         return studentCourse.GetChosenCourseList(id);
     }
@@ -113,11 +114,11 @@ public class StudentService
             return false;
         }
         //判断是否重叠
-        CourseTable courseTable = new CourseTable(getRelatedCourse());
+        CourseTable courseTable = new CourseTable(getRelatedCourses());
         try {
-            courseTable.IsConflicted(courseEntity);
+            courseTable.IsConflict(courseEntity);
         }
-        catch (Exception isconflicted) {
+        catch (Exception isConflict) {
             return false;
         }
         //判断是否超过人数上限
@@ -172,16 +173,16 @@ public class StudentService
         return 0.0f;
     }
 
-    public double generalGPA () {
+    public double averageGPA() {
         StudentCourse studentCourse = new StudentCourse();
-        double totalGPA = 0,totalCredit = 0,generalGPA = 0;
+        double totalGPA = 0,totalCredit = 0,averageGPA = 0;
         List<CourseEntity> courseEntityList = studentCourse.GetChosenCourseList(id);
         for (CourseEntity course : courseEntityList) {
             totalGPA += course.getCredit()*translateGPA(studentCourse.GetStudentScore(id,course.getId()));
             totalCredit += course.getCredit();
         }
-        generalGPA = totalGPA/totalCredit;
-        return generalGPA;
+        averageGPA = totalGPA/totalCredit;
+        return averageGPA;
     }
 
 }

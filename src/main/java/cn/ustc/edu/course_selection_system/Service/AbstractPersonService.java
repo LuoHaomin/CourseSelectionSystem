@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * 学生相关服务
  */
+@Deprecated
 public abstract class AbstractPersonService {
     String id;
 
@@ -20,6 +21,6 @@ public abstract class AbstractPersonService {
      * 获取相关课程
      * @return 课程编号
      */
-    public abstract List<Integer> getRelatedCourse();
+    public abstract List<Integer> getRelatedCourses();
 
 }
