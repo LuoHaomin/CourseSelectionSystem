@@ -13,7 +13,6 @@ public class AdminService {
      * @param infos 信息列表
      * @return 成功导入人数
      */
-
     public int ImportStudentID(List<StudentEntity> infos){
         StudentImpl studentImpl = new StudentImpl();
         for(StudentEntity info : infos){
@@ -34,6 +33,7 @@ public class AdminService {
         }
         return infos.size();
     }
+
     /**
      * 批量导入课程信息
      * @param courseInfos 课程信息
@@ -84,7 +84,10 @@ public class AdminService {
      * @return 成功删除个数
      */
     public int DelID(List<String> id_list){
-
+        for(String id : id_list){
+//            Student
+//            PersonInfo personInfo = new PersonInfo(id.GetId());
+        }
         return 0;
     }
 

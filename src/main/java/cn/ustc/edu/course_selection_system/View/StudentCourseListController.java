@@ -189,7 +189,7 @@ public class StudentCourseListController {
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
-        List<CourseEntity> studentcourse=studentService.getRelatedCourse();
+        List<CourseEntity> studentcourse=studentService.getRelatedCourses();
         CourseTable courseTable=new CourseTable(studentcourse);
         Mon.setCellValueFactory(new PropertyValueFactory<>("Monday"));
         Tue.setCellValueFactory(new PropertyValueFactory<>("Tuesday"));
@@ -217,7 +217,7 @@ public class StudentCourseListController {
         String Week=textfield.getText();
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
-        List<CourseEntity> studentcourse=studentService.getRelatedCourse();
+        List<CourseEntity> studentcourse=studentService.getRelatedCourses();
         CourseTable courseTable=new CourseTable(studentcourse);
         Name.setText(studentEntity.getName());
         ObservableList<tableline> list= FXCollections.observableArrayList();
