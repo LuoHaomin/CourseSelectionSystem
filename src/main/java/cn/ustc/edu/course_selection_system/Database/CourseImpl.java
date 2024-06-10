@@ -1,7 +1,6 @@
 package cn.ustc.edu.course_selection_system.Database;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ public class CourseImpl {
      * Delete a course from the database
      * @param courseId the id of the course
      */
-    public void DelCourse(int courseId) {
+    public void DeleteCourse(int courseId) {
         sessionFactory.inTransaction(session -> {
             session.createMutationQuery("delete from StudentCourseEntity where courseId = :id")
                     .setParameter("id", courseId)

@@ -19,7 +19,7 @@ public class CourseTest {
     @Test
     public void testDelCourse(){
         CourseImpl courseEditor = new CourseImpl();
-        courseEditor.DelCourse(2);
+        courseEditor.DeleteCourse(2);
     }
 
     @Test
