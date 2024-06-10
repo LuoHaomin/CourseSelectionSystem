@@ -241,6 +241,10 @@ public class StudentHandleCourseController {
     }
     @FXML
     private TextField QCourseName;
+    public void setQCourseName(String qCourseName)
+    {
+        QCourseName.setText(qCourseName);
+    }
     @FXML
     private Button Find;
     @FXML

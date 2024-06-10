@@ -6,31 +6,34 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.ustc.edu.course_selection_system.View.StudentProgramController">
    <children>
       <VBox prefHeight="400.0" prefWidth="185.0" style="-fx-background-color: rgb(225,225,225);">
          <children>
-            <RadioButton fx:id="Student" mnemonicParsing="false" prefHeight="54.0" prefWidth="190.0" text="选课/退课" textAlignment="CENTER">
+            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="54.0" prefWidth="190.0" text="选课/退课" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="group" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="Program" mnemonicParsing="false" onAction="#HandleProgram" prefHeight="53.0" prefWidth="178.0" selected="true" text="培养方案" textAlignment="CENTER" textFill="#0006ff" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score11" mnemonicParsing="false" prefHeight="53.0" prefWidth="178.0" selected="true" text="培养方案" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="Score" mnemonicParsing="false" onAction="#HandleScore" prefHeight="55.0" prefWidth="178.0" text="查看成绩" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="Score" mnemonicParsing="false" prefHeight="55.0" prefWidth="178.0" text="查看成绩" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="Score1" mnemonicParsing="false" prefHeight="53.0" prefWidth="178.0" text="课程表" textAlignment="CENTER">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="53.0" prefWidth="178.0" text="课程表" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
@@ -49,12 +52,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
@@ -63,10 +66,10 @@
       </AnchorPane>
       <ScrollPane hbarPolicy="NEVER" layoutX="200.0" layoutY="54.0" prefHeight="311.0" prefWidth="346.0">
          <content>
-            <TableView prefHeight="315.0" prefWidth="347.0">
+            <TableView fx:id="table" prefHeight="315.0" prefWidth="347.0">
               <columns>
-                <TableColumn prefWidth="144.79998475313187" text="课程名称" />
-                <TableColumn minWidth="5.60003662109375" prefWidth="186.3999786376953" text="查询" />
+                <TableColumn fx:id="CourseName" prefWidth="144.79998475313187" text="课程名称" />
+                <TableColumn fx:id="Enter" minWidth="5.60003662109375" prefWidth="186.3999786376953" text="查询" />
               </columns>
             </TableView>
          </content>
