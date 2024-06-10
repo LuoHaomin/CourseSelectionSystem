@@ -6,6 +6,10 @@ import cn.ustc.edu.course_selection_system.Service.CourseService;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -16,11 +20,13 @@ import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminRegisCourseController {
 
+    private String AdminID;
     @FXML
     private AnchorPane root;
     @FXML
@@ -78,6 +84,76 @@ public class AdminRegisCourseController {
 
     private List<CourseInfo> CourseList;
 
+    @FXML
+    private void HandleChangeCode(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml"));
+        Parent root=loader.load();
+        ChangeCodeSceneController changeCodeSceneController=loader.getController();
+        changeCodeSceneController.start(AdminID);
+        Stage stage=(Stage) ChangeCode.getScene().getWindow();
+        Scene scene=new Scene(root,600,400);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    private void HandleBack(ActionEvent event) throws IOException
+    {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/Loginscene.fxml"));
+        Parent root=loader.load();
+        Stage stage=(Stage) Back.getScene().getWindow();
+        Scene scene=new Scene(root,600,400);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void HandleStudentAndTeacher(ActionEvent event) throws IOException
+    {
+        if(StudentAndTeacher.isSelected())
+        {
+            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/AdminRegisStudent.fxml"));
+            Parent root=loader.load();
+            AdminRegisStudentController adminRegisStudentController =loader.getController();
+//            adminRegisStudentController.start(AdminID);
+            Stage stage=(Stage) StudentAndTeacher.getScene().getWindow();
+            Scene scene=new Scene(root,600,400);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+    @FXML
+    public void HandleCourse(ActionEvent event) throws IOException
+    {}
+    @FXML
+    public void HandleStuTeaList(ActionEvent event) throws IOException
+    {
+        if(StuTeaList.isSelected())
+        {
+            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/AdminIndivisualList.fxml"));
+            Parent root=loader.load();
+            AdminPersonInfoList adminPersonInfoList =loader.getController();
+//            adminPersonInfoList.start(id);
+            Stage stage=(Stage) StuTeaList.getScene().getWindow();
+            Scene scene=new Scene(root,600,400);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+    @FXML
+    public void HandleCList(ActionEvent event) throws IOException
+    {
+        if(CList.isSelected())
+        {
+            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/AdminCourseList.fxml"));
+            Parent root=loader.load();
+            AdminCourseListController adminCourseListController =loader.getController();
+//            adminCourseListController.start(id);
+            Stage stage=(Stage) CList.getScene().getWindow();
+            Scene scene=new Scene(root,600,400);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
     @FXML
     void initialize() {
         CourseList = new ArrayList<>();

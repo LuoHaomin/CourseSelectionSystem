@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -25,12 +26,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" text="修改密码">
+            <Button fx:id="ChangeCode" layoutX="239.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleChangeCode" text="修改密码">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" text="注销">
+            <Button fx:id="Back" layoutX="328.0" layoutY="13.0" mnemonicParsing="false" onAction="#HandleBack" text="注销">
                <font>
                   <Font size="14.0" />
                </font>
@@ -43,18 +44,21 @@
                <font>
                   <Font size="18.0" />
                </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="group" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER">
+            <RadioButton fx:id="Course" mnemonicParsing="false" onAction="#HandleCourse" prefHeight="52.0" prefWidth="158.0" text="录入课程" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="StuTeaList" mnemonicParsing="false" onAction="#HandleStuTeaList" prefHeight="51.0" prefWidth="158.0" selected="true" text="师生名单" textAlignment="CENTER" textFill="#0006ff">
+            <RadioButton fx:id="StuTeaList" mnemonicParsing="false" onAction="#HandleStuTeaList" prefHeight="51.0" prefWidth="158.0" selected="true" text="师生名单" textAlignment="CENTER" textFill="#0006ff" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="51.0" prefWidth="158.0" text="课程列表" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>
