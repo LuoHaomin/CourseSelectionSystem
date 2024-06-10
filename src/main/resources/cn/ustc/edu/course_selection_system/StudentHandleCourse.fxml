@@ -80,7 +80,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Pagination fx:id="Paging" layoutX="150.0" layoutY="79.0" prefHeight="301.0" prefWidth="406.0" />
+      <Pagination fx:id="Paging" layoutX="150.0" layoutY="79.0" prefHeight="298.0" prefWidth="422.0" />
       <TableView fx:id="Table" editable="true" layoutX="154.0" layoutY="86.0" prefHeight="242.0" prefWidth="398.0">
          <columns>
             <TableColumn fx:id="CourseName" prefWidth="85.60003662109375" text="课程名称" />
@@ -92,6 +92,6 @@
             <TableColumn fx:id="Conduct" prefWidth="40.80002441406248" text="操作" />
          </columns>
       </TableView>
-      <Label fx:id="Symbol" layoutX="500.0" layoutY="341.0" prefHeight="24.0" prefWidth="75.0" textFill="RED" />
+      <Label fx:id="symbol" layoutX="499.0" layoutY="335.0" prefHeight="24.0" prefWidth="75.0" textFill="RED" />
    </children>
 </AnchorPane>

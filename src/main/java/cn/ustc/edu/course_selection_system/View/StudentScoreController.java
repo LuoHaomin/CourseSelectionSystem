@@ -163,12 +163,13 @@ public class StudentScoreController {
         GPA.setCellValueFactory(new PropertyValueFactory<>("gpa"));
         ObservableList<tableline> list=FXCollections.observableArrayList();
         int size=scorelist.size();
+        table=new TableView<>(list);
         for(int i=0;i<size;i++)
         {
             Pair<String,Double> thisscore=scorelist.get(i);
             double thisgpa=studentService.translateGPA(thisscore.getValue());
-            list.add(new tableline(thisscore.getKey(),thisscore.getValue(),thisgpa));
+            table.getItems().add(new tableline(thisscore.getKey(),thisscore.getValue(),thisgpa));
         }
-        table=new TableView<>(list);
+
     }
 }

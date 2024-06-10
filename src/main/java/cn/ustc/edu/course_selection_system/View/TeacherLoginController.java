@@ -108,6 +108,7 @@ public class TeacherLoginController {
         Login.setCellValueFactory(new PropertyValueFactory<>("btgo"));
         List<CourseEntity> courselist=teacherService.getRelatedCourse();
         ObservableList<tableline> list=FXCollections.observableArrayList();
+        Table=new TableView<>(list);
         int size=courselist.size();
         for(int i=0;i<size;i++)
         {
@@ -115,6 +116,6 @@ public class TeacherLoginController {
             CourseEntity courseEntity=courselist.get(i);
             Table.getItems().add(new tableline(courseEntity));
         }
-        Table=new TableView<>(list);
+
     }
 }

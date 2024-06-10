@@ -145,6 +145,7 @@ public class TeacherChangeScoreController {
             CourseService courseService=new CourseService(courseid);
             List<String> studentlist=courseService.GetStudentInCourse();
             ObservableList<tableline> list= FXCollections.observableArrayList();
+            table=new TableView<>(list);
             int size=studentlist.size();
             for(int i=0;i<size;i++)
             {
@@ -152,7 +153,7 @@ public class TeacherChangeScoreController {
                 StudentEntity studentEntity=studentService.GetID();
                 table.getItems().add(new tableline(studentEntity));
             }
-            table=new TableView<>(list);
+
         }
         @FXML
         private Label wrong;

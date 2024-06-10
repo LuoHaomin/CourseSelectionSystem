@@ -102,6 +102,7 @@ public class TeacherWelcomeController {
         CourseService courseService=new CourseService(courseid);
         List<String> studentlist=courseService.GetStudentInCourse();
         ObservableList<tableline> list=FXCollections.observableArrayList();
+        Table=new TableView<>(list);
         int size= list.size();
         for(int i=0;i<size;i++)
         {
@@ -109,7 +110,7 @@ public class TeacherWelcomeController {
             StudentEntity studentEntity=studentService.GetID();
             Table.getItems().add(new tableline(studentEntity));
         }
-        Table=new TableView<>(list);
+
     }
     @FXML
     public void Handlebackselect(ActionEvent event) throws IOException
