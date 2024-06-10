@@ -42,7 +42,13 @@ public class NameandPasswordController {
             }
             if(idname.getValue() == "admin")//该用户是管理员
             {
-
+                FXMLLoader loader = new FXMLLoader(cn.ustc.edu.course_selection_system.HelloApplication.class.getResource("AdminRegisStudent.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(cn.ustc.edu.course_selection_system.HelloApplication.class.getResource("AdminIndivisualList.fxml"));
+                Parent root=loader.load();
+                Stage stage=(Stage) login.getScene().getWindow();
+                Scene scene=new Scene(root,600,400);
+                stage.setScene(scene);
+                stage.show();
             }
             if(idname.getValue() =="teacher")//该用户是老师
             {

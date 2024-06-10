@@ -105,7 +105,7 @@ public class StudentCourseListController {
     @FXML
     public void HandleCourseList(ActionEvent event) throws IOException
     {}
-    class tableline
+    public class tableline
     {
         String Monday;
         String Tuesday;
@@ -203,9 +203,9 @@ public class StudentCourseListController {
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],"1");
-            table.getItems().add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
+            list.add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
-        table=new TableView<>(list);
+        table.setItems(list);
     }
     @FXML
     private TextField textfield;
@@ -225,8 +225,8 @@ public class StudentCourseListController {
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],Week);
-            table.getItems().add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
+            list.add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
-        table=new TableView<>(list);
+        table.setItems(list);
     }
 }
