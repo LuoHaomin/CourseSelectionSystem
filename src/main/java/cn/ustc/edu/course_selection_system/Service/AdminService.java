@@ -83,7 +83,7 @@ public class AdminService {
      * @param personInfoList 删除人员id名单
      * @return 成功删除个数
      */
-    public int DelID(List<PersonInfo> personInfoList){
+    public static int DelID(List<PersonInfo> personInfoList){
         for(PersonInfo personInfo : personInfoList){
             boolean isTeacher = personInfo.isTeacher();
             if(isTeacher){

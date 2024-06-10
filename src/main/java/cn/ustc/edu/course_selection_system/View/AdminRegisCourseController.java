@@ -187,6 +187,8 @@ public class AdminRegisCourseController {
     protected void onCommitClick() {
         AdminService adminService = new AdminService();
         adminService.ImportCourse(CourseList);
+        CourseList.clear();
+        Table.setItems(FXCollections.observableArrayList(CourseList));
     }
 
     private void SetColumn(){

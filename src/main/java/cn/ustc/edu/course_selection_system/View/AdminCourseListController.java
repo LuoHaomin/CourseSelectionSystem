@@ -188,6 +188,7 @@ public class AdminCourseListController {
     void onDelCourseClicked(ActionEvent event) {
         List<CourseInfo> courseInfoList = Table.getSelectionModel().getSelectedItems();
         AdminService.DelCourse(courseInfoList);
+        setupPaging();
     }
 }
 

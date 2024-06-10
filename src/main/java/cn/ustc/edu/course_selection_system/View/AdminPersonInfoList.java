@@ -82,6 +82,9 @@ public class AdminPersonInfoList {
     private Pagination Paging;
 
     @FXML
+    private Button DelPerson;
+
+    @FXML
     private void HandleChangeCode(ActionEvent event) throws IOException
     {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml"));
@@ -165,6 +168,7 @@ public class AdminPersonInfoList {
         PhoneNumber.setCellValueFactory(new PropertyValueFactory<PersonInfo, String>("PhoneNumber"));
         Password.setCellValueFactory(new PropertyValueFactory<PersonInfo, String>("Password"));
         AdmissionYear.setCellValueFactory(new PropertyValueFactory<>("AdmissionYear"));
+        Table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     void SetUpPaging(){
@@ -194,4 +198,11 @@ public class AdminPersonInfoList {
         SetUpPaging();
     }
 
+    @FXML
+    void onDelPersonClicked()
+    {
+        List<PersonInfo> list=Table.getSelectionModel().getSelectedItems();
+        AdminService.DelID(list);
+        SetUpPaging();
+    }
 }

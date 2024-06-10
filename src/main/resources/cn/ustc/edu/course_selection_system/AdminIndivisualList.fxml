@@ -65,7 +65,7 @@
             </RadioButton>
          </children>
       </VBox>
-      <TableView fx:id="Table" layoutX="188.0" layoutY="92.0" prefHeight="240.0" prefWidth="386.0">
+      <TableView fx:id="Table" layoutX="188.0" layoutY="92.0" prefHeight="217.0" prefWidth="386.0">
         <columns>
             <TableColumn fx:id="Id" prefWidth="66.4000244140625" text="ID" />
             <TableColumn fx:id="Name" prefWidth="64.79998779296875" text="姓名" />
@@ -101,6 +101,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Pagination fx:id="Paging" layoutX="182.0" layoutY="90.0" prefHeight="298.0" prefWidth="402.0" />
+      <Pagination fx:id="Paging" layoutX="182.0" layoutY="90.0" prefHeight="268.0" prefWidth="402.0" />
+      <Button fx:id="DelPerson" layoutX="519.0" layoutY="363.0" mnemonicParsing="false" text="删除"  onAction="#onDelPersonClicked"/>
    </children>
 </AnchorPane>
