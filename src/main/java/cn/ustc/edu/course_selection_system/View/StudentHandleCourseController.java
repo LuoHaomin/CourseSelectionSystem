@@ -247,7 +247,7 @@ public class StudentHandleCourseController {
     public void HandleFind(ActionEvent event)
     {
         String qCourseName=QCourseName.getText();
-        Integer size=CourseService.GetNumberOfCourseInfoByName(qCourseName);
+        Long size=CourseService.GetNumberOfCourseInfoByName(qCourseName);
         ObservableList<tableline> list= FXCollections.observableArrayList();
         Paging.setPageCount((int) Math.ceil((double)size.intValue()/ PageSize));
         Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
