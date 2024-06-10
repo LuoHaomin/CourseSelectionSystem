@@ -12,14 +12,14 @@ public class TeacherCourseTest {
     @Test
     public void testAddCoursePair(){
         TeacherCourse teacherCourse = new TeacherCourse();
-        teacherCourse.AddCoursePair("123", 4);
-        teacherCourse.AddCoursePair("123", 5);
+        teacherCourse.AddCoursePair("1", 4);
+//        teacherCourse.AddCoursePair("123", 5);
     }
 
     @Test
     public void testDeleteCoursePair(){
         TeacherCourse teacherCourse = new TeacherCourse();
-        teacherCourse.DeleteCoursePair("123", 4);
+        teacherCourse.DeleteCoursePair("1", 4);
     }
 
     @Test

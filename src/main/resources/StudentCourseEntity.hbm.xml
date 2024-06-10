@@ -17,11 +17,5 @@
         <property name="score">
             <column name="score" sql-type="double" precision="-1" not-null="true"/>
         </property>
-        <many-to-one name="studentByStudentId" class="cn.ustc.edu.course_selection_system.Bean.StudentEntity">
-            <column name="student_id"/>
-        </many-to-one>
-        <many-to-one name="courseByCourseId" class="cn.ustc.edu.course_selection_system.Bean.CourseEntity">
-            <column name="course_id"/>
-        </many-to-one>
     </class>
 </hibernate-mapping>

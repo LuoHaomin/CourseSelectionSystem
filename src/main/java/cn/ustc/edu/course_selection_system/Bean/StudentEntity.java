@@ -9,6 +9,7 @@ import java.util.Collection;
 public class StudentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+//    @EmbeddedId
     @Column(name = "id", nullable = false, length = 20)
     private String id;
     @Basic

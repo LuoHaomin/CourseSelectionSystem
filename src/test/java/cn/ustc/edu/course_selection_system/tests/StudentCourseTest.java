@@ -7,9 +7,15 @@ public class StudentCourseTest {
     @Test
     public void testAddCoursePair() {
         StudentCourse studentCourse = new StudentCourse();
-        studentCourse.AddCoursePair("2019211001", 1);
+        studentCourse.AddCoursePair("2019211001", 4);
         studentCourse.AddCoursePair("2019211002", 2);
         studentCourse.AddCoursePair("2019211001", 3);
+    }
+
+    @Test
+    public void testDeleteCoursePair() {
+        StudentCourse studentCourse = new StudentCourse();
+        studentCourse.DeleteCoursePair("2019211001", 4);
     }
 
     @Test
