@@ -48,7 +48,7 @@
                   <ToggleGroup fx:id="group" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="Program" mnemonicParsing="false" onAction="#HandleProgram" prefHeight="53.0" prefWidth="178.0" text="培养方案" textAlignment="CENTER">
+            <RadioButton fx:id="Program" mnemonicParsing="false" onAction="#HandleProgram" prefHeight="53.0" prefWidth="178.0" text="培养方案" textAlignment="CENTER" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>

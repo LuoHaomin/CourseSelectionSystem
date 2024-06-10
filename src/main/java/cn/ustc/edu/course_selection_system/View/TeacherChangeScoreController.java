@@ -88,7 +88,7 @@ public class TeacherChangeScoreController {
         @FXML
         public void HandleScore(ActionEvent event) throws IOException
         {}
-        class tableline
+        public class tableline
         {
             String studentid;
             String studentname;
@@ -99,15 +99,15 @@ public class TeacherChangeScoreController {
                 studentname=student.getName();
                 textField=new TextField("请输入分数");
             }
-            public TextField gettextField()
+            public TextField getTextField()
             {
                 return textField;
             }
-            public String getstudentid()
+            public String getStudentId()
             {
                 return studentid;
             }
-            public String getstudentname()
+            public String getStudentName()
             {
                 return studentname;
             }
@@ -139,21 +139,19 @@ public class TeacherChangeScoreController {
             TeacherService teacherService=new TeacherService(teacherid);
             TeacherEntity teacherEntity=teacherService.GetID();
             Name.setText(teacherEntity.getName());
-            StudentID.setCellValueFactory(new PropertyValueFactory<>("studentid"));
-            StudentName.setCellValueFactory(new PropertyValueFactory<>("studentname"));
-            StudentScore.setCellValueFactory(new PropertyValueFactory<>("textField"));
+            StudentID.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
+            StudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
+            StudentScore.setCellValueFactory(new PropertyValueFactory<>("TextField"));
             CourseService courseService=new CourseService(courseid);
             List<String> studentlist=courseService.GetStudentInCourse();
             ObservableList<tableline> list= FXCollections.observableArrayList();
-            table=new TableView<>(list);
-            int size=studentlist.size();
-            for(int i=0;i<size;i++)
-            {
-                StudentService studentService=new StudentService(studentlist.get(i));
-                StudentEntity studentEntity=studentService.GetID();
-                table.getItems().add(new tableline(studentEntity));
-            }
 
+            for (String s : studentlist) {
+                StudentService studentService = new StudentService(s);
+                StudentEntity studentEntity = studentService.GetID();
+                list.add(new tableline(studentEntity));
+            }
+            table.setItems(list);
         }
         @FXML
         private Label wrong;
@@ -167,12 +165,12 @@ public class TeacherChangeScoreController {
             TeacherService teacherService=new TeacherService(teacherid);
             for( tableline row: items)
             {
-                String studentid=row.getstudentid();
+                String studentid=row.getStudentId();
                 double score;
                 try {
-                    if(row.gettextField().getText()=="")
+                    if(row.getTextField().getText()=="")
                         score=teacherService.GetScore(courseid,studentid);
-                    else score = Double.parseDouble(row.gettextField().getText());
+                    else score = Double.parseDouble(row.getTextField().getText());
                 }
                 catch(Exception exception)
                 {

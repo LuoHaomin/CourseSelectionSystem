@@ -69,7 +69,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="GGPA" layoutX="284.0" layoutY="54.0" prefHeight="24.0" prefWidth="198.0" textFill="#0006ff">
+      <Label fx:id="Agpa" layoutX="284.0" layoutY="54.0" prefHeight="24.0" prefWidth="198.0" textFill="#0006ff">
          <font>
             <Font size="18.0" />
          </font>

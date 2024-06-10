@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ChangeCodeSceneController {
     private String id;
@@ -60,18 +61,20 @@ public class ChangeCodeSceneController {
         String nc2=NewCode2.getText();
         PasswordChecker passwordChecker=new PasswordChecker();
         Pair<String,String> idname=passwordChecker.checkID(nm,oc);
-        if(idname.getValue()!=""&& nc1==nc2 ) {
+        if(!idname.getValue().isEmpty() && Objects.equals(nc1, nc2)) {
             if(idname.getValue()=="student")
             {
                 StudentService studentService=new StudentService(idname.getKey());
                 StudentEntity studentEntity=studentService.GetID();
                 studentEntity.setPassword(nc1);
+                studentService.updateID(studentEntity);
             }
             if(idname.getValue()=="teacher")
             {
                 TeacherService teacherService=new TeacherService(idname.getKey());
                 TeacherEntity teacherEntity=teacherService.GetID();
                 teacherEntity.setPassword(nc1);
+                teacherService.updateID(teacherEntity);
             }
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/NameandPassword.fxml"));
             Parent root = loader.load();
