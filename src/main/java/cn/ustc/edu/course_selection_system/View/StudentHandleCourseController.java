@@ -109,7 +109,7 @@ public class StudentHandleCourseController {
     }
     @FXML
     Label symbol;
-    class tableline
+    public class tableline
     {
         String CourseName;
         String Time;
@@ -118,6 +118,7 @@ public class StudentHandleCourseController {
         String Period;
         int Capacity;
         Button Conduct;
+
         public tableline(String CourseName, String Time, String Teacher, double Credit, String Period, int Capacity,String StudentID,int CourseID,boolean selectordrop) {
             this.CourseName = CourseName;
             this.Time = Time;
@@ -164,6 +165,7 @@ public class StudentHandleCourseController {
         public void setCredit(double Credit) {this.Credit = Credit;}
         public void setPeriod(String Period) {this.Period = Period;}
         public void setCapacity(int Capacity) {this.Capacity = Capacity;}
+        public Button getConduct() {return Conduct;}
     }
     @FXML
     private TableView<tableline> Table;
@@ -198,6 +200,7 @@ public class StudentHandleCourseController {
         Conduct.setCellValueFactory(new PropertyValueFactory<>("Conduct"));
         setTable(id);
     }
+
     public void setTable(String id)
     {
         ObservableList<tableline> list= FXCollections.observableArrayList();
@@ -206,38 +209,48 @@ public class StudentHandleCourseController {
         int droppage=(int) Math.ceil((double)studentcoursesize/ PageSize);
         int selectpage=(int)Math.ceil((double)CourseService.getNumberOfCourses()/PageSize);
         int allpage=droppage+selectpage;
+
         Paging.setPageCount(allpage);
         Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
-            int currentpage=Paging.currentPageIndexProperty().get()+1;
-            if(currentpage<=droppage)
+            list.clear();
+            int currentpage=Paging.currentPageIndexProperty().get();
+            if(currentpage<droppage)
             {
                 List<CourseInfo> thispage=studentService.getRelatedCourse(currentpage,PageSize);
                 Table=new TableView<>(list);
-                for(int i=0;i<thispage.size();i++)
-                {
-                    CourseInfo courseInfo=thispage.get(i);
-                    Table.getItems().add(new tableline(courseInfo.getCourseName(),courseInfo.getTime(),courseInfo.getTeacher(),courseInfo.getCredit(),courseInfo.getPeriod(),courseInfo.getCapacity(),id,courseInfo.getCourseEntity().getId(),false));
+                for (CourseInfo courseInfo : thispage) {
+                    Table.getItems().add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
                 }
-
+                Table.setItems(list);
             }
             else {
-                currentpage=currentpage-droppage;
+                currentpage=currentpage-droppage+1;
                 List<CourseInfo> thispage=CourseService.getCourseInfoList(currentpage,PageSize);
-                Table=new TableView<>(list);
-                for(int i=0;i<thispage.size();i++)
-                {
-                    CourseInfo courseInfo=thispage.get(i);
-                    Table.getItems().add(new tableline(courseInfo.getCourseName(),courseInfo.getTime(),courseInfo.getTeacher(),courseInfo.getCredit(),courseInfo.getPeriod(),courseInfo.getCapacity(),id,courseInfo.getCourseEntity().getId(),true));
+
+                for (CourseInfo courseInfo : thispage) {
+                    Table.getItems().add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), true));
                 }
+                Table.setItems(list);
             }
         });
-        List<CourseInfo> thispage=studentService.getRelatedCourse(1,PageSize);
-        Table=new TableView<>(list);
-        for(int i=0;i<thispage.size();i++)
+        if(droppage==0)
         {
-            CourseInfo courseInfo=thispage.get(i);
-            Table.getItems().add(new tableline(courseInfo.getCourseName(),courseInfo.getTime(),courseInfo.getTeacher(),courseInfo.getCredit(),courseInfo.getPeriod(),courseInfo.getCapacity(),id,courseInfo.getCourseEntity().getId(),false));
+            List<CourseInfo> thispage=CourseService.getCourseInfoList(0,PageSize);
+            for (CourseInfo courseInfo : thispage) {
+                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(),
+                        courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(),
+                        courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), true));
+            }
+            Table.setItems(list);
         }
+        else {
+            List<CourseInfo> thispage=studentService.getRelatedCourse(0,PageSize);
+            for (CourseInfo courseInfo : thispage) {
+                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
+            }
+            Table.setItems(list);
+        }
+
     }
     @FXML
     private TextField QCourseName;
@@ -255,21 +268,19 @@ public class StudentHandleCourseController {
         ObservableList<tableline> list= FXCollections.observableArrayList();
         Paging.setPageCount((int) Math.ceil((double)size.intValue()/ PageSize));
         Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
-            int currentpage=Paging.currentPageIndexProperty().get()+1;
+            list.clear();
+            int currentpage=Paging.currentPageIndexProperty().get();
             List<CourseInfo> thispage=CourseService.GetCourseInfoByName(qCourseName,currentpage,PageSize);
-            Table=new TableView<>(list);
-            for(int i=0;i<thispage.size();i++)
-            {
-                CourseInfo courseInfo=thispage.get(i);
-                Table.getItems().add(new tableline(courseInfo.getCourseName(),courseInfo.getTime(),courseInfo.getTeacher(),courseInfo.getCredit(),courseInfo.getPeriod(),courseInfo.getCapacity(),id,courseInfo.getCourseEntity().getId(),false));
+            for (CourseInfo courseInfo : thispage) {
+                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
             }
+            Table.setItems(list);
         });
-        List<CourseInfo> thispage=CourseService.GetCourseInfoByName(qCourseName,1,PageSize);
-        Table=new TableView<>(list);
-        for(int i=0;i<thispage.size();i++)
-        {
-            CourseInfo courseInfo=thispage.get(i);
-            Table.getItems().add(new tableline(courseInfo.getCourseName(),courseInfo.getTime(),courseInfo.getTeacher(),courseInfo.getCredit(),courseInfo.getPeriod(),courseInfo.getCapacity(),id,courseInfo.getCourseEntity().getId(),false));
+        List<CourseInfo> thispage=CourseService.GetCourseInfoByName(qCourseName,0,PageSize);
+        for (CourseInfo courseInfo : thispage) {
+            list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(),
+                    courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
         }
+        Table.setItems(list);
     }
 }

@@ -104,7 +104,7 @@ public class StudentProgramController {
             stage.show();
         }
     }
-    class tableline
+    public class tableline
     {
         String courseName;
         Button btEnter;
@@ -124,6 +124,7 @@ public class StudentProgramController {
                 }
                 StudentHandleCourseController studentHandleCourseController =loader.getController();
                 studentHandleCourseController.setQCourseName(courseName);
+                studentHandleCourseController.start(id);
                 studentHandleCourseController.HandleFind(new ActionEvent());
                 Stage stage=(Stage) Course.getScene().getWindow();
                 Scene scene=new Scene(root,600,400);
@@ -156,14 +157,12 @@ public class StudentProgramController {
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
         List<String> programlist=studentService.getProgram();
-        CourseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-        Enter.setCellValueFactory(new PropertyValueFactory<>("btEnter"));
+        CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
+        Enter.setCellValueFactory(new PropertyValueFactory<>("BtEnter"));
         ObservableList<tableline> list= FXCollections.observableArrayList();
-        table=new TableView<>(list);
-        for(int i=0;i<programlist.size();i++)
-        {
-            String courseName=programlist.get(i);
-            table.getItems().add(new tableline(courseName));
+        for (String courseName : programlist) {
+            list.add(new tableline(courseName));
         }
+        table.setItems(list);
     }
 }

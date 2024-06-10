@@ -49,7 +49,7 @@ public class TeacherLoginController {
         stage.setScene(scene);
         stage.show();
     }
-    class tableline
+    public class tableline
     {
         String coursename;
         Button btgo;
@@ -74,11 +74,11 @@ public class TeacherLoginController {
                     }
             );
         }
-        public String getcoursename()
+        public String getCourseName()
         {
             return coursename;
         }
-        public Button getbtgo()
+        public Button getBtgo()
         {
             return btgo;
         }
@@ -104,18 +104,15 @@ public class TeacherLoginController {
         TeacherService teacherService=new TeacherService(id);
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
-        CourseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-        Login.setCellValueFactory(new PropertyValueFactory<>("btgo"));
+        CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
+        Login.setCellValueFactory(new PropertyValueFactory<>("Btgo"));
         List<CourseEntity> courselist=teacherService.getRelatedCourse();
         ObservableList<tableline> list=FXCollections.observableArrayList();
-        Table=new TableView<>(list);
-        int size=courselist.size();
-        for(int i=0;i<size;i++)
-        {
-            //加入课程名//加入课程跳转按钮（根据id,传两个id，一个老师，一个课程)
-            CourseEntity courseEntity=courselist.get(i);
-            Table.getItems().add(new tableline(courseEntity));
-        }
 
+        for (CourseEntity courseEntity : courselist) {
+            //加入课程名//加入课程跳转按钮（根据id,传两个id，一个老师，一个课程)
+            list.add(new tableline(courseEntity));
+        }
+        Table.setItems(list);
     }
 }

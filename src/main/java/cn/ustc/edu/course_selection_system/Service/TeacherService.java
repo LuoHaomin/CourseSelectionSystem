@@ -1,7 +1,6 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
-import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import cn.ustc.edu.course_selection_system.Database.CourseImpl;
@@ -60,7 +59,7 @@ public class TeacherService {
     public boolean delCourse(int course_id){
         CourseImpl courseEditor = new CourseImpl();
         try{
-            courseEditor.DelCourse(course_id);
+            courseEditor.DeleteCourse(course_id);
             return true;
         }
         catch(Exception e){

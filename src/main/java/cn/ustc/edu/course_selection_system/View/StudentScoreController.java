@@ -104,7 +104,7 @@ public class StudentScoreController {
             stage.show();
         }
     }
-    class tableline
+    public class tableline
     {
         String coursename;
         Double score;
@@ -115,7 +115,7 @@ public class StudentScoreController {
             this.score=score;
             this.gpa=gpa;
         }
-        public Double getgpa()
+        public Double getGpa()
         {
             return gpa;
         }
@@ -123,7 +123,7 @@ public class StudentScoreController {
         {
             this.gpa = gpa;
         }
-        public Double getscore()
+        public Double getScore()
         {
             return score;
         }
@@ -131,7 +131,7 @@ public class StudentScoreController {
         {
             this.score = score;
         }
-        public String getcoursename()
+        public String getCourseName()
         {
             return coursename;
         }
@@ -141,7 +141,7 @@ public class StudentScoreController {
         }
     }
     @FXML
-    private TextField GGPA;
+    private Label Agpa;
     @FXML
     private TableView<tableline> table;
     @FXML
@@ -157,19 +157,16 @@ public class StudentScoreController {
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
         List<Pair<String,Double>> scorelist=studentService.getScore();
-        GGPA.setText(Double.toString(studentService.averageGPA()));
-        CourseName.setCellValueFactory(new PropertyValueFactory<>("coursename"));
-        TScore.setCellValueFactory(new PropertyValueFactory<>("score"));
-        GPA.setCellValueFactory(new PropertyValueFactory<>("gpa"));
+        Agpa.setText(Double.toString(studentService.averageGPA()));
+        CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
+        TScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        GPA.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
         ObservableList<tableline> list=FXCollections.observableArrayList();
-        int size=scorelist.size();
-        table=new TableView<>(list);
-        for(int i=0;i<size;i++)
-        {
-            Pair<String,Double> thisscore=scorelist.get(i);
-            double thisgpa=studentService.translateGPA(thisscore.getValue());
-            table.getItems().add(new tableline(thisscore.getKey(),thisscore.getValue(),thisgpa));
-        }
 
+        for(Pair<String,Double> thisscore:scorelist){
+            double thisgpa=studentService.translateGPA(thisscore.getValue());
+            list.add(new tableline(thisscore.getKey(),thisscore.getValue(),thisgpa));
+        }
+        table.setItems(list);
     }
 }

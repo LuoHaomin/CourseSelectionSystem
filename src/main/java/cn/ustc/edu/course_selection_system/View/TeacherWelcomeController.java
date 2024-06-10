@@ -52,7 +52,7 @@ public class TeacherWelcomeController {
         stage.setScene(scene);
         stage.show();
     }
-    class tableline
+    public class tableline
     {
         String studentid;
         String studentname;
@@ -60,11 +60,11 @@ public class TeacherWelcomeController {
             studentid = studentEntity.getId();
             studentname = studentEntity.getName();
         }
-        public String getstudentid()
+        public String getStudentId()
         {
             return studentid;
         }
-        public String getstudentname()
+        public String getStudentName()
         {
             return studentname;
         }
@@ -97,20 +97,21 @@ public class TeacherWelcomeController {
         TeacherService teacherService=new TeacherService(teacherid);
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
-        StudentID.setCellValueFactory(new PropertyValueFactory<>("studentid"));
-        StudentName.setCellValueFactory(new PropertyValueFactory<>("studentname"));
+
+        StudentID.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
+        StudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
+
         CourseService courseService=new CourseService(courseid);
         List<String> studentlist=courseService.GetStudentInCourse();
-        ObservableList<tableline> list=FXCollections.observableArrayList();
-        Table=new TableView<>(list);
-        int size= list.size();
-        for(int i=0;i<size;i++)
-        {
-            StudentService studentService=new StudentService(studentlist.get(i));
-            StudentEntity studentEntity=studentService.GetID();
-            Table.getItems().add(new tableline(studentEntity));
-        }
 
+        ObservableList<tableline> list=FXCollections.observableArrayList();
+
+        for (String s : studentlist) {
+            StudentService studentService = new StudentService(s);
+            StudentEntity studentEntity = studentService.GetID();
+            list.add(new tableline(studentEntity));
+        }
+        Table.setItems(list);
     }
     @FXML
     public void Handlebackselect(ActionEvent event) throws IOException
