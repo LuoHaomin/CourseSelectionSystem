@@ -49,13 +49,19 @@ public class TeacherLoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * 内部类——TableView的行
+     * 第一列显示课程名称，第二列显示进入课程按钮
+     */
     public class tableline
     {
         String coursename;
         Button btgo;
         public tableline(CourseEntity courseEntity)
         {
-           coursename=courseEntity.getName();
+            coursename=courseEntity.getName();
+
             btgo=new Button("前往"+coursename);
             btgo.setOnAction(e -> {
                         FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherWelcome.fxml"));
@@ -74,22 +80,10 @@ public class TeacherLoginController {
                     }
             );
         }
-        public String getCourseName()
-        {
-            return coursename;
-        }
-        public Button getBtgo()
-        {
-            return btgo;
-        }
-        public void setcoursename(String coursename)
-        {
-            this.coursename = coursename;
-        }
-        public void setbtgo(Button btgo)
-        {
-            this.btgo = btgo;
-        }
+        public String getCourseName() {return coursename;}
+        public Button getBtgo() {return btgo;}
+        public void setCourseName(String coursename) {this.coursename = coursename;}
+        public void setBtgo(Button btgo) {this.btgo = btgo;}
     }
 
     @FXML
@@ -98,17 +92,19 @@ public class TeacherLoginController {
     private TableColumn<tableline,String> CourseName;
     @FXML
     private TableColumn<tableline,Button> Login;
-    public void start(String id)
+    public void start(String id)//入口，设置界面
     {
         this.id=id;
         TeacherService teacherService=new TeacherService(id);
         TeacherEntity teacherEntity=teacherService.GetID();
         Name.setText(teacherEntity.getName());
+
         CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
         Login.setCellValueFactory(new PropertyValueFactory<>("Btgo"));
-        List<CourseEntity> courselist=teacherService.getRelatedCourse();
-        ObservableList<tableline> list=FXCollections.observableArrayList();
 
+        List<CourseEntity> courselist=teacherService.getRelatedCourse();//该老师全部课程列表
+
+        ObservableList<tableline> list=FXCollections.observableArrayList();
         for (CourseEntity courseEntity : courselist) {
             //加入课程名//加入课程跳转按钮（根据id,传两个id，一个老师，一个课程)
             list.add(new tableline(courseEntity));

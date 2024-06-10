@@ -43,7 +43,6 @@ public class NameandPasswordController {
             if(idname.getValue() == "admin")//该用户是管理员
             {
                 FXMLLoader loader = new FXMLLoader(cn.ustc.edu.course_selection_system.HelloApplication.class.getResource("AdminRegisStudent.fxml"));
-//        FXMLLoader fxmlLoader = new FXMLLoader(cn.ustc.edu.course_selection_system.HelloApplication.class.getResource("AdminIndivisualList.fxml"));
                 Parent root=loader.load();
                 Stage stage=(Stage) login.getScene().getWindow();
                 Scene scene=new Scene(root,600,400);
@@ -55,7 +54,7 @@ public class NameandPasswordController {
                 FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherLogin.fxml"));
                 Parent root=loader.load();
                 TeacherLoginController teacherloginController=loader.getController();
-                teacherloginController.start(idname.getKey());
+                teacherloginController.start(idname.getKey());//老师从登录界面进入
                 Stage stage=(Stage) login.getScene().getWindow();
                 Scene scene=new Scene(root,600,400);
                 stage.setScene(scene);
@@ -66,7 +65,7 @@ public class NameandPasswordController {
                 FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentCourseList.fxml"));
                 Parent root=loader.load();
                 StudentCourseListController studentCourseListController=loader.getController();
-                studentCourseListController.start(idname.getKey());
+                studentCourseListController.start(idname.getKey());//学生从课程表进入
                 Stage stage=(Stage) login.getScene().getWindow();
                 Scene scene=new Scene(root,600,400);
                 stage.setScene(scene);
