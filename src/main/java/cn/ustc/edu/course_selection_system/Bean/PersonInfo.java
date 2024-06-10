@@ -2,9 +2,12 @@ package cn.ustc.edu.course_selection_system.Bean;
 
 public class PersonInfo {
     boolean isTeacher = false;
-    StudentEntity studentEntity;
-    TeacherEntity teacherEntity;
 
+
+
+    StudentEntity studentEntity;
+
+    TeacherEntity teacherEntity;
 
     public PersonInfo(StudentEntity studentEntity) {
 
@@ -14,6 +17,31 @@ public class PersonInfo {
         isTeacher = true;
         this.teacherEntity = teacherEntity;
     }
+
+    public boolean isTeacher() {
+        return isTeacher;
+    }
+
+    public void setTeacher(boolean teacher) {
+        isTeacher = teacher;
+    }
+
+//    public StudentEntity getStudentEntity() {
+//        return studentEntity;
+//    }
+//
+//    public void setStudentEntity(StudentEntity studentEntity) {
+//        this.studentEntity = studentEntity;
+//    }
+//
+//    public TeacherEntity getTeacherEntity() {
+//        return teacherEntity;
+//    }
+//
+//    public void setTeacherEntity(TeacherEntity teacherEntity) {
+//        this.teacherEntity = teacherEntity;
+//    }
+
     public String getId(){
         if(isTeacher){
             return teacherEntity.getId();
