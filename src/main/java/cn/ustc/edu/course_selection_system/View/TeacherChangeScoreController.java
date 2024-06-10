@@ -88,6 +88,11 @@ public class TeacherChangeScoreController {
         @FXML
         public void HandleScore(ActionEvent event) throws IOException
         {}
+
+    /**
+     * 内部类——TableView的行
+     * 第一列显示学生ID，第二列显示学生姓名，第三列显示输入框用于输入学生成绩
+     */
         public class tableline
         {
             String studentid;
@@ -99,30 +104,12 @@ public class TeacherChangeScoreController {
                 studentname=student.getName();
                 textField=new TextField("请输入分数");
             }
-            public TextField getTextField()
-            {
-                return textField;
-            }
-            public String getStudentId()
-            {
-                return studentid;
-            }
-            public String getStudentName()
-            {
-                return studentname;
-            }
-            public void settextField(TextField t)
-            {
-                textField=t;
-            }
-            public void setstudentid(String s)
-            {
-                studentid=s;
-            }
-            public void setstudentname(String s)
-            {
-                studentname=s;
-            }
+            public TextField getTextField() {return textField;}
+            public String getStudentId() {return studentid;}
+            public String getStudentName() {return studentname;}
+            public void setTextField(TextField t) {textField=t;}
+            public void setStudentId(String s) {studentid=s;}
+            public void setStudentName(String s) {studentname=s;}
         }
         @FXML
         private TableView<tableline> table;
@@ -139,13 +126,15 @@ public class TeacherChangeScoreController {
             TeacherService teacherService=new TeacherService(teacherid);
             TeacherEntity teacherEntity=teacherService.GetID();
             Name.setText(teacherEntity.getName());
+
             StudentID.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
             StudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
             StudentScore.setCellValueFactory(new PropertyValueFactory<>("TextField"));
-            CourseService courseService=new CourseService(courseid);
-            List<String> studentlist=courseService.GetStudentInCourse();
-            ObservableList<tableline> list= FXCollections.observableArrayList();
 
+            CourseService courseService=new CourseService(courseid);
+            List<String> studentlist=courseService.GetStudentInCourse();//获得选课所有学生列表
+
+            ObservableList<tableline> list= FXCollections.observableArrayList();
             for (String s : studentlist) {
                 StudentService studentService = new StudentService(s);
                 StudentEntity studentEntity = studentService.GetID();
@@ -168,17 +157,17 @@ public class TeacherChangeScoreController {
                 String studentid=row.getStudentId();
                 double score;
                 try {
-                    if(row.getTextField().getText()=="")
-                        score=teacherService.GetScore(courseid,studentid);
+                    if(row.getTextField().getText().isEmpty())
+                        score=teacherService.GetScore(courseid,studentid);//如果未输入成绩，则保留为原成绩
                     else score = Double.parseDouble(row.getTextField().getText());
                 }
                 catch(Exception exception)
                 {
-                    return;
+                    return;//如果输入不为数字，则直接关闭函数，不进行记录
                 }
                 studentscore.add(new Pair<>(studentid,score));
             }
-            if(!teacherService.excellentRate(courseid,studentscore)) {
+            if(!teacherService.excellentRate(courseid,studentscore)) {//如果优秀率不超过40%
                 teacherService.importStudentsScore(courseid, studentscore);
             }
             else {

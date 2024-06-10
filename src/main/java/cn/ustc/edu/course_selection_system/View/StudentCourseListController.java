@@ -124,9 +124,7 @@ public class StudentCourseListController {
             this.Saturday=Saturday;
             this.Sunday=Sunday;
         }
-        public String getMonday() {
-            return Monday;
-        }
+        public String getMonday() {return Monday;}
         public void setMonday(String Monday) {
             this.Monday = Monday;
         }

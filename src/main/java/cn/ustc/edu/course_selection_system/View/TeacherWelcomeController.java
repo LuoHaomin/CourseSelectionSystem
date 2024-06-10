@@ -52,6 +52,11 @@ public class TeacherWelcomeController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * 内部类——TableView的行
+     * 第一列显示学生id，第二列显示学生姓名
+     */
     public class tableline
     {
         String studentid;
@@ -60,59 +65,18 @@ public class TeacherWelcomeController {
             studentid = studentEntity.getId();
             studentname = studentEntity.getName();
         }
-        public String getStudentId()
-        {
-            return studentid;
-        }
-        public String getStudentName()
-        {
-            return studentname;
-        }
-        public void setstudentid(String studentid)
-        {
-            this.studentid = studentid;
-        }
-        public void setstudentname(String studentname)
-        {
-            this.studentname = studentname;
-        }
+        public String getStudentId() {return studentid;}
+        public String getStudentName() {return studentname;}
+        public void setStudentId(String studentid) {this.studentid = studentid;}
+        public void setStudentName(String studentname) {this.studentname = studentname;}
     }
+
     @FXML
     private Button backselect;
     @FXML
     private RadioButton Student;
     @FXML
     private RadioButton Score;
-    @FXML
-    private TableView<tableline> Table;
-    @FXML
-    private TableColumn<tableline,String> StudentID;
-    @FXML
-    private TableColumn<tableline,String> StudentName;
-
-    public void start(String tearcherid, int courseid)
-    {
-        this.teacherid=tearcherid;
-        this.courseid=courseid;
-        TeacherService teacherService=new TeacherService(teacherid);
-        TeacherEntity teacherEntity=teacherService.GetID();
-        Name.setText(teacherEntity.getName());
-
-        StudentID.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
-        StudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
-
-        CourseService courseService=new CourseService(courseid);
-        List<String> studentlist=courseService.GetStudentInCourse();
-
-        ObservableList<tableline> list=FXCollections.observableArrayList();
-
-        for (String s : studentlist) {
-            StudentService studentService = new StudentService(s);
-            StudentEntity studentEntity = studentService.GetID();
-            list.add(new tableline(studentEntity));
-        }
-        Table.setItems(list);
-    }
     @FXML
     public void Handlebackselect(ActionEvent event) throws IOException
     {
@@ -143,5 +107,33 @@ public class TeacherWelcomeController {
             stage.show();
         }
     }
+    @FXML
+    private TableView<tableline> Table;
+    @FXML
+    private TableColumn<tableline,String> StudentID;
+    @FXML
+    private TableColumn<tableline,String> StudentName;
 
+    public void start(String tearcherid, int courseid)
+    {
+        this.teacherid=tearcherid;
+        this.courseid=courseid;
+        TeacherService teacherService=new TeacherService(teacherid);
+        TeacherEntity teacherEntity=teacherService.GetID();
+        Name.setText(teacherEntity.getName());
+
+        StudentID.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
+        StudentName.setCellValueFactory(new PropertyValueFactory<>("StudentName"));
+
+        CourseService courseService=new CourseService(courseid);
+        List<String> studentlist=courseService.GetStudentInCourse();//选课学生名单列表
+
+        ObservableList<tableline> list=FXCollections.observableArrayList();
+        for (String s : studentlist) {
+            StudentService studentService = new StudentService(s);
+            StudentEntity studentEntity = studentService.GetID();
+            list.add(new tableline(studentEntity));
+        }
+        Table.setItems(list);
+    }
 }
