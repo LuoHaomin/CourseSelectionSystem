@@ -100,28 +100,22 @@ public class AdminService {
 
     /**
      * 删除课程（包括关联键）
-     * @param courseInfoList  删除课程id名单
-     * @return 成功删除个数
+     * @param courseInfoList 删除课程id名单
      */
-	public static int DelCourse(List<CourseInfo> courseInfoList){
+	public static void DelCourse(List<CourseInfo> courseInfoList){
         CourseImpl courseImpl = new CourseImpl();
-        return 0;
+        for (CourseInfo courseInfo : courseInfoList){
+            courseImpl.DeleteCourse(courseInfo.getCourseEntity().getId());
+        }
     }
 
-    /**
-     * 删除学生-课程对
-     * @param S_CList 学生-课程对
-     * @return 成功删除个数
-     */
-	public int DelS_C(Pair<Integer,Integer> S_CList){
-        return 0;
-    }
 
     /**
      * 删除教师-课程对
      * @param T_CList 教师-课程对
      * @return 成功删除个数
      */
+    @Deprecated
     public int DelT_C(Pair<Integer,Integer> T_CList){
         return 0;
     }
