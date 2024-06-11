@@ -57,7 +57,7 @@ public class StudentProgramController implements Page{
     public void HandleScore(ActionEvent event) throws IOException
     {
         if (Score.isSelected()){
-            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/StudentHandleCourse.fxml",id,(Stage)Score.getScene().getWindow());
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/StudentScore.fxml",id,(Stage)Score.getScene().getWindow());
         }
     }
     @FXML
