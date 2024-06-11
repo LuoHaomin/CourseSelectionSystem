@@ -2,12 +2,14 @@ package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
+import cn.ustc.edu.course_selection_system.Service.PageJump;
 import cn.ustc.edu.course_selection_system.Service.PasswordChecker;
 import cn.ustc.edu.course_selection_system.Service.StudentService;
 import cn.ustc.edu.course_selection_system.Service.TeacherService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,7 +22,7 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ChangeCodeSceneController {
+public class ChangeCodeSceneController implements Page {
     private String id;
     @FXML
     private TextField Name;
@@ -45,12 +47,7 @@ public class ChangeCodeSceneController {
     @FXML
     private void HandleBack(ActionEvent event) throws IOException
     {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/Loginscene.fxml"));
-        Parent root=loader.load();
-        Stage stage=(Stage) Back.getScene().getWindow();
-        Scene scene=new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.show();
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/Loginscene.fxml",(Stage) Back.getScene().getWindow());
     }
     @FXML
     private void HandleSure(ActionEvent event) throws IOException

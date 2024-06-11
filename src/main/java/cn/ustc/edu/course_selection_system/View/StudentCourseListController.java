@@ -2,6 +2,7 @@ package cn.ustc.edu.course_selection_system.View;
 
 import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
+import cn.ustc.edu.course_selection_system.Service.PageJump;
 import cn.ustc.edu.course_selection_system.Service.StudentService;
 import cn.ustc.edu.course_selection_system.Util.CourseTable;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -18,7 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class StudentCourseListController {
+public class StudentCourseListController implements Page{
     private String id;
     @FXML
     private Label Name;
@@ -30,24 +32,12 @@ public class StudentCourseListController {
     @FXML
     private void HandleChangeCode(ActionEvent event) throws IOException
     {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml"));
-        Parent root=loader.load();
-        ChangeCodeSceneController changeCodeSceneController=loader.getController();
-        changeCodeSceneController.start(id);
-        Stage stage=(Stage) ChangeCode.getScene().getWindow();
-        Scene scene=new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.show();
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml",id,(Stage)ChangeCode.getScene().getWindow());
     }
     @FXML
     private void HandleBack(ActionEvent event) throws IOException
     {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/Loginscene.fxml"));
-        Parent root=loader.load();
-        Stage stage=(Stage) Back.getScene().getWindow();
-        Scene scene=new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.show();
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/Loginscene.fxml",(Stage) Back.getScene().getWindow());
     }
     @FXML
     private RadioButton Course;
@@ -62,29 +52,15 @@ public class StudentCourseListController {
     {
         if(Course.isSelected())
         {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentHandleCourse.fxml"));
-            Parent root=loader.load();
-            StudentHandleCourseController studentHandleCourseController =loader.getController();
-            studentHandleCourseController.start(id);
-            Stage stage=(Stage) Course.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/StudentHandleCourse.fxml",id,(Stage)Course.getScene().getWindow());
         }
     }
     @FXML
     public void HandleScore(ActionEvent event) throws IOException
     {
-        if(Score.isSelected())
-        {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentScore.fxml"));
-            Parent root=loader.load();
-            StudentScoreController studentScoreController =loader.getController();
-            studentScoreController.start(id);
-            Stage stage=(Stage) Score.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+        if (Score.isSelected()){
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/StudentHandleCourse.fxml",id,(Stage)Score.getScene().getWindow());
         }
     }
     @FXML
@@ -92,14 +68,7 @@ public class StudentCourseListController {
     {
         if(Program.isSelected())
         {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/StudentProgram.fxml"));
-            Parent root=loader.load();
-            StudentProgramController studentProgramController =loader.getController();
-            studentProgramController.start(id);
-            Stage stage=(Stage) Program.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/StudentProgram.fxml",id,(Stage)Course.getScene().getWindow());
         }
     }
     @FXML

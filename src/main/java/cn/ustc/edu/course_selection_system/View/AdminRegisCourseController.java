@@ -3,6 +3,7 @@ import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Service.AdminService;
 import cn.ustc.edu.course_selection_system.Service.CourseService;
+import cn.ustc.edu.course_selection_system.Service.PageJump;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -87,39 +88,18 @@ public class AdminRegisCourseController {
     @FXML
     private void HandleChangeCode(ActionEvent event) throws IOException
     {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml"));
-        Parent root=loader.load();
-        ChangeCodeSceneController changeCodeSceneController=loader.getController();
-        changeCodeSceneController.start(AdminID);
-        Stage stage=(Stage) ChangeCode.getScene().getWindow();
-        Scene scene=new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.show();
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml",AdminID,(Stage)ChangeCode.getScene().getWindow());
     }
     @FXML
     private void HandleBack(ActionEvent event) throws IOException
     {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/Loginscene.fxml"));
-        Parent root=loader.load();
-        Stage stage=(Stage) Back.getScene().getWindow();
-        Scene scene=new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.show();
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/Loginscene.fxml",(Stage) Back.getScene().getWindow());
     }
     @FXML
     public void HandleStudentAndTeacher(ActionEvent event) throws IOException
     {
-        if(StudentAndTeacher.isSelected())
-        {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/AdminRegisStudent.fxml"));
-            Parent root=loader.load();
-            AdminRegisStudentController adminRegisStudentController =loader.getController();
-//            adminRegisStudentController.start(AdminID);
-            Stage stage=(Stage) StudentAndTeacher.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
-        }
+        if (StudentAndTeacher.isSelected())
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/AdminRegisStudent.fxml",(Stage) StudentAndTeacher.getScene().getWindow());
     }
     @FXML
     public void HandleCourse(ActionEvent event) throws IOException
@@ -129,30 +109,14 @@ public class AdminRegisCourseController {
     {
         if(StuTeaList.isSelected())
         {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/AdminIndivisualList.fxml"));
-            Parent root=loader.load();
-            AdminPersonInfoList adminPersonInfoList =loader.getController();
-//            adminPersonInfoList.start(id);
-            Stage stage=(Stage) StuTeaList.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/AdminIndivisualList.fxml",(Stage) StudentAndTeacher.getScene().getWindow());
         }
     }
     @FXML
     public void HandleCList(ActionEvent event) throws IOException
     {
-        if(CList.isSelected())
-        {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/AdminCourseList.fxml"));
-            Parent root=loader.load();
-            AdminCourseListController adminCourseListController =loader.getController();
-//            adminCourseListController.start(id);
-            Stage stage=(Stage) CList.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
-        }
+        if (CList.isSelected())
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/AdminCourseList.fxml",(Stage) StudentAndTeacher.getScene().getWindow());
     }
     @FXML
     void initialize() {

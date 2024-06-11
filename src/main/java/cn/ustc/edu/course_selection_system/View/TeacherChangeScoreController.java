@@ -3,6 +3,7 @@ package cn.ustc.edu.course_selection_system.View;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import cn.ustc.edu.course_selection_system.Service.CourseService;
+import cn.ustc.edu.course_selection_system.Service.PageJump;
 import cn.ustc.edu.course_selection_system.Service.StudentService;
 import cn.ustc.edu.course_selection_system.Service.TeacherService;
 import javafx.collections.FXCollections;
@@ -33,24 +34,12 @@ public class TeacherChangeScoreController {
         @FXML
         private void HandleChangeCode(ActionEvent event) throws IOException
         {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml"));
-            Parent root=loader.load();
-            ChangeCodeSceneController changeCodeSceneController=loader.getController();
-            changeCodeSceneController.start(teacherid);
-            Stage stage=(Stage) ChangeCode.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/ChangCodeScene.fxml",teacherid,(Stage)ChangeCode.getScene().getWindow());
         }
         @FXML
         private void HandleBack(ActionEvent event) throws IOException
         {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/Loginscene.fxml"));
-            Parent root=loader.load();
-            Stage stage=(Stage) Back.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/Loginscene.fxml",(Stage) Back.getScene().getWindow());
         }
         @FXML
         private Button backselect;
