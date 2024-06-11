@@ -14,12 +14,6 @@ public class TeacherCourseEntity {
     @Id
     @Column(name = "course_id", nullable = false)
     private int courseId;
-    @ManyToOne
-    @JoinColumn(name = "teacher_id", referencedColumnName = "id", nullable = false)
-    private TeacherEntity teacherByTeacherId;
-    @ManyToOne
-    @JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
-    private CourseEntity courseByCourseId;
 
     public String getTeacherId() {
         return teacherId;
@@ -37,19 +31,4 @@ public class TeacherCourseEntity {
         this.courseId = courseId;
     }
 
-    public TeacherEntity getTeacherByTeacherId() {
-        return teacherByTeacherId;
-    }
-
-    public void setTeacherByTeacherId(TeacherEntity teacherByTeacherId) {
-        this.teacherByTeacherId = teacherByTeacherId;
-    }
-
-    public CourseEntity getCourseByCourseId() {
-        return courseByCourseId;
-    }
-
-    public void setCourseByCourseId(CourseEntity courseByCourseId) {
-        this.courseByCourseId = courseByCourseId;
-    }
 }

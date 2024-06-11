@@ -5,7 +5,6 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
     private static volatile SessionFactory sessionFactory = null;
-//    private static final Configuration configuration = new Configuration().configure();
 
     private HibernateUtil() {
     }

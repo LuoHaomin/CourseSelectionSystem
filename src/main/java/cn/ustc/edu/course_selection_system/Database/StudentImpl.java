@@ -211,8 +211,8 @@ public class StudentImpl {
     @Deprecated
     public void DeleteCoursePair(String studentId, int courseId) {
         StudentCourseEntityPK studentCourseEntityPK = new StudentCourseEntityPK();
-        studentCourseEntityPK.setStudentId(studentId);
-        studentCourseEntityPK.setCourseId(courseId);
+//        studentCourseEntityPK.setStudentId(studentId);
+//        studentCourseEntityPK.setCourseId(courseId);
         sessionFactory.inTransaction(session -> {
             session.remove(session.get(StudentCourseEntity.class, studentCourseEntityPK));
         });

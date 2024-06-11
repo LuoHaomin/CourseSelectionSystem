@@ -14,9 +14,6 @@ public class StudentCourseEntityPK implements Serializable {
     @Id
     @Column(name = "course_id", nullable = false)
     private int courseId;
-    @Basic
-    @Column(name = "score", nullable = true, precision = 0)
-    private Double score;
 
     public String getStudentId() {
         return studentId;
@@ -32,14 +29,6 @@ public class StudentCourseEntityPK implements Serializable {
 
     public void setCourseId(int courseId) {
         this.courseId = courseId;
-    }
-
-    public Double getScore() {
-        return score;
-    }
-
-    public void setScore(Double score) {
-        this.score = score;
     }
 
     @Override

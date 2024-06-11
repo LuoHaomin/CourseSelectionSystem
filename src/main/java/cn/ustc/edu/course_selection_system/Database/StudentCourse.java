@@ -17,12 +17,12 @@ public class StudentCourse {
      * @param courseId course's id
      */
     public void AddCoursePair(String studentId, int courseId) {
-        StudentCourseEntity studentCourse = new StudentCourseEntity();
-        studentCourse.setStudentId(studentId);
-        studentCourse.setCourseId(courseId);
-        studentCourse.setScore(0.0);
+        StudentCourseEntity studentCourseEntity = new StudentCourseEntity();
+        studentCourseEntity.setCourseId(courseId);
+        studentCourseEntity.setStudentId(studentId);
+        studentCourseEntity.setScore(0.0);
         sessionFactory.inTransaction(session -> {
-            session.persist(studentCourse);
+            session.persist(studentCourseEntity);
         });
     }
 
@@ -32,11 +32,25 @@ public class StudentCourse {
      * @param courseId course's id
      */
     public void DeleteCoursePair(String studentId, int courseId) {
-        StudentCourseEntityPK studentCourseEntityPK = new StudentCourseEntityPK();
-        studentCourseEntityPK.setStudentId(studentId);
-        studentCourseEntityPK.setCourseId(courseId);
+//        StudentCourseEntity studentCourseEntity = new StudentCourseEntity();
+//        studentCourseEntity.setStudentId(studentId);
+//        studentCourseEntity.setCourseId(courseId);
+//        sessionFactory.inTransaction(session -> {
+//            session.remove(session.get(StudentCourseEntityPK.class, studentCourseEntity));
+////            session.remove(studentCourseEntity);
+//        });
+//        StudentCourseEntityPK studentCourseEntity = new StudentCourseEntityPK();
+//        studentCourseEntity.setStudentId(studentId);
+//        studentCourseEntity.setCourseId(courseId);
+//        sessionFactory.inTransaction(session -> {
+//            session.remove(session.get(StudentCourseEntityPK.class, studentCourseEntity));
+////            session.remove(studentCourseEntity);
+//        });
         sessionFactory.inTransaction(session -> {
-            session.remove(session.get(StudentCourseEntity.class, studentCourseEntityPK));
+            session.createMutationQuery("delete from StudentCourseEntity where studentId = :studentId and courseId = :courseId")
+                    .setParameter("studentId", studentId)
+                    .setParameter("courseId", courseId)
+                    .executeUpdate();
         });
     }
 

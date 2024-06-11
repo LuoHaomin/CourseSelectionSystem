@@ -1,15 +1,19 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
-@jakarta.persistence.Table(name = "major_course", schema = "hibernate", catalog = "hibernate")
-@jakarta.persistence.IdClass(cn.ustc.edu.course_selection_system.Bean.MajorCourseEntityPK.class)
+@Table(name = "major_course", schema = "hibernate", catalog = "hibernate")
+@IdClass(MajorCourseEntityPK.class)
 public class MajorCourseEntity {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "course_number", nullable = false, length = 60)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "course_number", nullable = false, length = 60)
     private String courseNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "major", nullable = false, length = 20)
+    private String major;
 
     public String getCourseNumber() {
         return courseNumber;
@@ -18,11 +22,6 @@ public class MajorCourseEntity {
     public void setCourseNumber(String courseNumber) {
         this.courseNumber = courseNumber;
     }
-
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "major", nullable = false, length = 20)
-    private String major;
 
     public String getMajor() {
         return major;

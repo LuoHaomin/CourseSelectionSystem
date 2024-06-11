@@ -1,14 +1,17 @@
 package cn.ustc.edu.course_selection_system.Bean;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
-@jakarta.persistence.Table(name = "admin", schema = "hibernate", catalog = "hibernate")
+@Table(name = "admin", schema = "hibernate", catalog = "hibernate")
 public class AdminEntity {
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
-    @jakarta.persistence.Id
-    @jakarta.persistence.Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id", nullable = false)
     private int id;
+    @Basic
+    @Column(name = "password", nullable = false, length = 128)
+    private String password;
 
     public int getId() {
         return id;
@@ -17,10 +20,6 @@ public class AdminEntity {
     public void setId(int id) {
         this.id = id;
     }
-
-    @jakarta.persistence.Basic
-    @jakarta.persistence.Column(name = "password", nullable = false, length = 128)
-    private String password;
 
     public String getPassword() {
         return password;

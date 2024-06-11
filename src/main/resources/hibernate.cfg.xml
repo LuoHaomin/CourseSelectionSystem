@@ -17,20 +17,20 @@
     <property name="format_sql">true</property>
     <property name="show_sql">true</property>
     <property name="highlight_sql">true</property>
-    <mapping resource="AdminEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.AdminEntity"/>
+    <mapping resource="AdminEntity.hbm.xml"/>
+    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
+    <mapping resource="CourseEntity.hbm.xml"/>
     <mapping resource="MajorCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.MajorCourseEntity"/>
-    <mapping resource="CourseEntity.hbm.xml"/>
-    <mapping class="cn.ustc.edu.course_selection_system.Bean.CourseEntity"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentEntity"/>
     <mapping resource="StudentEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity"/>
     <mapping resource="StudentCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherEntity"/>
     <mapping resource="TeacherEntity.hbm.xml"/>
-    <mapping resource="TeacherCourseEntity.hbm.xml"/>
     <mapping class="cn.ustc.edu.course_selection_system.Bean.TeacherCourseEntity"/>
+    <mapping resource="TeacherCourseEntity.hbm.xml"/>
 
 
     <!-- DB schema will be updated if needed -->
