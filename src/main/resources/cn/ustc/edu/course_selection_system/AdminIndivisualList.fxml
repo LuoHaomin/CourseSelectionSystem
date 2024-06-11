@@ -102,6 +102,6 @@
          </font>
       </TextField>
       <Pagination fx:id="Paging" layoutX="182.0" layoutY="90.0" prefHeight="268.0" prefWidth="402.0" />
-      <Button fx:id="DelPerson" layoutX="519.0" layoutY="363.0" mnemonicParsing="false" text="删除"  onAction="#onDelPersonClicked"/>
+      <Button fx:id="DelPerson" layoutX="519.0" layoutY="363.0" mnemonicParsing="false" onAction="#onDelPersonClicked" text="删除" />
    </children>
 </AnchorPane>
