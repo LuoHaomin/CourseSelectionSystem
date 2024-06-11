@@ -33,16 +33,26 @@ public class CourseImpl {
 
     /**
      * Add a course to the database
-     * @param info the course entity
+     * @param courseEntity the course entity
      * @return the id of the course
      */
-    public int AddCourse(CourseEntity info) {
+    public int AddCourse(CourseEntity courseEntity) {
         List<Integer> id = new ArrayList<>();
-        sessionFactory.inTransaction(session -> {
-            session.persist(info);
-            id.add(info.getId());
-        });
-        return id.get(0);
+        synchronized (this) {
+            sessionFactory.inTransaction(session -> {
+                session.persist(courseEntity);
+//            session.refresh(courseEntity);
+//            id.add(courseEntity.getId());
+            });
+            sessionFactory.inSession(session -> {
+                id.addAll(session.createQuery("select MAX(id) from CourseEntity", Integer.class)
+                        .getResultList());
+            });
+        }
+        if (id.isEmpty())
+            return -1;
+        else
+            return id.get(0);
     }
 
     /**

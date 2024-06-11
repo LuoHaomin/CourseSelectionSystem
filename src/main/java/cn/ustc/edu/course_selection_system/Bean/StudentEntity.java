@@ -30,8 +30,6 @@ public class StudentEntity {
     @Basic
     @Column(name = "gender", nullable = false, length = 1)
     private String gender;
-    @OneToMany(mappedBy = "studentByStudentId")
-    private Collection<StudentCourseEntity> studentCoursesById;
 
     public String getId() {
         return id;
@@ -89,11 +87,4 @@ public class StudentEntity {
         this.gender = gender;
     }
 
-    public Collection<StudentCourseEntity> getStudentCoursesById() {
-        return studentCoursesById;
-    }
-
-    public void setStudentCoursesById(Collection<StudentCourseEntity> studentCoursesById) {
-        this.studentCoursesById = studentCoursesById;
-    }
 }

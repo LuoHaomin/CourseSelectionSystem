@@ -13,7 +13,7 @@ public class TeacherImpl implements AbstractPersonData{
     /**
      * get teacher by his/her id
      * @param teacher_id teacher's id
-     * @return teacher's TescherEntity
+     * @return teacher's TeacherEntity
      */
     public TeacherEntity getID(String teacher_id){
         List<TeacherEntity> teachers = new ArrayList<>();
@@ -24,6 +24,8 @@ public class TeacherImpl implements AbstractPersonData{
                     .getResultList();
             teachers.addAll(_teachers);
         });
+        if(teachers.isEmpty())
+            return null;
         return teachers.get(0);
     }
 

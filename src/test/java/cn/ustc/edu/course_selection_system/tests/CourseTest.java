@@ -12,8 +12,16 @@ public class CourseTest {
     @Test
     public void testAddCourse(){
         CourseImpl courseEditor = new CourseImpl();
-        courseEditor.AddCourse("数分", "周一", 6, "1-14周", 100);
-        courseEditor.AddCourse("线代", "周二", 3, "1-14周", 80);
+        CourseEntity course = new CourseEntity();
+        course.setName("高数");
+        course.setTime("周一");
+        course.setCredit(6);
+        course.setPeriods("1-14周");
+        course.setCapacity(120);
+        int i = courseEditor.AddCourse(course);
+        System.out.println(i);
+//        courseEditor.AddCourse("数分", "周一", 6, "1-14周", 100);
+//        courseEditor.AddCourse("线代", "周二", 3, "1-14周", 80);
     }
 
     @Test

@@ -15,7 +15,8 @@ public class LoginSceneController {
     @FXML
     private void HandleLoginAction(ActionEvent event) throws IOException
     {
-        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/NameandPassword.fxml",(Stage) Login.getScene().getWindow());
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/NameandPassword.fxml",
+                (Stage) Login.getScene().getWindow());
     }
 
 }
