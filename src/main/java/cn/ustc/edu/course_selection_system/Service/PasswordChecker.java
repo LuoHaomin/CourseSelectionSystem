@@ -50,7 +50,7 @@ public class PasswordChecker {
             }
             else {
                 if(personInfo.getPassword().equals(password)){
-                    return new Pair<>(account,"student");
+                    return new Pair<>(account,position==Position.Student?"student":"teacher");
                 }
             }
         }
