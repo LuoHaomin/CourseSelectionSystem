@@ -60,7 +60,7 @@
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCourseList" prefHeight="51.0" prefWidth="158.0" selected="true" text="课程列表" textAlignment="CENTER" textFill="#0006ff" toggleGroup="$group">
+            <RadioButton fx:id="CourseList" mnemonicParsing="false" onAction="#HandleCList" prefHeight="51.0" prefWidth="158.0" selected="true" text="课程列表" textAlignment="CENTER" textFill="#0006ff" toggleGroup="$group">
                <font>
                   <Font size="18.0" />
                </font>

@@ -18,7 +18,7 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.util.List;
 
-public class StudentScoreController {
+public class StudentScoreController implements Page{
     private String id;
     @FXML
     private Label Name;

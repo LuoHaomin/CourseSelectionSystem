@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class StudentHandleCourseController {
+public class StudentHandleCourseController implements Page{
     private String id;
     private int PageSize=12;
     @FXML

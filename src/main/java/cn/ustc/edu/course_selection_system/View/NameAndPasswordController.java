@@ -47,7 +47,7 @@ public class NameAndPasswordController {
             }
             if(Objects.equals(IdName.getValue(), "admin"))//该用户是管理员
             {
-                JumpTo("AdminRegisStudent.fxml",(Stage) login.getScene().getWindow());
+                JumpTo("/cn/ustc/edu/course_selection_system/AdminRegisStudent.fxml",(Stage) login.getScene().getWindow());
             }
             if(Objects.equals(IdName.getValue(), "teacher"))//该用户是老师
             {

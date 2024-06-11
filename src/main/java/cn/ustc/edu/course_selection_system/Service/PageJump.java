@@ -19,7 +19,7 @@ public class PageJump {
         stage.show();
     }
     public static void JumpTo(String name,  String Id, Stage stage) throws IOException {
-        FXMLLoader loader=new FXMLLoader(PageJump.class.getResource(name));
+        FXMLLoader loader=new FXMLLoader(cn.ustc.edu.course_selection_system.HelloApplication.class.getResource(name));
         Parent root=loader.load();
         Page controller=loader.getController();
         controller.start(Id);

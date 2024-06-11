@@ -52,7 +52,6 @@ public class StudentCourseListController implements Page{
     {
         if(Course.isSelected())
         {
-
             PageJump.JumpTo("/cn/ustc/edu/course_selection_system/StudentHandleCourse.fxml",id,(Stage)Course.getScene().getWindow());
         }
     }

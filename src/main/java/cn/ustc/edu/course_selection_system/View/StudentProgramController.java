@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class StudentProgramController {
+public class StudentProgramController implements Page{
     private String id;
     @FXML
     private Label Name;
