@@ -1,7 +1,7 @@
 package cn.ustc.edu.course_selection_system.Util;
 
 public class ID {
-    static Position getPosition(String id) {
+    public static Position getPosition(String id) {
         if(id.contains("ST")){
             return Position.Student;
         }

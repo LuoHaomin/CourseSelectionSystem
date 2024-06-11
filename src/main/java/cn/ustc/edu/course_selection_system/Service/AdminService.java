@@ -141,8 +141,8 @@ public class AdminService {
         List<PersonInfo> personInfos = new ArrayList<>();
 
         try {
-            StudentEntity student = studentImpl.getStudent(Id);
-            TeacherEntity teacher = teacherImpl.getTeacher(Id);
+            StudentEntity student = studentImpl.getID(Id);
+            TeacherEntity teacher = teacherImpl.getID(Id);
 
             if(student!=null){
                 personInfos.add(new PersonInfo(student));

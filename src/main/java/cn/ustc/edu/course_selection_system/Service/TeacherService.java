@@ -24,7 +24,7 @@ public class TeacherService {
 
     public TeacherEntity GetID() {
         TeacherImpl teacherImpl = new TeacherImpl();
-        return teacherImpl.getTeacher(id);
+        return teacherImpl.getID(id);
     }
 
 

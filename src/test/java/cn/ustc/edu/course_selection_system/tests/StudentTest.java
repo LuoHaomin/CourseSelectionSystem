@@ -1,12 +1,10 @@
 package cn.ustc.edu.course_selection_system.tests;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Database.StudentImpl;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudentTest {
@@ -22,14 +20,14 @@ public class StudentTest {
     @Test
     public void testGetStudent() {
         StudentImpl studentImpl = new StudentImpl();
-        StudentEntity student = studentImpl.getStudent("2019211001");
+        StudentEntity student = studentImpl.getID("2019211001");
         System.out.println(student.toString());
     }
 
     @Test
     public void testUpdateStudent() {
         StudentImpl studentImpl = new StudentImpl();
-        StudentEntity student = studentImpl.getStudent("2019211001");
+        StudentEntity student = studentImpl.getID("2019211001");
         student.setGender("无");
         studentImpl.updateStudent(student);
     }

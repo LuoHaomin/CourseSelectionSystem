@@ -10,7 +10,7 @@ public class TeacherTest {
     public void testGetTeacher(){
         TeacherImpl teacherImpl = new TeacherImpl();
         TeacherEntity teacher = new TeacherEntity();
-        teacher = teacherImpl.getTeacher("1");
+        teacher = teacherImpl.getID("1");
         System.out.println(teacher.getName());
     }
 

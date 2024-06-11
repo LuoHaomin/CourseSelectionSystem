@@ -58,7 +58,7 @@ public class CourseInfo {
         TeacherImpl teacherImpl = new TeacherImpl();
         String[] split = teacher.split(",");
         for (String s : split) {
-            TeacherEntity newTeacherEntity=teacherImpl.getTeacher(s);
+            TeacherEntity newTeacherEntity=teacherImpl.getID(s);
             if (newTeacherEntity!=null){
                 this.teacherEntity.add(newTeacherEntity);
             }

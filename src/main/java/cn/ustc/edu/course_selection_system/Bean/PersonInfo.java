@@ -26,21 +26,6 @@ public class PersonInfo {
         isTeacher = teacher;
     }
 
-//    public StudentEntity getStudentEntity() {
-//        return studentEntity;
-//    }
-//
-//    public void setStudentEntity(StudentEntity studentEntity) {
-//        this.studentEntity = studentEntity;
-//    }
-//
-//    public TeacherEntity getTeacherEntity() {
-//        return teacherEntity;
-//    }
-//
-//    public void setTeacherEntity(TeacherEntity teacherEntity) {
-//        this.teacherEntity = teacherEntity;
-//    }
 
     public String getId(){
         if(isTeacher){

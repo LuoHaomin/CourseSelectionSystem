@@ -1,12 +1,13 @@
 package cn.ustc.edu.course_selection_system.Database;
 
+import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Bean.TeacherEntity;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherImpl{
+public class TeacherImpl implements AbstractPersonData{
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     /**
@@ -14,7 +15,7 @@ public class TeacherImpl{
      * @param teacher_id teacher's id
      * @return teacher's TescherEntity
      */
-    public TeacherEntity getTeacher(String teacher_id){
+    public TeacherEntity getID(String teacher_id){
         List<TeacherEntity> teachers = new ArrayList<>();
         sessionFactory.inTransaction(session -> {
             List<TeacherEntity> _teachers = session.createQuery("from TeacherEntity where id = :id",
@@ -87,5 +88,11 @@ public class TeacherImpl{
             teachers.addAll(_teachers);
         });
         return teachers;
+    }
+
+
+    @Override
+    public PersonInfo getPersonInfo(String id) {
+        return new PersonInfo(getID(id));
     }
 }

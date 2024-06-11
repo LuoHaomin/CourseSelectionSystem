@@ -26,7 +26,7 @@ public class StudentService
      */
     public StudentEntity GetID() {
         StudentImpl studentImpl = new StudentImpl();
-        return studentImpl.getStudent(id);
+        return studentImpl.getID(id);
     }
 
     /**

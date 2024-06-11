@@ -1,16 +1,15 @@
 package cn.ustc.edu.course_selection_system.Database;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
+import cn.ustc.edu.course_selection_system.Bean.PersonInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.StudentCourseEntityPK;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentImpl {
+public class StudentImpl implements AbstractPersonData{
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     /**
@@ -19,7 +18,7 @@ public class StudentImpl {
      * @param id student's id
      * @return StudentEntity
      */
-    public StudentEntity getStudent(String id) {
+    public StudentEntity getID(String id) {
         List<StudentEntity> studentList = new ArrayList<>();
         sessionFactory.inSession(session -> {
             List<StudentEntity> _studentList = session.createQuery("from StudentEntity where id = :id",
@@ -34,6 +33,8 @@ public class StudentImpl {
         }
         return studentList.get(0);
     }
+
+
 
     /**
      * Update the student's information
@@ -218,4 +219,8 @@ public class StudentImpl {
         });
     }
 
+    @Override
+    public PersonInfo getPersonInfo(String id) {
+        return new PersonInfo(getID(id));
+    }
 }
