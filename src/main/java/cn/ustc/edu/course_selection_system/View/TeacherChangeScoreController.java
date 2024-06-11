@@ -21,7 +21,7 @@ import javafx.util.Pair;
 import java.io.IOException;
 import java.util.*;
 
-public class TeacherChangeScoreController {
+public class TeacherChangeScoreController implements PageOfTeacher{
         private String teacherid;
         private int courseid=0;
         @FXML
@@ -50,28 +50,14 @@ public class TeacherChangeScoreController {
         @FXML
         public void Handlebackselect(ActionEvent event) throws IOException
         {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherLogin.fxml"));
-            Parent root=loader.load();
-            TeacherLoginController teacherloginController=loader.getController();
-            teacherloginController.start(teacherid);
-            Stage stage=(Stage) backselect.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/TeacherLogin.fxml",teacherid,(Stage)backselect.getScene().getWindow());
         }
         @FXML
         public void HandleStudent(ActionEvent event) throws IOException
         {
             if(Student.isSelected())
             {
-                FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherWelcome.fxml"));
-                Parent root=loader.load();
-                TeacherWelcomeController teacherWelcomeController =loader.getController();
-                teacherWelcomeController.start(teacherid,courseid);
-                Stage stage=(Stage) Student.getScene().getWindow();
-                Scene scene=new Scene(root,600,400);
-                stage.setScene(scene);
-                stage.show();
+                PageJump.JumpTo("/cn/ustc/edu/course_selection_system/TeacherWelcome.fxml",teacherid,courseid,(Stage)backselect.getScene().getWindow());
             }
         }
         @FXML
@@ -108,6 +94,7 @@ public class TeacherChangeScoreController {
         private TableColumn<tableline,String> StudentName;
         @FXML
         private TableColumn<tableline,TextField> StudentScore;
+
         public void start(String teacherid,int courseid)
         {
             this.teacherid=teacherid;

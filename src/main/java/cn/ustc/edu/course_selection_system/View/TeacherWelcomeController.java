@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class TeacherWelcomeController {
+public class TeacherWelcomeController implements PageOfTeacher{
     private String teacherid;
     private int courseid=0;
     @FXML
@@ -69,14 +69,8 @@ public class TeacherWelcomeController {
     @FXML
     public void Handlebackselect(ActionEvent event) throws IOException
     {
-        FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherLogin.fxml"));
-        Parent root=loader.load();
-        TeacherLoginController teacherloginController=loader.getController();
-        teacherloginController.start(teacherid);
-        Stage stage=(Stage) backselect.getScene().getWindow();
-        Scene scene=new Scene(root,600,400);
-        stage.setScene(scene);
-        stage.show();
+        PageJump.JumpTo("/cn/ustc/edu/course_selection_system/TeacherLogin.fxml",teacherid,(Stage)backselect.getScene().getWindow());
+
     }
     @FXML
     public void HandleStudent(ActionEvent event) throws IOException
@@ -86,14 +80,8 @@ public class TeacherWelcomeController {
     {
         if(Score.isSelected())
         {
-            FXMLLoader  loader=new FXMLLoader(getClass().getResource("/cn/ustc/edu/course_selection_system/TeacherChangeScore.fxml"));
-            Parent root=loader.load();
-            TeacherChangeScoreController teacherChangeScoreController =loader.getController();
-            teacherChangeScoreController.start(teacherid,courseid);
             Stage stage=(Stage) Score.getScene().getWindow();
-            Scene scene=new Scene(root,600,400);
-            stage.setScene(scene);
-            stage.show();
+            PageJump.JumpTo("/cn/ustc/edu/course_selection_system/TeacherChangeScore.fxml",teacherid,courseid,stage);
         }
     }
     @FXML

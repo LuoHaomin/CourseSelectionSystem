@@ -1,6 +1,7 @@
 package cn.ustc.edu.course_selection_system.Service;
 
 import cn.ustc.edu.course_selection_system.View.Page;
+import cn.ustc.edu.course_selection_system.View.PageOfTeacher;
 import cn.ustc.edu.course_selection_system.View.TeacherLoginController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,15 @@ public class PageJump {
         Page controller=loader.getController();
         controller.start(Id);
 
+        Scene scene=new Scene(root,600,400);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public static void JumpTo(String name,  String Id,int courseID, Stage stage) throws IOException {
+        FXMLLoader loader=new FXMLLoader(cn.ustc.edu.course_selection_system.HelloApplication.class.getResource(name));
+        Parent root=loader.load();
+        PageOfTeacher controller=loader.getController();
+        controller.start(Id,courseID);
         Scene scene=new Scene(root,600,400);
         stage.setScene(scene);
         stage.show();
