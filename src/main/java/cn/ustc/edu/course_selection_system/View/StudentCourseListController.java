@@ -39,6 +39,7 @@ public class StudentCourseListController implements Page{
     {
         PageJump.JumpTo("/cn/ustc/edu/course_selection_system/Loginscene.fxml",(Stage) Back.getScene().getWindow());
     }
+
     @FXML
     private RadioButton Course;
     @FXML
@@ -73,7 +74,10 @@ public class StudentCourseListController implements Page{
     @FXML
     public void HandleCourseList(ActionEvent event) throws IOException
     {}
-    public class tableline
+
+
+
+    public static class tableline
     {
         String Monday;
         String Tuesday;
@@ -155,8 +159,8 @@ public class StudentCourseListController implements Page{
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
-        List<CourseEntity> studentcourse=studentService.getRelatedCourses();
-        CourseTable courseTable=new CourseTable(studentcourse);
+        List<CourseEntity> StudentCourse=studentService.getRelatedCourses();
+        CourseTable courseTable=new CourseTable(StudentCourse);
         Mon.setCellValueFactory(new PropertyValueFactory<>("Monday"));
         Tue.setCellValueFactory(new PropertyValueFactory<>("Tuesday"));
         Wed.setCellValueFactory(new PropertyValueFactory<>("Wednesday"));
@@ -165,11 +169,11 @@ public class StudentCourseListController implements Page{
         Sat.setCellValueFactory(new PropertyValueFactory<>("Saturday"));
         Sun.setCellValueFactory(new PropertyValueFactory<>("Sunday"));
         ObservableList<tableline> list= FXCollections.observableArrayList();
-        String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
+        String[] time ={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],"1");
-            list.add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
+            list.add(new tableline(timecourse.get(0), timecourse.get(1), timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
         table.setItems(list);
     }
@@ -191,7 +195,7 @@ public class StudentCourseListController implements Page{
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],Week);
-            list.add(new tableline(timecourse.get(0),timecourse.get(1),timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
+            list.add(new tableline(timecourse.get(0), timecourse.get(1), timecourse.get(2), timecourse.get(3), timecourse.get(4), timecourse.get(5), timecourse.get(6)));
         }
         table.setItems(list);
     }

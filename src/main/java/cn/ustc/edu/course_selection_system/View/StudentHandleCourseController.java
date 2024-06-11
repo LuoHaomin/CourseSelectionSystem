@@ -1,6 +1,5 @@
 package cn.ustc.edu.course_selection_system.View;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Service.CourseService;
@@ -10,9 +9,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -22,7 +18,7 @@ import java.util.List;
 
 public class StudentHandleCourseController implements Page{
     private String id;
-    private int PageSize=12;
+    private final int PageSize=12;
     @FXML
     private Label Name;
     @FXML
