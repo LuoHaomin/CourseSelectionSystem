@@ -41,8 +41,6 @@ public class CourseImpl {
         synchronized (this) {
             sessionFactory.inTransaction(session -> {
                 session.persist(courseEntity);
-//            session.refresh(courseEntity);
-//            id.add(courseEntity.getId());
             });
             sessionFactory.inSession(session -> {
                 id.addAll(session.createQuery("select MAX(id) from CourseEntity", Integer.class)
