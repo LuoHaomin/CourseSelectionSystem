@@ -26,7 +26,6 @@ public class StudentCourseListController {
     private Button ChangeCode;
     @FXML
     private Button Back;
-
     @FXML
     private void HandleChangeCode(ActionEvent event) throws IOException
     {
@@ -105,6 +104,11 @@ public class StudentCourseListController {
     @FXML
     public void HandleCourseList(ActionEvent event) throws IOException
     {}
+
+    /**
+     * 内部类——TableView的行
+     * 第一列到第七列分别显示当节课课程名称，如果当节课无课，显示空串
+     */
     public class tableline
     {
         String Monday;
@@ -125,45 +129,19 @@ public class StudentCourseListController {
             this.Sunday=Sunday;
         }
         public String getMonday() {return Monday;}
-        public void setMonday(String Monday) {
-            this.Monday = Monday;
-        }
-        public String getTuesday() {
-            return Tuesday;
-        }
-        public void setTuesday(String Tuesday) {
-            this.Tuesday = Tuesday;
-        }
-        public String getWednesday() {
-            return Wednesday;
-        }
-        public void setWednesday(String Wednesday) {
-            this.Wednesday = Wednesday;
-        }
-        public String getThursday() {
-            return Thursday;
-        }
-        public void setThursday(String Thursday) {
-            this.Thursday = Thursday;
-        }
-        public String getFriday() {
-            return Friday;
-        }
-        public void setFriday(String Friday) {
-            this.Friday = Friday;
-        }
-        public String getSaturday() {
-            return Saturday;
-        }
-        public void setSaturday(String Saturday) {
-            this.Saturday = Saturday;
-        }
-        public String getSunday() {
-            return Sunday;
-        }
-        public void setSunday(String Sunday) {
-            this.Sunday = Sunday;
-        }
+        public void setMonday(String Monday) {this.Monday = Monday;}
+        public String getTuesday() {return Tuesday;}
+        public void setTuesday(String Tuesday) {this.Tuesday = Tuesday;}
+        public String getWednesday() {return Wednesday;}
+        public void setWednesday(String Wednesday) {this.Wednesday = Wednesday;}
+        public String getThursday() {return Thursday;}
+        public void setThursday(String Thursday) {this.Thursday = Thursday;}
+        public String getFriday() {return Friday;}
+        public void setFriday(String Friday) {this.Friday = Friday;}
+        public String getSaturday() {return Saturday;}
+        public void setSaturday(String Saturday) {this.Saturday = Saturday;}
+        public String getSunday() {return Sunday;}
+        public void setSunday(String Sunday) {this.Sunday = Sunday;}
     }
     @FXML
     private TableView<tableline> table;
@@ -184,11 +162,13 @@ public class StudentCourseListController {
     public void start(String id)
     {
         this.id=id;
+        String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};//一天共有十三节课
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
-        List<CourseEntity> studentcourse=studentService.getRelatedCourses();
+        List<CourseEntity> studentcourse=studentService.getRelatedCourses();//得到学生选课列表
         CourseTable courseTable=new CourseTable(studentcourse);
+
         Mon.setCellValueFactory(new PropertyValueFactory<>("Monday"));
         Tue.setCellValueFactory(new PropertyValueFactory<>("Tuesday"));
         Wed.setCellValueFactory(new PropertyValueFactory<>("Wednesday"));
@@ -196,8 +176,8 @@ public class StudentCourseListController {
         Fri.setCellValueFactory(new PropertyValueFactory<>("Friday"));
         Sat.setCellValueFactory(new PropertyValueFactory<>("Saturday"));
         Sun.setCellValueFactory(new PropertyValueFactory<>("Sunday"));
+
         ObservableList<tableline> list= FXCollections.observableArrayList();
-        String time[]={"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
         for(int i=1;i<=13;i++)
         {
             List<String> timecourse=courseTable.TimeCourse(time[i],"1");
@@ -210,7 +190,7 @@ public class StudentCourseListController {
     @FXML
     private Button Go;
     @FXML
-    public void HandleGo(ActionEvent event) throws IOException
+    public void HandleGo(ActionEvent event) throws IOException //可以根据周数搜索当周课程表，默认显示为第一周课程表
     {
         String Week=textfield.getText();
         StudentService studentService=new StudentService(id);

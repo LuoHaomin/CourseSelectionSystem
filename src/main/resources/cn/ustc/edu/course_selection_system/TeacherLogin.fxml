@@ -34,12 +34,12 @@
             </Button>
          </children>
       </AnchorPane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="130.0" layoutY="62.0" prefHeight="317.0" prefWidth="383.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="53.0" layoutY="62.0" prefHeight="318.0" prefWidth="505.0">
          <content>
-            <TableView fx:id="Table" prefHeight="317.0" prefWidth="383.0">
+            <TableView fx:id="Table" prefHeight="318.0" prefWidth="505.0">
               <columns>
-                <TableColumn fx:id="CourseName" prefWidth="214.40000611543655" text="课程名称" />
-                <TableColumn fx:id="Login" minWidth="0.0" prefWidth="155.2000274658203" text="进入" />
+                <TableColumn fx:id="CourseName" prefWidth="260.0000122189522" text="课程名称" />
+                <TableColumn fx:id="Login" minWidth="0.0" prefWidth="228.79998779296875" text="进入" />
               </columns>
             </TableView>
          </content>

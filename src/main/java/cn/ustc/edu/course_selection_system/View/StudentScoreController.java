@@ -104,6 +104,11 @@ public class StudentScoreController {
             stage.show();
         }
     }
+
+    /**
+     * 内部类——TableView的行
+     * 第一列显示课程名称，第二列显示课程分数，第三列显示课程绩点
+     */
     public class tableline
     {
         String coursename;
@@ -115,30 +120,12 @@ public class StudentScoreController {
             this.score=score;
             this.gpa=gpa;
         }
-        public Double getGpa()
-        {
-            return gpa;
-        }
-        public void setgpa(Double gpa)
-        {
-            this.gpa = gpa;
-        }
-        public Double getScore()
-        {
-            return score;
-        }
-        public void setscore(Double score)
-        {
-            this.score = score;
-        }
-        public String getCourseName()
-        {
-            return coursename;
-        }
-        public void setcoursename(String coursename)
-        {
-            this.coursename = coursename;
-        }
+        public Double getGpa() {return gpa;}
+        public void setGpa(Double gpa) {this.gpa = gpa;}
+        public Double getScore() {return score;}
+        public void setScore(Double score) {this.score = score;}
+        public String getCourseName() {return coursename;}
+        public void setCoursename(String coursename) {this.coursename = coursename;}
     }
     @FXML
     private Label Agpa;
@@ -156,13 +143,15 @@ public class StudentScoreController {
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
-        List<Pair<String,Double>> scorelist=studentService.getScore();
-        Agpa.setText(Double.toString(studentService.averageGPA()));
+
+        List<Pair<String,Double>> scorelist=studentService.getScore();//得到课程-成绩对列表
+        Agpa.setText(Double.toString(studentService.averageGPA()));//显示学生的总体GPA
+
         CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
         TScore.setCellValueFactory(new PropertyValueFactory<>("Score"));
         GPA.setCellValueFactory(new PropertyValueFactory<>("Gpa"));
-        ObservableList<tableline> list=FXCollections.observableArrayList();
 
+        ObservableList<tableline> list=FXCollections.observableArrayList();
         for(Pair<String,Double> thisscore:scorelist){
             double thisgpa=studentService.translateGPA(thisscore.getValue());
             list.add(new tableline(thisscore.getKey(),thisscore.getValue(),thisgpa));

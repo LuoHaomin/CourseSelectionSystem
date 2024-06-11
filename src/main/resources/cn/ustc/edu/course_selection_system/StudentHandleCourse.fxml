@@ -83,13 +83,13 @@
       <Pagination fx:id="Paging" layoutX="150.0" layoutY="79.0" prefHeight="298.0" prefWidth="422.0" />
       <TableView fx:id="Table" editable="true" layoutX="154.0" layoutY="86.0" prefHeight="242.0" prefWidth="398.0">
          <columns>
-            <TableColumn fx:id="CourseName" prefWidth="85.60003662109375" text="课程名称" />
-            <TableColumn fx:id="Time" prefWidth="82.4000244140625" text="课程时间" />
-            <TableColumn fx:id="Teacher" minWidth="0.0" prefWidth="64.79998779296875" text="授课老师" />
-            <TableColumn fx:id="Credit" prefWidth="38.39996337890625" text="学分" />
-            <TableColumn fx:id="Period" prefWidth="44.0" text="时段" />
-            <TableColumn fx:id="Capacity" prefWidth="39.20001220703125" text="容量" />
-            <TableColumn fx:id="Conduct" prefWidth="40.80002441406248" text="操作" />
+            <TableColumn fx:id="CourseName" prefWidth="64.800048828125" text="课程名称" />
+            <TableColumn fx:id="Time" prefWidth="62.4000244140625" text="课程时间" />
+            <TableColumn fx:id="Teacher" minWidth="0.0" prefWidth="64.00006103515625" text="授课老师" />
+            <TableColumn fx:id="Credit" prefWidth="52.7999267578125" text="学分" />
+            <TableColumn fx:id="Period" prefWidth="51.99993896484375" text="时段" />
+            <TableColumn fx:id="Capacity" prefWidth="44.79998779296875" text="容量" />
+            <TableColumn fx:id="Conduct" prefWidth="54.39999999999998" text="操作" />
          </columns>
       </TableView>
       <Label fx:id="symbol" layoutX="499.0" layoutY="335.0" prefHeight="24.0" prefWidth="75.0" textFill="RED" />

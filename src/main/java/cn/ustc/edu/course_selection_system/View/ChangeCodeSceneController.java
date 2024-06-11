@@ -40,7 +40,6 @@ public class ChangeCodeSceneController {
     public void start(String id)
     {
         this.id=id;
-//        Name.setText(GetName(id));
     }
     @FXML
     private void HandleBack(ActionEvent event) throws IOException
@@ -62,14 +61,14 @@ public class ChangeCodeSceneController {
         PasswordChecker passwordChecker=new PasswordChecker();
         Pair<String,String> idname=passwordChecker.checkID(nm,oc);
         if(!idname.getValue().isEmpty() && Objects.equals(nc1, nc2)) {
-            if(idname.getValue()=="student")
+            if(idname.getValue()=="student")//学生更改密码
             {
                 StudentService studentService=new StudentService(idname.getKey());
                 StudentEntity studentEntity=studentService.GetID();
                 studentEntity.setPassword(nc1);
                 studentService.updateID(studentEntity);
             }
-            if(idname.getValue()=="teacher")
+            if(idname.getValue()=="teacher")//教师更改密码
             {
                 TeacherService teacherService=new TeacherService(idname.getKey());
                 TeacherEntity teacherEntity=teacherService.GetID();
@@ -85,7 +84,7 @@ public class ChangeCodeSceneController {
         }
         else
         {
-            Wrong.setVisible(true);
+            Wrong.setVisible(true);//如果用户名与旧密码不匹配或者新输入的两个密码不匹配，则返回错误信息
         }
     }
 

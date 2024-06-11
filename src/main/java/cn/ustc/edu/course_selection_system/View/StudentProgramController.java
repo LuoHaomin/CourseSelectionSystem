@@ -104,6 +104,11 @@ public class StudentProgramController {
             stage.show();
         }
     }
+
+    /**
+     * 内部类——TableView的行
+     * 第一列显示课程名称，第二列显示跳转按钮，等价于在学生选课界面搜索课程名
+     */
     public class tableline
     {
         String courseName;
@@ -132,18 +137,10 @@ public class StudentProgramController {
                 stage.show();
             });
         }
-        public String getCourseName() {
-            return courseName;
-        }
-        public void setCourseName(String courseName) {
-            this.courseName = courseName;
-        }
-        public Button getBtEnter() {
-            return btEnter;
-        }
-        public void setBtEnter(Button btEnter) {
-            this.btEnter = btEnter;
-        }
+        public String getCourseName() {return courseName;}
+        public void setCourseName(String courseName) {this.courseName = courseName;}
+        public Button getBtEnter() {return btEnter;}
+        public void setBtEnter(Button btEnter) {this.btEnter = btEnter;}
     }
     @FXML
     TableView<tableline> table;
@@ -156,9 +153,11 @@ public class StudentProgramController {
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
-        List<String> programlist=studentService.getProgram();
+        List<String> programlist=studentService.getProgram();//得到培养方案中课程名称列表
+
         CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
         Enter.setCellValueFactory(new PropertyValueFactory<>("BtEnter"));
+
         ObservableList<tableline> list= FXCollections.observableArrayList();
         for (String courseName : programlist) {
             list.add(new tableline(courseName));

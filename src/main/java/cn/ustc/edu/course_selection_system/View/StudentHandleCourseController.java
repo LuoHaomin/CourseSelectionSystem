@@ -1,6 +1,5 @@
 package cn.ustc.edu.course_selection_system.View;
 
-import cn.ustc.edu.course_selection_system.Bean.CourseEntity;
 import cn.ustc.edu.course_selection_system.Bean.CourseInfo;
 import cn.ustc.edu.course_selection_system.Bean.StudentEntity;
 import cn.ustc.edu.course_selection_system.Service.CourseService;
@@ -109,6 +108,11 @@ public class StudentHandleCourseController {
     }
     @FXML
     Label symbol;
+    /**
+     * 内部类——TableView的行
+     * 第一列显示课程名称，第二列显示课程时间，第三列显示授课老师，
+     * 第四列显示课程学分，第五列显示课程时段，第六列显示课堂容量，第七列显示选课/退课按钮
+     */
     public class tableline
     {
         String CourseName;
@@ -119,7 +123,9 @@ public class StudentHandleCourseController {
         int Capacity;
         Button Conduct;
 
-        public tableline(String CourseName, String Time, String Teacher, double Credit, String Period, int Capacity,String StudentID,int CourseID,boolean selectordrop) {
+        public tableline(String CourseName, String Time, String Teacher, double Credit,
+                         String Period, int Capacity,String StudentID,int CourseID,boolean selectordrop)
+        {
             this.CourseName = CourseName;
             this.Time = Time;
             this.Teacher = Teacher;
@@ -191,6 +197,7 @@ public class StudentHandleCourseController {
         StudentService studentService=new StudentService(id);
         StudentEntity studentEntity=studentService.GetID();
         Name.setText(studentEntity.getName());
+
         CourseName.setCellValueFactory(new PropertyValueFactory<>("CourseName"));
         Time.setCellValueFactory(new PropertyValueFactory<>("Time"));
         Teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
@@ -198,59 +205,66 @@ public class StudentHandleCourseController {
         Period.setCellValueFactory(new PropertyValueFactory<>("Period"));
         Capacity.setCellValueFactory(new PropertyValueFactory<>("Capacity"));
         Conduct.setCellValueFactory(new PropertyValueFactory<>("Conduct"));
+
         setTable(id);
     }
 
+    /**
+     * 设置表格样式及页码样式
+     * @param id
+     */
     public void setTable(String id)
     {
-        ObservableList<tableline> list= FXCollections.observableArrayList();
         StudentService studentService=new StudentService(id);
         int studentcoursesize=studentService.getNumberOfCourse();
         int droppage=(int) Math.ceil((double)studentcoursesize/ PageSize);
         int selectpage=(int)Math.ceil((double)CourseService.getNumberOfCourses()/PageSize);
         int allpage=droppage+selectpage;
-
-        Paging.setPageCount(allpage);
-        Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
-            list.clear();
-            int currentpage=Paging.currentPageIndexProperty().get();
-            if(currentpage<droppage)
-            {
-                List<CourseInfo> thispage=studentService.getRelatedCourse(currentpage,PageSize);
-                Table=new TableView<>(list);
-                for (CourseInfo courseInfo : thispage) {
-                    Table.getItems().add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
-                }
-                Table.setItems(list);
-            }
-            else {
-                currentpage=currentpage-droppage+1;
-                List<CourseInfo> thispage=CourseService.getCourseInfoList(currentpage,PageSize);
-
-                for (CourseInfo courseInfo : thispage) {
-                    Table.getItems().add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), true));
-                }
-                Table.setItems(list);
-            }
-        });
-        if(droppage==0)
+        //设置在未点击页码时第一页的表格内容
+        ObservableList<tableline> list= FXCollections.observableArrayList();
+        if(droppage==0)//如果学生没有选任何一节课，第一页直接显示是选课界面
         {
-            List<CourseInfo> thispage=CourseService.getCourseInfoList(0,PageSize);
-            for (CourseInfo courseInfo : thispage) {
+            List<CourseInfo> firstpage=CourseService.getCourseInfoList(0,PageSize);
+            for (CourseInfo courseInfo : firstpage) {
                 list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(),
                         courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(),
                         courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), true));
             }
             Table.setItems(list);
         }
-        else {
-            List<CourseInfo> thispage=studentService.getRelatedCourse(0,PageSize);
-            for (CourseInfo courseInfo : thispage) {
-                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
+        else {//否则，第一页显示退课界面
+            List<CourseInfo> firstpage=studentService.getRelatedCourse(0,PageSize);
+            for (CourseInfo courseInfo : firstpage) {
+                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(),
+                        courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id,
+                        courseInfo.getCourseEntity().getId(), false));
             }
             Table.setItems(list);
         }
 
+        Paging.setPageCount(allpage);
+        Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {//当点击了页码时
+            list.clear();//清空当前表格内容
+            int currentpage=Paging.currentPageIndexProperty().get();
+            if(currentpage<droppage)//如果在退课界面
+            {
+                List<CourseInfo> thispage=studentService.getRelatedCourse(currentpage,PageSize);
+                for (CourseInfo courseInfo : thispage) {
+                    list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(),
+                            courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(),
+                            courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
+                }
+                Table.setItems(list);
+            }
+            else {//如果在选课界面
+                currentpage=currentpage-droppage+1;
+                List<CourseInfo> thispage=CourseService.getCourseInfoList(currentpage,PageSize);
+                for (CourseInfo courseInfo : thispage) {
+                    list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), true));
+                }
+                Table.setItems(list);
+            }
+        });
     }
     @FXML
     private TextField QCourseName;
@@ -261,26 +275,32 @@ public class StudentHandleCourseController {
     @FXML
     private Button Find;
     @FXML
-    public void HandleFind(ActionEvent event)
+    public void HandleFind(ActionEvent event)//根据课程完整名称搜索课程
     {
         String qCourseName=QCourseName.getText();
         Long size=CourseService.GetNumberOfCourseInfoByName(qCourseName);
+        List<CourseInfo> firstpage=CourseService.GetCourseInfoByName(qCourseName,0,PageSize);
+        //设置表格第一页内容
         ObservableList<tableline> list= FXCollections.observableArrayList();
+        for (CourseInfo courseInfo : firstpage) {
+            list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(),
+                    courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id,
+                    courseInfo.getCourseEntity().getId(), false));
+        }
+        Table.setItems(list);
+
         Paging.setPageCount((int) Math.ceil((double)size.intValue()/ PageSize));
-        Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {
-            list.clear();
+        Paging.currentPageIndexProperty().addListener((observable, oldValue, newValue) -> {//点击了页码时
+            list.clear();//清空表格内容
             int currentpage=Paging.currentPageIndexProperty().get();
-            List<CourseInfo> thispage=CourseService.GetCourseInfoByName(qCourseName,currentpage,PageSize);
+            List<CourseInfo> thispage =CourseService.GetCourseInfoByName(qCourseName,currentpage,PageSize);
             for (CourseInfo courseInfo : thispage) {
-                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
+                list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(),
+                        courseInfo.getCredit(), courseInfo.getPeriod(), courseInfo.getCapacity(), id,
+                        courseInfo.getCourseEntity().getId(), false));
             }
             Table.setItems(list);
         });
-        List<CourseInfo> thispage=CourseService.GetCourseInfoByName(qCourseName,0,PageSize);
-        for (CourseInfo courseInfo : thispage) {
-            list.add(new tableline(courseInfo.getCourseName(), courseInfo.getTime(), courseInfo.getTeacher(), courseInfo.getCredit(),
-                    courseInfo.getPeriod(), courseInfo.getCapacity(), id, courseInfo.getCourseEntity().getId(), false));
-        }
-        Table.setItems(list);
+
     }
 }
