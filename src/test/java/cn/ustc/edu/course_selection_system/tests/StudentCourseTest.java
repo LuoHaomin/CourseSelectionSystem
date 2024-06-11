@@ -8,14 +8,14 @@ public class StudentCourseTest {
     public void testAddCoursePair() {
         StudentCourse studentCourse = new StudentCourse();
         studentCourse.AddCoursePair("2019211001", 4);
-        studentCourse.AddCoursePair("2019211002", 2);
+        studentCourse.AddCoursePair("2019211002", 5);
         studentCourse.AddCoursePair("2019211001", 3);
     }
 
     @Test
     public void testDeleteCoursePair() {
         StudentCourse studentCourse = new StudentCourse();
-        studentCourse.DeleteCoursePair("2019211001", 4);
+        studentCourse.DeleteCoursePair("2019211001", 3);
     }
 
     @Test

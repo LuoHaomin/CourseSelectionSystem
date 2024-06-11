@@ -32,22 +32,16 @@ public class StudentCourse {
      * @param courseId course's id
      */
     public void DeleteCoursePair(String studentId, int courseId) {
-//        StudentCourseEntity studentCourseEntity = new StudentCourseEntity();
-//        studentCourseEntity.setStudentId(studentId);
-//        studentCourseEntity.setCourseId(courseId);
 //        sessionFactory.inTransaction(session -> {
-//            session.remove(session.get(StudentCourseEntityPK.class, studentCourseEntity));
-////            session.remove(studentCourseEntity);
-//        });
-//        StudentCourseEntityPK studentCourseEntity = new StudentCourseEntityPK();
-//        studentCourseEntity.setStudentId(studentId);
-//        studentCourseEntity.setCourseId(courseId);
-//        sessionFactory.inTransaction(session -> {
-//            session.remove(session.get(StudentCourseEntityPK.class, studentCourseEntity));
-////            session.remove(studentCourseEntity);
+//            StudentCourseEntity studentCourseEntity = new StudentCourseEntity();
+//            studentCourseEntity.setStudentId(studentId);
+//            studentCourseEntity.setCourseId(courseId);
+//            studentCourseEntity.setScore(0.0);
+//            session.remove(studentCourseEntity);
 //        });
         sessionFactory.inTransaction(session -> {
-            session.createMutationQuery("delete from StudentCourseEntity where studentId = :studentId and courseId = :courseId")
+            session.createMutationQuery("delete from StudentCourseEntity where " +
+                            "studentId = :studentId and courseId = :courseId")
                     .setParameter("studentId", studentId)
                     .setParameter("courseId", courseId)
                     .executeUpdate();
